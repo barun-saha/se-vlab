@@ -2,82 +2,82 @@
     "lab": {
         "build_requirements": {
             "platform": {
-                "arch": "i386", 
+                "arch": "i386",
                 "build_steps": {
-                    "build": [], 
-                    "configure": [], 
-                    "post_build": [], 
-                    "pre_build": [], 
+                    "build": [],
+                    "configure": [],
+                    "post_build": [],
+                    "pre_build": [],
                     "status": []
-                }, 
-                "installer": [], 
-                "os": "ubuntu", 
-                "osVersion": "12", 
+                },
+                "installer": [],
+                "os": "ubuntu",
+                "osVersion": "10.04",
                 "service_pack": ""
             }
-        }, 
+        },
         "description": {
             "developer": [
                 {
                     "contact": {
-                        "alternate_email": "", 
-                        "email": "dsamanta@sit.iitkgp.ernet.in", 
-                        "mobile_number": "", 
+                        "alternate_email": "",
+                        "email": "dsamanta@sit.iitkgp.ernet.in",
+                        "mobile_number": "",
                         "office_number": ""
-                    }, 
-                    "department": "School of Information Technology", 
-                    "institute": "IIT Kharagpur", 
-                    "name": "Debasis Samanta", 
-                    "organization": "", 
-                    "role": "Lab Developer", 
-                    "title": "", 
-                    "web": ""
-                }, 
-                {
-                    "contact": {
-                        "alternate_email": "", 
-                        "email": "smisra@sit.iitkgp.ernet.in", 
-                        "mobile_number": "", 
-                        "office_number": ""
-                    }, 
-                    "department": "School of Information Technology", 
-                    "institute": "IIT Kharagpur", 
-                    "name": "Sudip Misra", 
-                    "organization": "", 
-                    "role": "Lab Co-Developer", 
-                    "title": "", 
+                    },
+                    "department": "School of Information Technology",
+                    "institute": "IIT Kharagpur",
+                    "name": "Debasis Samanta",
+                    "organization": "",
+                    "role": "Lab Developer",
+                    "title": "",
                     "web": ""
                 },
                 {
                     "contact": {
-                        "alternate_email": "", 
-                        "email": "barun.saha04@gmail.com", 
-                        "mobile_number": "", 
+                        "alternate_email": "",
+                        "email": "smisra@sit.iitkgp.ernet.in",
+                        "mobile_number": "",
                         "office_number": ""
-                    }, 
-                    "department": "School of Information Technology", 
-                    "institute": "IIT Kharagpur", 
-                    "name": "Barun Saha", 
-                    "organization": "", 
-                    "role": "Lab RA", 
-                    "title": "", 
+                    },
+                    "department": "School of Information Technology",
+                    "institute": "IIT Kharagpur",
+                    "name": "Sudip Misra",
+                    "organization": "",
+                    "role": "Lab Co-Developer",
+                    "title": "",
+                    "web": ""
+                },
+                {
+                    "contact": {
+                        "alternate_email": "",
+                        "email": "barun.saha04@gmail.com",
+                        "mobile_number": "",
+                        "office_number": ""
+                    },
+                    "department": "School of Information Technology",
+                    "institute": "IIT Kharagpur",
+                    "name": "Barun Saha",
+                    "organization": "",
+                    "role": "Lab RA",
+                    "title": "",
                     "web": ""
                 }
-            ], 
+            ],
             "discipline": [
                 "Computer Science & Engineering"
-            ], 
-            "id": "cse08", 
-            "integration_level": 5, 
-            "name": "Software Engineering", 
-            "server-side": true, 
-            "status": "Released", 
+            ],
+            "id": "cse08",
+            "integration_level": 5,
+            "name": "Software Engineering",
+            "server-side": true,
+            "status": "Released",
             "type": "Simulation"
-        }, 
+        },
         "runtime_requirements": {
             "platform": {
-                "arch": "i386", 
-                "hosting": "dedicated", 
+                "arch": "i386",
+                "hosting": "dedicated",
                 "installer": [
                     "sudo apt-get -y install python python-dev python-setuptools python-pip",
                     "sudo apt-get -y install build-essential",
@@ -93,36 +93,36 @@
                     "pip install recaptcha-client",
                     "sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server",
                     "sudo apt-get -y install libapache2-mod-wsgi"
-                ], 
+                ],
                 "lab_actions": {
-                    "backup": [], 
+                    "backup": [],
                     "clean": [],
                     "init": [
                         "sh configure.sh"
-                    ], 
-                    "pause": [], 
-                    "publish": [], 
-                    "restore": [], 
-                    "resume": [], 
-                    "shutdown": [], 
+                    ],
+                    "pause": [],
+                    "publish": [],
+                    "restore": [],
+                    "resume": [],
+                    "shutdown": [],
                     "start": [
                         "sudo service apache2 restart"
                     ],
-                    "stats": [], 
+                    "stats": [],
                     "stop": []
-                }, 
+                },
                 "memory": {
-                    "max_required": "2gb", 
+                    "max_required": "2gb",
                     "min_required": "256mb"
-                }, 
-                "os": "ubuntu", 
-                "osVersion": "12", 
-                "servicepack": "", 
+                },
+                "os": "ubuntu",
+                "osVersion": "10.04",
+                "servicepack": "",
                 "storage": {
                     "min_required": "10gb"
                 }
             }
         }
-    }, 
+    },
     "template": "1.0"
 }

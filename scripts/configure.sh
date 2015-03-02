@@ -21,7 +21,9 @@ mv ../conf/www /usr/local/
 
 # Initialize the database
 # Note: You must have the following two SQL files available
+# Create user and catalog
 mysql -u root < cse08-se_init.sql
+# Create tables and populate data
 mysql -u root db_isad < cse08-se_db.sql
 
 # Create symlinks
