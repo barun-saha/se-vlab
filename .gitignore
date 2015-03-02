@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*~
+
+# Files containing private information
+credentials.py
+secret.txt
+
+# Uploaded files -- should we exclude?
+media/uploads/*
+
+media/isad_erd/*
+media/vlabs/*
+
+# pip logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Version control files
+*.rej
+
+# SQL files
+#*.sql
