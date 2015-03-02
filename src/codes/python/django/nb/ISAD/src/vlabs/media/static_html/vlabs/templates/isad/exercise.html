@@ -1,0 +1,62 @@
+{% extends 'base2.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<div id="contents" class="font-normal">
+    <div id="exercise-problem" class="twoColContainer">
+
+        <div id="problem_id" class="centerAlign problemId" style="background-color: #f9fdff;">
+            <strong>Select</strong> <select name="ddlExercises" id="ddlExercises" style="padding: 1px;">
+            {% if exercise %}
+                {% for e in exercise %}
+                <option value="{{ e.id }}">{{ e.problem_id }}</option>
+                {% endfor %}
+            {% endif %}
+            </select>
+        </div>
+
+        <!--div class="twoColLeft"-->
+        <div style="height: auto; width: 97%;">
+            <div id="problem_statement" class="problemStatement" style="width: 100%;"></div>
+            <div class="clear"></div>
+            <div class="centerAlign" style="padding-top: 5px; padding-bottom: 3px;">
+                <button type="button" id="btnSubmit" class="button-icon">
+                    <img src="/isad/v_media/images/new/icons/workspace/next24x24.png" class="button-run" />
+                    <strong>Submit</strong>
+                </button>
+            </div>
+        </div>
+
+        <hr class="clear dotted-line" />
+
+        <!--div id="workspace" class="twoColRight" style="border-left: 1px dotted silver;"-->
+        <div id="workspace" class="" style="padding-left: 10px;">
+            <p class="centerAlign" style="padding-top: 25px; font-size: medium;">
+                Select a problem from the dropdown list shown above
+            </p>
+        </div>
+
+        <div class="clear"></div>
+
+        <div id="result_header" class="clear" style="border-top: 1px dotted silver;">
+            <h2 id="title">Result</h2>
+        </div>
+        <div id="result_display" class="clear" style="padding-left: 20px;">
+        </div>
+        <div id="view_solution" class="clear" style="padding-left: 20px;">
+        </div>
+    </div>
+</div>
+
+<!--div id="divStoreGraphForServer" class="clear"></div-->
+<input type="hidden" id="hObjId" value="{{ object_id }}" />
+
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/exercises.js"></script>
+
+<script type="text/javascript" src="{{ MEDIA_URL }}lib/center-plugin_1.0.1.js"></script>
+
+
+{% endblock %}

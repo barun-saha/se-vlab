@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+.tabView {
+	border-style: double inset inset inset;
+    border-width: thin;
+    border-color: #8686AC;
+    padding: 2px 3px 3px 5px;
+    margin: 1px 0px 0px 0px;
+    /*color: #C0C0C0;*/
+    width: 99%;
+    height: 460px;
+    vertical-align: top;
+    overflow: auto;
+}
+
+td.tabCols {
+	color: #0066CC;
+	font-family: Verdana;
+	font-size: Small;
+	text-decoration: none;
+	color: Blue;
+	font-weight: bold;
+	background-color: #CCE6FF;
+}
+
+a.tabCols {	
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+	border: 0px;
+}
+
+img.tabCols {
+	height: 32px;
+	width: 32px;
+	border: 0px;
+	vertical-align: middle;
+}

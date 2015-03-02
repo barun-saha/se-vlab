@@ -1,0 +1,63 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+    div#title {
+        padding-bottom: 5px;
+    }
+    div#title h1 {
+        color: #0033CC;
+    }
+    div#contents {
+
+    }
+    p {
+        padding: 5px;
+    }
+</style>
+
+<div id="contents" class="font-normal">
+    <h2>Case Study</h2>
+
+    <hr class="dotted-line" />
+
+    {% for case in case_list %}
+    <div class="case-study">
+        <span class="show-hide">[Hide]</span>
+        <span class="case-number"># {{ forloop.counter }} :</span>
+        <span class="case-title"> {{ case.title }} </span>
+
+        <div class="case-content">
+            <div class="case-description">
+                {{ case.case|safe }}
+            </div>
+
+            <div class="case-analysis">
+                 {{ case.analysis|safe }}
+            </div>
+        </div>
+    </div>
+    <div class="clear" style="height: 5px;"></div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('span.show-hide').click(function(){
+            if ($(this).text() == '[Hide]') {
+                $(this).text('[Show]');
+                $(this).parent().children('div.case-content').slideUp('slow');
+            }
+            else {
+                $(this).text('[Hide]');
+                $(this).parent().children('div.case-content').slideDown('slow');
+            }            
+        });
+    });
+</script>
+
+{% endblock %}

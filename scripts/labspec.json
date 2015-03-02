@@ -1,0 +1,128 @@
+{
+    "lab": {
+        "build_requirements": {
+            "platform": {
+                "arch": "i386", 
+                "build_steps": {
+                    "build": [], 
+                    "configure": [], 
+                    "post_build": [], 
+                    "pre_build": [], 
+                    "status": []
+                }, 
+                "installer": [], 
+                "os": "ubuntu", 
+                "osVersion": "12", 
+                "service_pack": ""
+            }
+        }, 
+        "description": {
+            "developer": [
+                {
+                    "contact": {
+                        "alternate_email": "", 
+                        "email": "dsamanta@sit.iitkgp.ernet.in", 
+                        "mobile_number": "", 
+                        "office_number": ""
+                    }, 
+                    "department": "School of Information Technology", 
+                    "institute": "IIT Kharagpur", 
+                    "name": "Debasis Samanta", 
+                    "organization": "", 
+                    "role": "Lab Developer", 
+                    "title": "", 
+                    "web": ""
+                }, 
+                {
+                    "contact": {
+                        "alternate_email": "", 
+                        "email": "smisra@sit.iitkgp.ernet.in", 
+                        "mobile_number": "", 
+                        "office_number": ""
+                    }, 
+                    "department": "School of Information Technology", 
+                    "institute": "IIT Kharagpur", 
+                    "name": "Sudip Misra", 
+                    "organization": "", 
+                    "role": "Lab Co-Developer", 
+                    "title": "", 
+                    "web": ""
+                },
+                {
+                    "contact": {
+                        "alternate_email": "", 
+                        "email": "barun.saha04@gmail.com", 
+                        "mobile_number": "", 
+                        "office_number": ""
+                    }, 
+                    "department": "School of Information Technology", 
+                    "institute": "IIT Kharagpur", 
+                    "name": "Barun Saha", 
+                    "organization": "", 
+                    "role": "Lab RA", 
+                    "title": "", 
+                    "web": ""
+                }
+            ], 
+            "discipline": [
+                "Computer Science & Engineering"
+            ], 
+            "id": "cse08", 
+            "integration_level": 5, 
+            "name": "Software Engineering", 
+            "server-side": true, 
+            "status": "Released", 
+            "type": "Simulation"
+        }, 
+        "runtime_requirements": {
+            "platform": {
+                "arch": "i386", 
+                "hosting": "dedicated", 
+                "installer": [
+                    "sudo apt-get -y install python python-dev python-setuptools python-pip",
+                    "sudo apt-get -y install build-essential",
+                    "sudo apt-get -y install graphviz graphviz-dev",
+                    "sudo apt-get -y install libmysqlclient-dev",
+                    "sudo apt-get -y install pkg-config",
+                    "pip install Django==1.2.7",
+                    "pip install pygraphviz",
+                    "pip install MySQL-python",
+                    "pip install django-maintenancemode",
+                    "pip install django-ajaxcomments",
+                    "pip install django-tinymce",
+                    "pip install recaptcha-client",
+                    "sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server",
+                    "sudo apt-get -y install libapache2-mod-wsgi"
+                ], 
+                "lab_actions": {
+                    "backup": [], 
+                    "clean": [],
+                    "init": [
+                        "sh configure.sh"
+                    ], 
+                    "pause": [], 
+                    "publish": [], 
+                    "restore": [], 
+                    "resume": [], 
+                    "shutdown": [], 
+                    "start": [
+                        "sudo service apache2 restart"
+                    ],
+                    "stats": [], 
+                    "stop": []
+                }, 
+                "memory": {
+                    "max_required": "2gb", 
+                    "min_required": "256mb"
+                }, 
+                "os": "ubuntu", 
+                "osVersion": "12", 
+                "servicepack": "", 
+                "storage": {
+                    "min_required": "10gb"
+                }
+            }
+        }
+    }, 
+    "template": "1.0"
+}

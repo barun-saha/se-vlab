@@ -1,0 +1,60 @@
+.div-post-mentor {
+    margin-top: 10px;
+}
+.post-answer-header {
+    background-color: #E3F2FC;
+    border-top: 1px solid #3e83c9;
+    border-bottom: 1px solid silver;
+    margin-left: 0;
+    width: 97.5%;
+    padding: 0;
+    padding-left: 10px;
+}
+.post-answer-header-label {
+    color: #012943;
+    font-size: 1.1em;
+}
+h3.post-answer-header-label {
+    color: #012943;
+    background-color: #E3F2FC;
+}
+.post-answer-asterisk {
+    color: red;
+    font-weight: bold;
+}
+.formFieldWrapper {
+    text-align: left;
+    padding: 5px;
+    padding-left: 10px;
+    border-bottom: 1px dotted silver;
+    width: 97%;
+}
+.formFieldWrapper label {
+    vertical-align: middle;
+    right: 90%;
+}
+.form-footer {
+    padding-top: 15px;
+    border: 0;
+    width: 98.5%;
+}
+.smooth-shadow {
+    -moz-box-shadow: 3px 3px 3px #E0E0E0;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 3px 3px 3px #E0E0E0;
+    box-shadow: 3px 3px 3px #E0E0E0;    /* For IE9 */
+}
+.ajax-mesg-rounded-box {
+    -moz-box-shadow: 5px 5px 5px #C6C6C6;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 5px 5px 5px #C6C6C6;
+    -khtml-box-shadow: 5px 5px 5px #C6C6C6;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -khtml-border-radius: 8px 8px 8px 8px;
+    box-shadow: 5px 5px 5px #C6C6C6;    /* For IE9 */
+    behavior: url(../css/border-radius.htc); /* For IE */
+    border-radius: 8px;
+}
+.message {
+    padding: 5px;
+    padding-top: 10px;
+}

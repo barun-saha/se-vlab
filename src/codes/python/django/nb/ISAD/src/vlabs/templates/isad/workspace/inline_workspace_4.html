@@ -1,0 +1,195 @@
+<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+    .primaryKey {
+        text-decoration: underline;
+    }
+    #er_diagram {
+        margin-left: 15px;
+    }    
+</style>
+
+
+
+<form method="" action="">
+
+    <h3 class="table-title-blue">Table #1: Add entities</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Entity</th>
+                <th>Weak</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="txtEntity" id="txtEntity"/>
+                </td>
+
+                <td>
+                    <input type="checkbox" name="weakCheck" id="weakCheck"/>
+                </td>
+
+                <td>
+                    <!-- <input type="button" value="Add" id='btnAddEntity'/> -->
+                    <button  type="button" id="btnAddEntity">
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                             class="button-image buttonAddImage" />
+                        <span class="button-text">Add</span>
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #2: Add attributes for each entity</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Entity</th>
+                <th>Attribute</th>
+                <th>Primary Key</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <select id="ent_attr" name="ent_attr">
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="txtAttribute" id="txtAttribute"/>
+                </td>
+                <td>
+                    <input type="checkbox" name="pkCheck" id="pkCheck"/>
+                </td>
+                <td>
+                    <button type="button" id='btnAddAttribute'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                             class="button-image buttonAddImage" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #3: Define relationship between two entities</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="relation">
+        <thead>
+            <tr>
+                <th>Entity</th>
+                <th>Relation</th>
+                <th>Entity</th>
+                <th>Constraint</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <select id="ent_1" name="ent_1">
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="txtRelation" id="txtRelation"/>
+                </td>
+                <td>
+                    <select id="ent_2" name="ent_2">
+                    </select>
+                </td>
+                <td>
+                    <select class="relationConstraint" name="relationConstraint">
+
+                        <option id="manyToMany">Many To Many</option>
+                        <option id="oneToMany">One To Many</option>
+                        <option id="manyToOne">Many To One</option>
+                        <option id="oneToOne">One To One</option>
+                    </select>
+                </td>
+                <td>
+                    <!-- <input type="button" value="Add" id='btnAddRelation'/>//14th change -->
+                    <button type="button" id='btnAddRelation'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                             class="button-image buttonAddImage" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #4: Entities and their attributes</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="showEntityTable">
+        <thead>
+            <tr>
+                <th>Entity</th>
+                <th>Attributes</th>
+                <th>Weak</th>
+            </tr>
+        </thead>
+        <tbody class="tbody1">
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #5: Relationships between entities</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="showRelationTable">
+        <thead>
+            <tr>
+                <th>Entity</th>
+                <th>Relation</th>
+                <th>Entity</th>
+                <th>Constraint Type</th>
+                <th>Remove</th>
+                <!-- <th>Add_operation</th> -->
+
+            </tr>
+        </thead>
+        <tbody class="tbody2">
+            <!-- <tr>
+                <td>
+                 <select id="ent_1" name="ent_1">
+                                  </select>
+                </td>
+
+                                  <td>
+                                   <input type="text" name="txtRelation" id="txtRelation"/>
+                </td>
+
+                                  <td>
+                                  <select id="ent_2" name="ent_2">
+                                  </select>
+                                  </td>
+
+
+
+            </tr> -->
+
+        </tbody>
+    </table>
+
+    <p style="margin-top: 30px; margin-bottom: 10px;">
+        <button type="button" id='btnERD'>
+            <img src="/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+                 class="button-image buttonAddImage" />
+            <span class="button-image button-text"><strong>Draw</strong></span>
+        </button>
+    </p>
+</form>
+
+<div style="margin-bottom: 5px; " class="silver-dotted-1px-pad-10" id="uml-diagram-container">
+    <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" id="er_diagram" alt="ER Diagram"
+         class="center-align center-align-image " />
+</div>
+<p>&nbsp;</p>
+
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.7.3.custom.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/exercises/x4_erd.js"></script>

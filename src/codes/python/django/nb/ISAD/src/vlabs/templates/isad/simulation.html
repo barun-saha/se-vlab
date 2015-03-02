@@ -1,0 +1,109 @@
+{% extends 'base2.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<link href="{{ MEDIA_URL }}css/simulation.css" rel="stylesheet" type="text/css">
+&nbsp;
+
+<!-- Fix the positioning of div tags for IE and Firefox -->
+<style type="text/css">
+    .ieFix {
+        position: absolute;
+    }
+</style>
+<!--[if IE]>
+<style type="text/css">
+    .ieFix {
+        position: fixed;
+    }
+</style>
+<![EndIf]-->
+
+<!--[if IE]>
+<STYLE type=text/css>
+#contentBox {
+padding: 0;
+}
+</STYLE>
+<![EndIf]-->
+
+<div id="contents" class="font-normal">
+
+    <!--div id="problem" class="exerciseProblem ieFix" style="top: 105px; height: auto; width: 40%;"-->
+    <div id="problem" class="simulation-problem">
+        {{ simulation.problem|safe }}
+    </div>
+
+    <!-- Fix the top of div tag for IE and Firefox -->
+    <!--[if IE]>
+    <style type="text/css">
+        .ieFixTop {
+            top: -180px;
+        }
+    </style>
+    <![EndIf]-->
+    <!--[if IE]>
+    <STYLE type=text/css>
+        #contentBox {
+        padding: 0;
+        padding-left: 40px;
+        }
+        .simulation-problem {
+        width: 43%;
+        }
+        .simulation-video {
+        width: 46%;
+        margin-left: 0;
+        }
+        .simulation-discussions {
+            width: 97%;
+        }
+    </STYLE>
+    <![EndIf]-->
+
+    <!--div id="simulation" class="workSpace ieFixTop" style="border-left: 1px dotted silver; margin-left: 47%;
+        position: relative; width: 55%; padding-top: 10px;  height: auto; " align="center"-->
+    <div id="simulation" class="simulation-video">
+        {% if simulation.type == 'flash' %}
+	<object
+	type="application/x-shockwave-flash" data="{{ MEDIA_URL }}video/simulations/{{ object_id }}/{{ simulation.video_url }}" 
+	width="510" height="415">
+            <param name="movie" value="{{ MEDIA_URL }}video/simulations/{{ object_id }}/{{ simulation.video_url }}">
+            <param name="quality" value="high">
+            <param name="play" value="true">
+            <param name="loop" value="true">
+	    <param name="wmode" value="transparent">
+	</object>
+
+        <!--object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,16,0"
+            width="510" height="415" >
+            <param name="movie" value="{{ MEDIA_URL }}video/simulations/{{ object_id }}/{{ simulation.video_url }}">
+            <param name="quality" value="high">
+            <param name="play" value="true">
+            <param name="loop" value="true">
+            <embed src="/cse08/isad/v_media/video/simulations/{{ object_id }}/{{ simulation.video_url }}" width="0" height="0" play="true" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+            type="application/x-shockwave-flash" >
+            </embed>
+        </object-->
+        {% else %}
+        <script type="text/javascript">
+            myAjaxLoader("#simulation", "/cse08/isad/" + {{ simulation.theory.id }} + "/html_sim/");
+        </script>
+        {% endif %}
+
+    </div>
+
+    <!--div id="discussions"
+         style="border: 0; border-top: 2px dotted silver; margin-left: 0; margin-top: 5px; width: 98%;
+                overflow: auto; position: relative; padding-top: 5px;"-->
+    <div class="simulation-discussions">
+        <p>
+            {{ simulation.discussion|safe }}
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base2.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<div id="contents" class="font-normal">
+    <form method="" action="" class="self-evaluation-questions">
+        {% for se in sevaluation %}
+        <div id="question_{{ se.question_num }}">
+            <h2 id="q_{{ se.question_num }}" style="padding-top: 7px;">{{ se.question_num }}. {{ se.question }}</h2>
+            <div id="choices_{{ se.question_num }}">
+                <p id="option{{ se.question_num }}_1" class="option"><input type="radio" name="q_{{ se.question_num }}" value="1" /> {{ se.option1 }}
+                        <img src="/isad/v_media/images/transparent_2x2.png"
+    " class="ansImageInvisible" style="display: inline; padding-left: 20px;" /></p>
+                <p id="option{{ se.question_num }}_2" class="option"><input type="radio" name="q_{{ se.question_num }}" value="2" /> {{ se.option2 }}
+                        <img src="/isad/v_media/images/transparent_2x2.png" class="ansImageInvisible" style="display: inline; padding-left: 20px;" /></p>
+                {% if se.option3 %}
+                <p id="option{{ se.question_num }}_3" class="option"><input type="radio" name="q_{{ se.question_num }}" value="3" /> {{ se.option3 }}
+                        <img src="/isad/v_media/images/transparent_2x2.png" class="ansImageInvisible" style="display: inline; padding-left: 20px;" /></p>
+                {% endif %}
+                {% if se.option4 %}
+                <p id="option{{ se.question_num }}_4" class="option"><input type="radio" name="q_{{ se.question_num }}" value="4" /> {{ se.option4 }}
+                        <img src="/isad/v_media/images/transparent_2x2.png" class="ansImageInvisible" style="display: inline; padding-left: 20px;" /></p>
+                {% endif %}
+                <input type="hidden" id="qa_{{ se.question_num }}" value="{{ se.answer }}" />
+            </div>
+        </div>
+        {% endfor %}
+
+        <hr style="margin-top: 10px; margin-bottom: 10px; color: silver;" />
+
+        <div class="centerAlign" style="padding-top: 5px; padding-bottom: 3px;">
+            <button type="button" id="btnSubmit" class="button-icon">
+                <img src="/isad/v_media/images/new/icons/workspace/next24x24.png" class="button-run" />
+                <strong>Submit</strong>
+            </button>
+            &nbsp;
+            <button type="button" id="btnClear" class="button-icon">
+                <img src="/isad/v_media/images/new/icons/workspace/edit_clear24x24.png" class="button-clear" />
+                Clear
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<script type="text/javascript" src="{{ MEDIA_URL }}js/self_evaluation.js">
+</script>
+
+{% endblock %}

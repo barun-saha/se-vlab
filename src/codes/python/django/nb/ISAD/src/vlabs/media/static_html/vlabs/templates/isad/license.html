@@ -1,0 +1,47 @@
+{% extends 'general.html' %}
+
+{% block icon %}
+    {{ MEDIA_URL }}images/new/about/user_80.png
+{% endblock %}
+
+{% block heading %}
+    License
+{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        p {
+            font-size: 1.1em;
+        }
+    </style>
+    
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/about_us.css">
+
+    <div id="contents" class="aboutUs rounded-border-shadow" 
+    	style="padding: 15px; background-color: white;">
+    	<p>
+        The content on this site is licensed under a 
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+        Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported 
+        License</a> except in the following cases:
+		</p>
+
+		<ul>
+			<li>The logo of Indian Institute of Technology Kharagpur and the 
+				Sakshat header at the top of any page.</li>
+			<li>The icon packs used herein as <a href="{% url about_us %}" 
+				target="_self">credited</a>, which, in case, do not comply with 
+				the aforementioned license.</li>
+			<li>References to 3<sup>rd</sup> contents/ideas, if any, for which 
+				the intellectual property ownership is mentioned in the specific 
+				context.</li>
+		</ul>
+
+		<p>
+		The <a href="/isad/v_media/static_html/se_vlabs.tar.gz">source code</a> 
+		of the Software Engineering Virtual Lab is released under the 
+		<a href="http://www.gnu.org/licenses/gpl.txt">GNU GPLv3</a> license.
+		</p>
+    </div>
+
+{% endblock %}

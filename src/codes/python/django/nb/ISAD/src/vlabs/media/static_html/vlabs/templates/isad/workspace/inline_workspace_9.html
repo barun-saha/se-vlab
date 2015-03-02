@@ -1,0 +1,91 @@
+<style type="text/css">    
+    .table-title-blue {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    #compilation-error, #basic-blocks { border: 1px solid silver; padding: 5px; height: 100px; overflow: scroll;} 
+    #basic-blocks { height: 250px; }
+    #cfg { border: 1px dotted silver; padding: 5px; margin-bottom: 15px; }
+</style>
+
+<form>
+    <h3 class="table-title-blue">Write the C program below</h3>
+    <textarea id="program" style="width: 750px; height: 200px;"></textarea>
+
+    <p style="margin-top: 20px; margin-bottom: 10px;">
+        <button type="button" id="compile">
+            <img src="/cse08/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+                 class="button-image buttonAddImage" alt="Compile program">
+            <span class="button-image button-text"><strong>Compile program</strong></span>
+        </button>
+        &nbsp; (gcc -c -fdump-tree-vcg -fdump-tree-cfg test.c)
+    </p>
+
+    <h3 class="table-title-blue">Compilation error (if any)</h3>
+    <pre id="compilation-error"></pre>
+    
+    <h3 class="table-title-blue">Program representation in terms of Basic Blocks</h3>
+    <pre id="basic-blocks"></pre>
+
+    <h3 class="table-title-blue">Control Flow Graph of the program</h3>
+    <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" id="cfg" 
+        alt="Control Flow Graph" class="center-align center-align-image">
+</form>
+
+
+<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery.min.js'></script>
+<!--script type='text/javascript' src='{{ MEDIA_URL }}js/jquery-ui.min.js'></script-->
+<script type="text/javascript" src="{{ MEDIA_URL }}lib/TextArea_Resizer_1.0.4/jquery.textarearesizer.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}lib/editarea_0_8_2/edit_area/edit_area_full.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $('textarea.resizable:not(.processed)').TextAreaResizer();
+
+    // initialisation
+    editAreaLoader.window_loaded();
+    editAreaLoader.init({
+        id: "program"	// id of the textarea to transform
+        ,start_highlight: true	// if start with highlight
+        ,allow_resize: "both"
+        ,allow_toggle: false
+        ,word_wrap: true
+        ,language: "en"
+        ,syntax: "c"
+        ,replace_tab_by_spaces: 4
+    });
+
+    $('#compile').click(function() {
+        $('#compilation-error').text('');
+        $('#basic-blocks').text('');
+        $('img#cfg').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
+        $.ajax({
+            'type': 'POST',
+            'url':  '/cse08/isad/isad/cfg/',
+            'data': {'program': $.trim(editAreaLoader.getValue('program'))},
+            'dataType': 'json',
+            'cache':    false,
+            success:    function(mesg, txtStatus, XmlHttpRequest) {
+                if ($.trim(mesg['status']).length > 0) {
+                    $('#compilation-error').html(mesg['status'].replace(/\</g, '&lt;').replace(/\>/g, '&gt;'));
+                }
+                else if (mesg['error']) {
+                    $('#compilation-error').html($('#compilation-error').html() + mesg['error']);
+                } else {                    
+                    $('#basic-blocks').html(mesg['basic_blocks'].replace(/\</g, '&lt;').replace(/\>/g, '&gt;'));
+                    var timestamp = new Date().getTime();
+                    $('img#cfg').attr('src', mesg['cfg_url']+'?ts='+timestamp);
+                    //$('#cfg').effect("highlight", {}, 2500);
+                    $('html, body').animate({scrollTop: $('#basic-blocks').offset().top}, 'fast');
+                }              
+            },
+            error:      function(XmlHttpRequet, txtStatus, errorThrown) {
+                alert('Failed to draw the CFG!\n' + errorThrown);
+            }
+        })
+    });
+});
+
+</script>

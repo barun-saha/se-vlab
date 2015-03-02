@@ -1,0 +1,114 @@
+.input-label {
+    font-weight: bold;
+}
+div.jSheetParent {
+    width: 850px;
+    height: 335px;
+}
+table.jSheet ui-widget-content { width: 780px; }
+div.jSheetBarTopParent { width: 800px; }
+textarea.jSheetControls_formula { width: 700px; }           
+
+.tableControl { width: 780px; }
+
+.ts-spreadsheet { width: 780px; !important }
+.ts-spreadsheet .jSheetParent .ui-widget-content .ui-corner-all { width: 780px; !important }
+.jSheetControls table { width: 680px; }
+div.jSheetBarHelper { display: none }
+
+div.ui-widget-header { height: 25px; }
+table.jSheet ui-widget-content tr {height: 25px;}
+table.jSheet ui-widget-content tr  td { height: 25px; text-align: center; }
+/*.jSheet td, .jSheet th { text-align: center; }*/
+.sheet-header { text-align: center; font-weight: bold; background-color: silver; }
+
+<!--[if IE]>
+.jSheetBarTopTd { display: inline; }
+.jSheetBarTopParent { display: inline; }
+.jSheetBarTop { display: inline; }
+.ui-widget-header { display: inline; }
+.jSheetBarLeft div { display: block; } 
+<![endif]-->
+
+.jSheetBarCorner { background: url("/cse08/isad/v_media/images/jquery.ui/images/ui-bg_gloss-wave_75_2191c0_500x100.png") repeat-x scroll 50% 50% #2191C0; !important }
+.jSheetControls_loc { background: url("/cse08/isad/v_media/images/jquery.ui/images/ui-bg_gloss-wave_75_2191c0_500x100.png") repeat-x scroll 50% 50% #2191C0; }
+
+
+.center-align { text-align: center; }
+
+.dtls-ts-id { font-size: 1.2em; font-weight: bold }
+.dtls-ts-border { padding-bottom: 5px; margin-bottom: 5px; border-bottom: 1px dotted silver;}    
+
+.primary-action-link {
+    color: #333333;
+    font-weight: bold; 
+    font-size: 1.1em; 
+    padding: 4px; 
+    margin-left: 10px;
+    background-color: #FFFFC2;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 20px;
+    border: 1px solid silver;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 1px 2px 10px #CACACA;
+}
+.primary-action-link:hover {
+    /*border: 2px solid #3083FF;*/
+    color: #333333;
+    border: 1px solid #3083FF;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 1px 2px 10px #959595;
+}
+
+.create-ts-link {
+    background-image: url(/cse08/isad/v_media/images/new/icons/add_16x16.png);                
+}
+#add-test-suite {
+    background-image: url(/cse08/isad/v_media/images/new/icons/add_green_16x16.png);
+}
+.add-tc-link {                 
+    background-image: url(/cse08/isad/v_media/images/new/icons/add_green_16x16.png);                
+}
+.remove-tc-link {                 
+    background-image: url(/cse08/isad/v_media/images/new/icons/remove16x16.png);     
+    color: red;
+}
+.btn-ts-exec {
+    background-image: url(/cse08/isad/v_media/images/new/icons/workspace/next24x24.png);    
+    padding-left: 26px;
+}
+.refresh-result-link {
+    background-image: url(/cse08/isad/v_media/images/new/icons/_packs/gpl/gnome-colors/gnome-session-reboot.png); 
+    padding-left: 20px;
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+#test-suite-create-dialog {
+    margin-left: 15px;
+    padding: 5px;
+    background-color: #F5FBFF;
+}           
+
+.test-suite-container {
+    margin: 10px;          
+    margin-top: 15px;
+    border: 1px dotted #85C2FF;
+    padding: 10px;                
+}
+
+.ts-exec-result-body {
+    padding-bottom: 7px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted silver;
+}
+
+.test-exec-result, test-exec-result-pass, test-exec-result-fail {
+    margin: 10px;
+    padding: 10px;
+    width: 600px;
+}
+.test-exec-result-pass { background-color: #E2F5D0; }
+.test-exec-result-fail { background-color: #FFDCD3; }

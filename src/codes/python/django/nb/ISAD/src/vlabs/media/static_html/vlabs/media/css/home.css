@@ -1,0 +1,83 @@
+h1 {
+    font-weight: lighter;
+}
+p {    
+    font-size: 1.1em;
+}
+
+.home-page-section {
+    margin-left: 1px;
+    margin-bottom: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+}
+.home-page-section ul {
+    margin-left: 2.5em; 
+}
+.home-page-section li {
+    font-size: 1.1em;
+}
+
+#lab-introduction, #lab-audience, #lab-courses, #lab-objectives, #system-requirements, #lab-experiments  {
+    width: 95%;
+}
+#lab-introduction {
+    margin-left: 1px;
+    margin-bottom: 15px;     
+}
+#lab-experiments {
+    margin-left: 1px;
+    margin-bottom: 15px;
+    padding-top: 15px; padding-bottom: 15px;
+    font-size: 1.2em;
+}
+#lab-experiments ol {
+    font-family: 'Arial, Helvetica, Times New Roman';
+    padding: 0;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+#lab-experiments li {
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 5px;    
+    list-style-position: outside;
+    font-size: 1em;
+}
+#lab-experiments li.experiment div.experiment-outline {
+    font-size: 0.85em;
+    color: gray;
+    display: block;
+    padding-right: 15px;
+}
+#lab-experiments span.show-hide-exp-outline {
+    font-size: 0.78em;
+    padding-left: 5px;
+    clear: right;
+    float: none;
+    cursor: pointer;
+}
+#system-requirements {
+    margin-bottom: 10px;
+}
+#lab-courses, #lab-objectives, #system-requirements ul li {
+    list-style-image: url(../images/new/icons/bullets/bullet_blue2_16x16.png);
+}
+#system-requirements ul li img {
+    display: inline; padding-right: 7px; vertical-align: middle;
+}
+
+div#general-header-icon {
+    height: 0;
+    visibility: hidden;
+    border: 0;
+    line-height: 0;
+    padding: 0;
+}
+
+.bold-block {
+    display: block; font-weight: bold;
+}
+

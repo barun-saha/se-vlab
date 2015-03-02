@@ -1,0 +1,17 @@
+/* 
+    Document   : simulation
+    Created on : 16 May, 2011, 4:55:27 PM
+    Author     : barun
+    Description:
+        Few classes specific only to simulation.
+*/
+
+.simulation-problem {
+    border-right: 1px dotted silver; width: 45%; float: left;
+}
+.simulation-video {
+    border: 0; margin-left: 46%;
+}
+.simulation-discussions {
+    clear: both; width: auto; border-top: 2px dotted silver; margin-top: 2px; padding-top: 5px;
+}

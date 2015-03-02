@@ -1,0 +1,990 @@
+<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript" src="{{ MEDIA_URL}}js/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function(){
+
+        //List of nouns in problem statement#1
+    /*   var fullNounList = ["Mr Bose", "Drivers", "Passenger", "Mr Roy", "Neighbour", "Son", "Persons", "Home", "Office", "Place", "Landmark", "Locality", "Kolkata", "Cabs", "AC", "Booking receipt", "Payments", "Agency", "At Your Risk Bank", "Bank", "School", "Plan", "Drop to school plan", "Service", "Morning", "Everyday" ];
+        var modifiedNounList = ["mrbose", "drivers", "passenger", "mrroy", "neighbour", "son", "persons", "home", "office", "place", "landmark", "locality", "kolkata", "cabs", "ac", "bookingreceipt", "payments", "agency", "atyourriskbank", "bank", "school", "plan", "droptoschoolplan", "service", "morning", "everyday", "driver", "passengers", "neighbours", "sons", "person", "homes", "offices", "places", "landmarks", "localities", "kolkata", "cab", "ac", "bookingreceipt", "payment", "agencies", "atyourriskbank", "banks", "schools", "plans", "droptoschoolplan", "services" ];
+
+        var mapTable = { People:["Mr Bose", "Drivers", "Passenger", "Mr Roy", "Neighbour", "Son", "Persons", "driver", "passengers", "neighbours", "sons", "person" ], Place:["Home", "Office", "place", "Landmark", "Locality", "Kolkata", "homes", "offices", "places", "landmarks", "localities" ], Things:["Cabs", "AC", "Booking receipt", "Payments", "cab", "ac", "bookingreceipt", "payment" ], Organization:["Agency", "At Your Risk Bank", "Bank", "School", "agencies", "atyourriskbank", "banks", "schools" ], Concept:["Plan", "Drop to school plan", "Service", "plans", "droptoschoolplan", "services" ], Event:["Morning", "Everyday" ] };
+        var redundantClass = ["there is no any redundant object in that problem" ];
+
+*/
+		//List of nouns in problem statement#1
+        var fullNounList = ["Mr Bose", "Boss", "Drivers", "Passenger", "Mr Roy", "Neighbour", "Son", "Persons", "Home", "Office", "Place", "Landmark", "Branch", "Locality", "Kolkata", "Cabs", "AC", "Booking receipt", "Payments", "Cheque", "Agency", "At Your Risk Bank", "Bank", "School", "Plan", "Drop to school", "Service", "Finances", "Business", "Morning", "Everyday" ];
+        var modifiedNounList = ["mrbose", "boss", "drivers", "passenger", "mrroy", "neighbour", "son", "persons", "home", "office", "place", "landmark", "branch", "locality", "kolkata", "cabs", "ac", "bookingreceipt", "payments", "finances", "business", "cheque", "agency", "atyourriskbank", "bank", "school", "plan", "droptoschool", "service", "morning", "everyday", "driver", "passengers", "neighbours", "sons", "person", "homes", "offices", "places", "landmarks", "branches", "localities", "kolkata", "cab", "ac", "bookingreceipt", "payment", "finance", "cheques", "agencies", "atyourriskbank", "banks", "schools", "plans", "droptoschool", "services" ];
+
+        var mapTable = { People:["Mr Bose", "Boss", "Drivers", "Passenger", "Mr Roy", "Neighbour", "Son", "Persons", "driver", "passengers", "neighbours", "sons", "person" ], Place:["Home", "Office", "place", "Landmark", "Branch", "Locality", "Kolkata", "homes", "offices", "places", "landmarks", "branches", "localities" ], Things:["Cabs", "AC", "Booking receipt", "Cheque", "cab", "ac", "bookingreceipt", "cheques" ], Organization:["Agency", "At Your Risk Bank", "Bank", "School", "agencies", "atyourriskbank", "banks", "schools" ], Concept:["Service", "Payments", "Finances", "Business", "Plan", "plans", "services", "payment", "finance" ], Event:["Morning", "Drop to school", "droptoschool", "Everyday" ] };
+        var redundantClass = ["there is no any redundant object in that problem" ];
+
+
+
+        function SortOptions(id) {
+            var prePrepend = "#";
+            if (id.match("^#") == "#") prePrepend = "";
+            $(prePrepend + id).html($(prePrepend + id + " option").sort(
+            function (a, b) { return a.text == b.text ? 0 : a.text < b.text ? -1 : 1 })
+        );
+        }
+        SortOptions('#selectedObjectCategory');
+        //When we remove nouns which are selected as Potential Objects
+        $('a.removePotentialObjects').live('click', function(event) {
+            event.preventDefault();
+            //alert();
+            $('#category' + $(this).parent().text().replace(/ /g, '_')).remove();
+            $('#attribute' + $(this).parent().text()).remove();
+            $('#selectObj' + $(this).parent().text().replace(/ /g, '_')).remove();
+            $('#objInObjectPropertyTable' + $(this).parent().text().replace(/ /g, '_')).parent().remove();
+            $(this).parent().remove();
+            return false;
+        });
+
+        //When we remove objects after it goes to a fixed category
+        $('a.removeCategorizedObjects').live('click', function(event) {
+            event.preventDefault();
+            $('#attribute' + $(this).parent().text()).remove();
+            $('#selectObj' + $(this).parent().text().replace(/ /g, '_')).remove();
+            $('#objInObjectPropertyTable' + $(this).parent().text().replace(/ /g, '_')).parent().remove();
+            $('#check' + $(this).parent().text().replace(/ /g, '_')).show();
+            $(this).parent().remove();
+            return false;
+        });
+
+
+        $('a.removeAttributeFromList').live('click', function(event) {
+            event.preventDefault();
+            var temp = $(this).parent().text();
+            //alert(temp);
+            $('.attributeListForClass li').each(function(index) {
+                //$('#attributeListForClass_' + $(this).parent().text()).parent().remove();
+                if (temp == $(this).text())
+                {$(this).remove();}
+            });
+            $('.tbodyForTopClasses tr td:nth-child(2) ul li').each(function(index) {
+
+                if (temp == $(this).text()){
+                    var tmp1 = $(this).parent().attr('id');
+                    if ($('#' + tmp1 + ' li').size() == 1)
+                    {$(this).parent().parent().parent().remove();}
+                    else{
+                        $(this).remove();}
+                }
+            });
+            $('.tbodyObjectWithProperty tr td:nth-child(2) ul li').each(function(index) {
+                //alert($(this).parent().size());
+                if (temp == $(this).text())
+                {
+
+                    $(this).remove();}
+            });
+            $(this).parent().remove();
+            return false;
+
+        });
+
+
+        $('a.removeAttribute').live('click', function(event) {
+            event.preventDefault();
+            var tmp = $(this).parent().parent().attr('id');
+            //alert(tmp);
+            if ($('#' + tmp + ' li').size() == 1)
+            {$(this).parent().parent().parent().parent().remove();}
+            else{
+                //$(this).remove();
+                $(this).parent().remove();
+            }
+            return false;
+        });
+
+        $('a.removeClasses').live('click', function(event) {
+            event.preventDefault();
+            $('#attributeFor' + $(this).parent().text() + ' li').each(function(index) {
+                $('#categoryCheck' + $(this).text()).show();
+            });
+            $(this).parent().parent().remove();
+            return false;
+        });
+
+
+    $('a.removeObjectWithProperty').live('click', function(event) {
+        event.preventDefault();
+        $(this).parent().parent().remove();
+        return false;
+    });
+
+    $('a.removeProperty').live('click', function(event) {
+        event.preventDefault();
+        $(this).parent().remove();
+        return false;
+    });
+    $('a.removeDomainClass').live('click', function(event) {
+        event.preventDefault();
+        $(this).parent().parent().remove();
+        return false;
+    });
+
+    $('a.removeObjectFromFinalClass').live('click', function(event) {
+        event.preventDefault();
+        $(this).parent().remove();
+        return false;
+    });
+
+    //Taking nouns from problem statement as Potential Objects
+    $('#btnAddNoun').click(function() {
+
+        var textNoun = $('#textNoun').val();
+        textNoun = jQuery.trim(textNoun);
+        if (!textNoun.match(/^[a-zA-Z0-9 .-]+$/) )
+
+        {
+            alert("Give a valid noun or noun phrase exactly same as in the problem statement , you are allowed to use  alphabates and whitespace character ");
+        }
+        else
+        {
+
+
+            textNoun = textNoun.replace(/[.-]/g, ' ');
+            textNoun = textNoun.replace(/ +(?= )/g,'');
+            //alert(textNoun);
+
+            if(jQuery.inArray(textNoun.toLowerCase().replace(/ /g, ''),modifiedNounList) > -1) {
+                //alert('found');
+
+
+                //checking the noun to be inserted is already inserted or not
+                var alreadyExistNoun = 0;
+                $('.potentialObjects li').each(function(index) {
+                    var temp = $(this).text();
+                    if (textNoun.toLowerCase().replace(/ /g, '') == temp.toLowerCase().replace(/ /g, ''))
+                    {
+                        alreadyExistNoun = 1;
+                    }
+                });
+
+                //Insert new Nouns here
+                if (alreadyExistNoun == 0)
+                {
+
+                    $('.potentialObjects').append($("<li class='nounPotentialObjects' id='noun" + textNoun.replace(/ /g, '_') + "'><a class='checkPotentialObjects'><input type='checkbox' name='chk" + textNoun.replace(/ /g, '_') + "' id='check" + textNoun.replace(/ /g, '_') + "'/></a>" + textNoun +
+                        "<a class='removePotentialObjects'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+                }
+
+                //Give proper message for already inserted Nouns
+                else
+                {
+                    alert("You have already enter that Noun");
+                }
+
+            }
+
+
+            /*else if(jQuery.inArray(textNoun.toLowerCase().replace(/ /g, ''),modifiedNounList) > -1) {
+
+            alert("Instead of '" + textNoun + "' please write '" + fullNounList[jQuery.inArray(textNoun.toLowerCase().replace(/ /g, ''),modifiedNounList)] + "'");
+        }*/
+            else
+            {
+                alert("Read the problem statement carefully and then insert noun or noun phrase 'exactly same' as in the problem statement ");
+
+            }
+
+        }
+
+        $('#textNoun').val('');
+
+    });
+
+
+//Taking Additional classes identified by applying domain knowledge
+$('#btnAddAdditionalClass').click(function() {
+    //This setting is for data considered as potential objects not directly as class
+    /*
+         var textNoun = $('#textAdditionalClass').val();
+         if (!textNoun.match(/^[a-zA-Z0-9 ]+$/) )
+
+         {
+                        alert("give alphabates numarics and whitespace only");
+         }
+        else
+         {
+         textNoun = jQuery.trim(textNoun);
+         textNoun = textNoun.replace(/ +(?= )/g,'');
+
+         //checking the noun to be inserted is already inserted or not
+         var alreadyExistNoun = 0;
+         $('.potentialObjects li').each(function(index) {
+                                var temp = $(this).text();
+                                if (textNoun.toLowerCase() == temp.toLowerCase())
+                                {
+                                        alreadyExistNoun = 1;
+                                }
+        });
+
+ //Insert new Nouns here
+ if (alreadyExistNoun == 0)
+                {
+
+                $('.potentialObjects').append($("<li class='additionalPotentialObjects' id='noun" + textNoun.replace(/ /g, '_') + "'><a class='checkPotentialObjects'><input type='checkbox' name='potentialObjectsCheck' id='check" + textNoun.replace(/ /g, '_') + "'/></a>" + textNoun +
+                                                       "<a class='removePotentialObjects'><img src='removepic.png' width='16' height='16' border='0' /></a></li>"));
+
+
+
+
+
+
+                        //$('#selectObjToAssignAttr').append($("<option id='selectObj" + textNoun + "'>" + textNoun + "</option>"));
+
+             }
+
+ //Give proper message for already inserted Nouns
+         else
+                 {
+                 alert("Already taken as Potential Objects");
+                 }
+
+        }
+
+         $('#textAdditionalClass').val('');
+     */
+    var txtClass = $('#textAdditionalClass').val();
+    if (!txtClass.match(/^[a-zA-Z0-9 ]+$/) )
+
+    {
+        alert("Give alphabates numarics and whitespace only");
+    }
+    else
+    {
+        txtClass = jQuery.trim(txtClass);
+        txtClass = txtClass.replace(/ +(?= )/g,'');
+
+        //checking the noun to be inserted is already inserted or not
+        var alreadyExistNoun = 0;
+        $('.tbodyForTopClasses tr td:nth-child(1)').each(function(index) {
+            var temp = $(this).text();
+            //alert(temp);
+            if (txtClass.toLowerCase() == temp.toLowerCase())
+            {
+                alreadyExistNoun = 1;
+            }
+        });
+        $('.tbodyClassWithObjects .experienceBasedClasses td:nth-child(1)').each(function(index) {
+            var temp = $(this).text();
+            //alert(temp);
+            if (txtClass.toLowerCase() == temp.toLowerCase())
+            {
+                alreadyExistNoun = 1;
+            }
+        });
+
+        //Insert new Nouns here
+        if (alreadyExistNoun == 0)
+        {
+            //alert("its new");
+            $(".tbodyClassWithObjects").append($("<tr class='experienceBasedClasses'><td>" + txtClass + "<a class='removeDomainClass'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></td><td>" + "Experience Based" + "</td></tr>"));
+
+        }
+
+        //Give proper message for already inserted Nouns
+        else
+        {
+            alert("Already taken as Class");
+        }
+
+    }
+    $('#textAdditionalClass').val('');
+});
+
+
+
+
+//Categorize the objects according to Ross
+$('#btnAddInCategory').click(function() {
+
+    //checking the selected object to be categorized is already categorized or not
+    var alreadyCategorizedObject = 0;
+
+
+    //select a category of the objects which are not yet categorized
+    if (alreadyCategorizedObject == 0)
+    {
+        $('.potentialObjects li').each(function(index) {
+            var temp = $(this).text();
+            var chktemp = 'check' + temp;
+            if ($('#check' + temp.replace(/ /g, '_')).is(':checked'))    //$('[id=content Module]').whatever();
+
+            //if ($(document.getElementById(chktemp)).is(':checked'))
+
+            {
+                var recentCategory = $("#selectedObjectCategory option:selected").val();
+                //alert(recentCategory);
+                if ($('#noun' + temp.replace(/ /g, '_')).attr("class") == "nounPotentialObjects")
+                {
+                    var rightOrWrongCategory = 0;
+                    $.each( mapTable, function(k, v){
+                        //alert( "Key: " + recentCategory + ", Value: " + v );
+                        if(k == recentCategory){
+                            $(v).each(function(index) {
+                                var vtxt = v[index];
+                                //alert(vtxt);
+                                if (vtxt.toLowerCase().replace(/ /g, '') == temp.toLowerCase().replace(/ /g, ''))// && k == recentCategory )
+                                {
+                                    //alert(k);
+                                    rightOrWrongCategory = 1;
+
+                                }
+
+                            });
+                        }
+
+                    });
+                    //alert(rightOrWrongCategory);
+                    if (rightOrWrongCategory == 1)
+                    {
+                        //alert("sdf");
+                        $(".tbodyObjectCategory #" + recentCategory).append($("<li id='category" + temp.replace(/ /g, '_') + "'>" + temp +
+
+                            "<a class='removeCategorizedObjects'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+                        $('#check' + temp.replace(/ /g, '_')).hide();
+                        if (recentCategory != 'Redundant')
+                        {
+                            $('#selectObjToAssignAttr').append($("<option id='selectObj" + temp.replace(/ /g, '_') + "'>" + temp + "</option>"));
+                            SortOptions("#selectObjToAssignAttr");
+                        }
+
+                    }
+                    else
+                    {
+                        if(jQuery.inArray(temp,redundantClass) > -1) {
+                            alert("Is " + temp + " playing an important role to build solution space ? ");
+                        }
+                        else{
+                            alert("You have Choose wrong Category for '" + temp + ", try again");
+                        }
+                    }
+
+                }
+
+
+                else{
+
+                    if (recentCategory != "Redundant")
+                    {
+                        $(".tbodyObjectCategory #" + recentCategory).append($("<li id='category" + temp.replace(/ /g, '_') + "'>" + temp +
+                            "<a class='removeCategorizedObjects'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+                        //$('#selectObjToAssignAttr').append($("<option id='selectObj" + temp + "'>" + temp + "</option>"));
+                        $('#check' + temp.replace(/ /g, '_')).hide();
+                        //$(document.getElementById(chktemp)).hide();
+                    }
+                    else
+                    {
+                        alert(temp + " can not be eleminated from the solution space");
+                    }
+
+                }
+
+            }
+        });
+
+    }
+
+    //give proper message for already categorized objects
+    else
+    {
+        alert("You have selected some of the already cotagorized objects from the Potential Object list")
+    }
+    $(".checkPotentialObjects input").attr('checked', false);
+});
+
+
+
+
+
+
+//Assigning attributes to Objects
+$('#btnAddAttributeToObject').click(function() {
+
+    //Cheking for if the object we want to add in Object-Property table is already exists or not
+
+    var textObject = $("#selectObjToAssignAttr option:selected").val();
+    if (textObject)//(textObject != 'undefined')
+    {
+        var existsObject = 0;
+        $('.tbodyObjectWithProperty tr td:nth-child(1)').each(function(index) {
+            var tempObject = $(this).text();
+            if (tempObject.toLowerCase() == textObject.toLowerCase())
+            {
+                existsObject = 1;
+            }
+        });
+
+        //In case, the class we want to add is not already exists.
+        if (existsObject == 0)
+        {
+            $(".tbodyObjectWithProperty").append($("<tr><td id='objInObjectPropertyTable" + textObject.replace(/ /g, '_') + "'>" + textObject + "<a class='removeObjectWithProperty'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></td><td><ul id='propertyForObject" + textObject.replace(/ /g, '_') + "'></ul></td></tr>"));
+        }
+
+        //Taking categorized objects as attributes of Top level classes
+        $('.preDefineAttributeList li').each(function(index) {
+            var temp1 = $(this).text();
+            if ($('#checkAttributeForObj_' + temp1.replace(/ /g, '_')).is(':checked'))
+            {
+                if (!$('#property' + textObject.replace(/ /g, '_') + temp1.replace(/ /g, '_')).length)
+                {
+                    $('#propertyForObject' + textObject.replace(/ /g, '_')).append($("<li id='property" + textObject.replace(/ /g, '_') + temp1.replace(/ /g, '_') + "'>" + temp1 + "<a class='removeProperty'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                    //$('#categoryCheck' + temp1).hide();
+                }
+                else
+                {
+                    alert("Already inserted attribute");
+                }
+            }
+        });
+
+    }
+    else
+    {
+        alert("Assign attributes to some categorized potential objects ");
+    }
+    //}
+    $(".objAttributeList input").attr('checked', false);
+});
+
+
+//To add External attributes to Attribute list
+$('#btnAddExternalAttribute').click(function() {
+
+    var txtExternalAttribute = $('#textExternalAttribute').val();
+    if (!txtExternalAttribute.match(/^[a-zA-Z0-9 .-]+$/) )
+
+    {
+        alert("Give alphabates, numarics, whitespace, dot and hyphen only");
+    }
+    else
+    {
+
+        txtExternalAttribute = txtExternalAttribute.replace(/[.-]/g, ' ');
+        txtExternalAttribute = txtExternalAttribute.replace(/ +(?= )/g,'');
+        var existAttribute = 0;
+        $('.preDefineAttributeList li').each(function(index) {
+            var temp1 = $(this).text();
+            if (txtExternalAttribute.toLowerCase().replace(/ /g, '') == temp1.toLowerCase().replace(/ /g, ''))
+            {existAttribute = 1;
+            }
+        });
+        if (existAttribute == 0)
+        {
+            var tmpid = txtExternalAttribute.replace(/ /g, '_');
+            //alert(tmpid);
+            $(".preDefineAttributeList").append($("<li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_" + txtExternalAttribute.replace(/ /g, '_') + "'/></a>" + txtExternalAttribute + "<a class='removeAttributeFromList'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+
+            $(".attributeListForClass").append($("<li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_" + txtExternalAttribute.replace(/ /g, '_') + "'/></a>" + txtExternalAttribute + "</li>"));
+
+        }
+        else{alert("This attribute is already taken");}
+    }
+
+
+
+
+    $('#textExternalAttribute').val('');
+});
+
+//Making the top level classes & Taking categorized objects as attributes of classes
+$('#btnAddClass').click(function() {
+
+
+    //Cheking for if the class we want to add is already taken or not
+
+    var textClass = $('#textClass').val();
+    textClass = jQuery.trim(textClass);
+    if ((!textClass.match(/^[a-zA-Z0-9 ]+$/)) || (textClass == '') )
+
+    {
+        alert("Give a valid classname, you are allowed to use  alphabates numarics and whitespace character ");
+    }
+    else
+    {
+
+        textClass = textClass.replace(/ +(?= )/g,'');
+        var existsClass = 0;
+        $('.tbodyForTopClasses tr td:nth-child(1)').each(function(index) {
+            var tempClass = $(this).text();
+            if (tempClass.toLowerCase() == textClass.toLowerCase())
+            {
+                existsClass = 1;
+                if (tempClass != textClass)
+                {
+                    existsClass = 2;
+                }
+            }
+        });
+        var existExperienceClass = 0;
+        $('.experienceBasedClasses td:nth-child(1)').each(function(index) {
+            var temp = $(this).text();
+            //alert(temp);
+            if (textClass.toLowerCase() == temp.toLowerCase())
+            {
+                existExperienceClass = 1;
+            }
+        });
+
+        if (existExperienceClass == 1)
+        {alert("Already taken from past experince");
+        }
+        else{
+
+            //class exists but in different case(upper/lower)
+            if (existsClass == 2)
+            {
+                alert("Maintain same letter cases for the class what you have used earlier ");
+            }
+            else
+            {
+
+                //In case, the class we want to add is not already exists.
+                if (existsClass == 0)
+                {
+                    var t = 0;
+                    $('.attributeListForClass li').each(function(index) {
+                        var tempAttr1 = $(this).text();
+
+                        if ($('#checkAttributeForClass_' + tempAttr1.replace(/ /g, '_')).is(':checked'))
+                        {t = 1;
+                        }
+                    });
+
+                    if (t == 0)
+                    {alert("You have to select at least one attribute from the list");
+                    }else{
+                        $(".tbodyForTopClasses").append($("<tr><td>" + textClass + "<a class='removeClasses'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></td><td><ul id='attributeFor" + textClass.replace(/ /g, '_') + "'></ul></td></tr>"));
+                    }
+                }
+
+
+                //Taking categorized objects as attributes of Top level classes
+                $('.attributeListForClass li').each(function(index) {
+                    var tempAttr = $(this).text();
+
+                    if ($('#checkAttributeForClass_' + tempAttr.replace(/ /g, '_')).is(':checked'))
+                    {
+                        if (!$('#attribute' + textClass.replace(/ /g, '_') + tempAttr.replace(/ /g, '_')).length)
+                        {
+                            $('#attributeFor' + textClass.replace(/ /g, '_')).append($("<li id='attribute" + textClass.replace(/ /g, '_') + tempAttr.replace(/ /g, '_') + "'>" + tempAttr + "<a class='removeAttribute'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                            //$('#categoryCheck' + temp1).hide();
+
+                        }
+                        else
+                        {
+                            alert("Attribute " + tempAttr + " is already inserted for the class " + textClass);
+                        }
+
+                    }
+                });
+
+            }
+        }
+
+    }
+
+
+    $('#textClass').val('');
+    $(".attributeListForClass input").attr('checked', false);
+
+
+});
+
+
+
+$('#viewClassWithObjects').click(function() {
+
+
+    //$("#classWithObjects tr:gt(0)").remove();
+    $(".objectBasedClasses").remove();
+    classList = [];
+    $('.tbodyForTopClasses tr td:nth-child(1)').each(function(index) {
+        //var entty = $(this).text();
+        classList[classList.length] = $(this).text();
+    });
+    $(classList).each(function(index3) {
+        //alert(classList[index3]);
+    });
+
+
+
+    $('.tbodyObjectWithProperty tr td:nth-child(1)').each(function(index1) {
+        var tempObject = $(this).text();
+        classCount = [];
+        //var classCount = [ 0, 0, 0, 0 ];//.repeat(0, 5);
+        var t = classList.length - 1;
+        for(i=0;i<=t;i++)
+            classCount[i] = 0;
+        $(classCount).each(function(index5) {
+            //alert(classCount[index5]);
+        });
+
+        $('#propertyForObject' + tempObject.replace(/ /g, '_') + ' li').each(function(index2) {
+            var tempAttr1 = $(this).text();
+
+            $(classList).each(function(index3) {
+                var tempClass = classList[index3];
+                //classCount[index3] = 0;
+                $('#attributeFor' + tempClass.replace(/ /g, '_') + ' li').each(function(index4) {
+                    var tempAttr2 = $(this).text();
+                    if (tempAttr1 == tempAttr2)
+                    {
+                        classCount[index3] = classCount[index3] + 1;
+                        //break;
+                    }
+                });
+            });
+
+
+        });
+        //var maxMatchClass = '';
+        var maxMatch = classCount[0];
+        //alert(maxMatch);
+        var t = 0;
+        $(classCount).each(function(index) {
+            if (classCount[index] > maxMatch)
+            {
+                maxMatch = classCount[index];
+                t = index;
+                //var maxMatchClass = classList[index];
+            }
+            //var cur = parseInt(classCount[index]);//($(this).text());
+            //var zmax = cur > zmax ? cur : zmax;
+            //alert(classCount[index]);
+        });
+        //alert(maxMatch);
+        var maxMatchClass = '';
+        maxMatchClass = classList[t];
+        //alert(maxMatchClass);
+        if (maxMatch == 0)
+        {
+            alert("Object '" + tempObject + "' is still finding for a good match");
+        }
+        else
+        {
+            if (classList.length >= 1)
+            {
+                if (!$('#objectForClass' + maxMatchClass.replace(/ /g, '_')).length)
+                {
+                    $(".tbodyClassWithObjects").append($("<tr class='objectBasedClasses'><td>" + maxMatchClass + "</td><td><ul id='objectForClass" + maxMatchClass.replace(/ /g, '_') + "'></ul></td></tr>"));
+                    /*$('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
+                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "</li>" ));*/
+                    $('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
+                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "<a class='removeObjectFromFinalClass'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                }
+                else
+                {
+                   /* $('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
+                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "</li>" ));
+					*/
+						$('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
+                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "<a class='removeObjectFromFinalClass'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                }
+            }
+
+        }
+        //Have to edit here using code of '#btnAddClass'
+
+
+    });
+
+
+
+});
+
+
+//visualize effect
+/* $('#viewClass').click(function() {
+
+        var entrySection = 'graph G{ subgraph clusterClass {node [style=filled]; color=blue; ';
+        var remainderSection = ' label="CLASSES" }}';
+        var subGraphModule = '';
+        $('.tbodyForTopClasses tr td:nth-child(1)').each(function(index) {
+
+                var temp = $(this).text();
+                subGraphModule = subGraphModule + 'subgraph cluster_' + $(this).text() + '{';
+                $('#attributeFor' + $(this).text() + ' li').each(function(index1) {
+                        subGraphModule = subGraphModule + $(this).text() + '; ';
+
+                });
+        subGraphModule = subGraphModule + ' label="' + temp + '" }';
+        });
+
+var finalString = entrySection + subGraphModule + remainderSection;
+        alert(finalString);
+ });   */
+
+});
+</script>
+
+
+   <form method=" " action=" " id=" ">
+
+    <h3 class="table-title-blue">Table #1: Add nouns / noun phrases identified from the problem statement</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Noun / Noun phrase</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="textNoun" id="textNoun"/>
+                </td>
+                <td>
+                    <!-- <input type="button" value="Add" id='btnAddNoun'/> -->
+                    <!-- change -->
+                    <button type="button" id='btnAddNoun'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #2: Categorization of the above identified nouns (Ross's method)</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Potential objects</th>
+                <th>Category</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="nouns">
+                    <!-- <p class="nouns"> -->
+                    <ul class="potentialObjects">
+                    </ul>
+                </td>
+                <td>
+                    <select class="optionOfObjectCategory" name="optionOfObjectCategory" id="selectedObjectCategory">
+                        <option id="optionPlace">Place</option>
+                        <option id="optionPeople">People</option>
+                        <option id="optionThings">Things</option>
+                        <option id="optionOrganization">Organization</option>
+                        <option id="optionConcept">Concept</option>
+                        <option id="optionEvent">Event</option>
+                        <option id="optionRedundant">Redundant</option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" id='btnAddInCategory'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--p class="objectCategory"-->
+    <h3 class="table-title-blue">Table #3: List of categorized nouns (potential objects)</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="objectCategoryTable"><!-- objectCategoryTable -->
+        <thead>
+            <tr>
+                <th>&nbsp;Place&nbsp;</th>
+                <th>&nbsp;People&nbsp;</th>
+                <th>&nbsp;Things&nbsp;</th>
+                <th>&nbsp;Organization&nbsp;</th>
+                <th>&nbsp;Concept&nbsp;</th>
+                <th>&nbsp;Event&nbsp;</th>
+                <th>&nbsp;Redundant&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody class="tbodyObjectCategory"><!-- tbodyObjectCategory -->
+            <tr>
+                <td><ul id="Place"></ul></td>
+                <td><ul id="People"></ul></td>
+                <td><ul id="Things"></ul></td>
+                <td><ul id="Organization"></ul></td>
+                <td><ul id="Concept"></ul></td>
+                <td><ul id="Event"></ul></td>
+                <td><ul id="Redundant"></ul></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #4: Identify attribute(s) for objects</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="assignAttributeToObject">
+        <thead>
+            <tr>
+                <th>&nbsp;Object&nbsp;&nbsp;</th>
+                <th>&nbsp;Attributes&nbsp;&nbsp;</th>
+                <th>&nbsp;Add&nbsp;&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select id="selectObjToAssignAttr" name="selectObjToAssignAttr">
+                    </select>
+                </td>
+                <td>
+                    <ul class='preDefineAttributeList'>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Address'/></a>Address</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Color'/></a>Color</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Cost'/></a>Cost</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Height'/></a>Height</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Name'/></a>Name</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Serial_number'/></a>Serial number</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Time'/></a>Time</li>
+                        <li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_Weight'/></a>Weight</li>
+                    </ul>
+                </td>
+                <td>
+                    <button type="button" id='btnAddAttributeToObject'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #5: Add other possibile attribute(s) [Optional]</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="addExternalAttributeToObject">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>&nbsp;Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="textExternalAttribute" id="textExternalAttribute"/>
+                </td>
+
+                <td>
+                    <button type="button" id='btnAddExternalAttribute'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #6: List of objects and it's attribute(s)</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="tableObjectWithProperty">
+        <thead>
+            <tr>
+                <th>&nbsp;Object&nbsp;&nbsp;</th>
+                <th>&nbsp;Attributes&nbsp;&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody class="tbodyObjectWithProperty">
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #7: Define classes from list of attribute(s)</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="makingClassTable">
+        <thead>
+            <tr>
+                <th>&nbsp;Attributes&nbsp;&nbsp;</th>
+                <th>&nbsp;Class&nbsp;&nbsp;</th>
+                <th>&nbsp;Add&nbsp;&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody class="tbodyForMakingClass">
+            <tr>
+                <td>
+                    <ul class='attributeListForClass'>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Address'/></a>Address</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Color'/></a>Color</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Cost'/></a>Cost</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Height'/></a>Height</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Name'/></a>Name</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Serial_number'/></a>Serial number</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Time'/></a>Time</li>
+                        <li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_Weight'/></a>Weight</li>
+                    </ul>
+                </td>
+                <td>
+                    <input type="text" name="textClass" id="textClass"/>
+                </td>
+                <td>
+                    <button type="button" id='btnAddClass'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #8: List of classes and their attribute(s)</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="topLevelClasses">
+        <thead>
+            <tr>
+                <th>&nbsp;Classes&nbsp;&nbsp;</th>
+                <th>&nbsp;Attributes&nbsp;&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody class="tbodyForTopClasses">
+        </tbody>
+    </table>
+
+    <h3 class="table-title-blue">Table #9: Add any other relevant class (based on domain knowledge) [Optional]</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>&nbsp;Additional class&nbsp;&nbsp;</th>
+                <th>&nbsp;Add&nbsp;&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="textAdditionalClass" id="textAdditionalClass"/>
+                </td>
+                <td>
+                    <button type="button" id='btnAddAdditionalClass'>
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="padding-top: 20px; padding-bottom: 10px;">
+        <button type="button" id='viewClassWithObjects' title="Generate top level classes">
+            <img src="/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+                 class="button-image buttonAddImage" />
+            <span class="button-text"><strong>Top Level Classes</strong></span>
+        </button>
+    </p>
+
+    <h3 class="table-title-blue">Table #10: List of top level classes</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="classWithObjects">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Objects</th>
+            </tr>
+        </thead>
+        <tbody class="tbodyClassWithObjects">
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</form>
+
+
+

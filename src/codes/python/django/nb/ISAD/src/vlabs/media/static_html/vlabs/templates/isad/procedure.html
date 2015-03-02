@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+    div#title {
+        padding-bottom: 5px;
+    }
+    div#title h1 {
+        color: #0033CC;
+    }
+    div#contents {
+        
+    }
+    p {
+        padding: 5px;
+    }    
+</style>
+
+<div id="title">    
+</div>
+
+<div id="contents" class="font-normal">
+    <h2>Steps for conducting the experiment</h2>
+
+    <h3>General Instructions</h3>
+
+    <p>
+        Follow are the steps to be followed in general to perform the experiments in
+        <strong>Software Engineering Virtual Lab</strong>.
+    </p>
+
+    <ol>
+        <li>Read the theory about the experiment</li>
+        <li>View the simulation provided for a chosen, related problem</li>
+        <li>Take the self evaluation to judge your understanding (optional, but recommended)</li>
+        <li>Solve the given list of exercises</li>
+    </ol>
+
+
+
+    <h3>Experiment Specific Instructions</h3>
+
+    <p>Following are the instructions specifically for this experiment:</p>
+
+    {{ procedure|safe }}
+
+    <p>&nbsp;</p>
+
+</div>
+
+{% endblock %}

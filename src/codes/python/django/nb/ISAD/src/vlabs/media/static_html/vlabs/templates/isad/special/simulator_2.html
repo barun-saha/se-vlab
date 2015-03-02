@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/themes/base/jquery-ui.css" type="text/css" media="all" />   
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <style type="text/css">
+    #kloc_slider {
+        float: left;
+        clear: left;
+        width: 300px;
+        margin: 15px;
+        background: #cfcfcf;
+    }   
+    #kloc_slider .ui-slider-handle { border-color: #729fcf; }
+  </style>
+  </head>
+
+  <body>  
+
+      <script type="text/javascript" language="javascript">
+          $(document).ready(function() {              
+              function initKLOCSlider(minVal, maxVal, iStep) {
+                  $("#kloc_value").text(minVal);
+
+                  $("#kloc_slider").slider({
+                      orientation: 'horizontal',
+                      min: minVal,
+                      max: maxVal,
+                      value: minVal,
+                      step: iStep,
+                      handle: ".ui-slider-handle",
+                      slide: function(event, ui) {
+                          $("#kloc_value").text(ui.value);
+                          compute();
+                      }
+                  });
+              }
+
+              function compute() {
+                  /* Compute effort (Basic COCOMO) */
+                  var kloc = parseInt($("#kloc_value").text());
+                  //alert(kloc);
+
+                  var effort = Math.round(a * Math.pow(kloc, b) * 100) / 100;
+                  $("#effort").html(effort)
+
+                  var tdev = Math.round(2.5 * Math.pow(effort, c) * 100) / 100;
+                  $("#tdev").html(tdev)
+
+                  var developers = Math.ceil(effort / tdev);
+                  $("#developers").html(developers);
+              }
+
+              var a = 2.4;
+                  b = 1.05;
+                  c = 0.38;
+
+              initKLOCSlider(2, 50, 2);
+              compute();
+
+              $("#project_type").change(function() {
+                 var project_cat = $("#project_type option:selected").val();
+
+                 if (project_cat == 1) {
+                     a = 2.4;
+                     b = 1.05;
+                     c = 0.38;
+                     $("#parm_a").text(a);
+                     $("#parm_b").text(b);
+                     $("#parm_c").text(c);
+                     initKLOCSlider(2, 50, 2);
+                 }
+                 else if (project_cat == 2) {
+                     a = 3.0;
+                     b = 1.12;
+                     c = 0.35;
+                     $("#parm_a").text(a);
+                     $("#parm_b").text(b);
+                     $("#parm_c").text(c);
+                     initKLOCSlider(50, 300, 25);
+                 }
+                 else {
+                     a = 3.6;
+                     b = 1.2;
+                     c = 0.32;
+                     $("#parm_a").text(a);
+                     $("#parm_b").text(b);
+                     $("#parm_c").text(c);
+                     initKLOCSlider(300, 500, 25);
+                 }
+                 compute();
+              });
+          });
+      </script>
+
+      <form action="" method="">
+          <table cellpadding="0" cellspacing="0" class="techno">
+              <thead>
+                  <tr>
+                      <th>Project Type</th>
+                      <th>a</th>
+                      <th>b</th>
+                      <th>c</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                          <select id="project_type" name="ddlProjectType">
+                              <option selected value="1">Organic</option>
+                              <option value="2">Semi-detached</option>
+                              <option value="3">Embedded</option>
+                          </select>
+                      </td>
+                      <td id="parm_a">2.4</td>
+                      <td id="parm_b">1.05</td>
+                      <td id="parm_c">0.38</td>
+                  </tr>
+                  <tr class="alt">
+                      <td style="text-align: left;">Project size (in KLOC)</td>
+                      <td colspan="3" style=" padding-left: 7px; padding-right: 7px;">
+                          <div id="kloc_slider" style="margin: 10px; width: 200px;">
+                              
+                          </div>
+                          <div id="kloc_value"></div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="text-align: left;">Effort (in PM)</td>
+                      <td colspan="3" id="effort"></td>
+                  </tr>
+                  <tr class="alt">
+                      <td style="text-align: left;">T<sub>dev</sub> (in month)</td>
+                      <td colspan="3" id="tdev"></td>
+                  </tr>
+                  <tr>
+                      <td style="text-align: left;""># of developers</td>
+                      <td colspan="3" id="developers"></td>
+                  </tr>
+              </tbody>
+          </table>
+      </form>
+
+  </body>
+</html>

@@ -1,0 +1,139 @@
+{% extends 'general.html' %}
+
+{% block icon %} {{ MEDIA_URL }}images/new/about/mail2_80_1.png {% endblock %}
+
+{% block heading %}
+    Contact Us
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+    .centre {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .formWrapper {
+        height: auto;
+        border: 1px solid #4e97c6;
+        background-color: #f7fcfe;
+        padding: 25px;
+        width: 65%;
+    }
+    div.formFieldWrapper {
+        padding: 7px;
+        /*background-image: url(/isad/v_media/images/new/about/gradient_white_blue.png);*/
+        background-repeat: repeat-x;
+        border-bottom: 1px solid silver;        
+        vertical-align: middle;
+        width: 65%;
+    }
+    div.formFieldWrapper label {
+        vertical-align: middle;
+        right: 90%;
+    }
+    div.formFieldWrapper textarea {
+        vertical-align: middle;
+    }
+
+    .error, .validationError {
+        background-color: #fcdfdf;
+    }
+    .noError {
+        background-color: #f7fcfe;
+    }
+    .validationError {
+        color: red;
+        font-weight: bold;
+        font-size: medium;
+    }
+    .tipsy-inner { background-color: #fc0f0f; color: white; font-size: 14px; max-width: 250px; padding: 5px; border-radius: 5px; -moz-border-radius:5px; -webkit-border-radius:5px; }
+</style>
+
+<h2 class="centre">Please let us know how do you like this site or if you have any suggestion</h2>
+
+<p class="centre"><strong>Fields with a * are mandatory</strong></p>
+<p>&nbsp;</p>
+
+<div class="centre formWrapper">
+    <form method="post" action="/isad/isad/contact/" id="f_contact">
+    {% csrf_token %}
+    {{ formSet.management_form }}
+    {% for form in formSet.forms %}
+        {{ form.id }}
+
+        <div class="error centre" style="font-weight: bold;">
+            {% if form.name.errors %}
+            <p>Please enter a proper name! (Only alphabets, space, and optionally a '.'</p>
+            {% endif %}
+            {{ form.email.errors }}
+            {% if form.website.errors %}
+            <p>Please enter a proper URL! Example: hhtp://www.example.com</p>
+            {% endif %}
+            {{ form.organization.errors }}
+            {{ form.subject.errors }}
+            {{ form.comment.errors }}
+        </div>
+       
+        <div class="formFieldWrapper centre" id="c_name">
+            <label for="id_form-0-name">&nbsp;<strong style="font-size: 16px;">*</strong>Name:</label>
+            {{ form.name }}            
+        </div>
+
+        <div class="formFieldWrapper centre required" id="c_email">
+            <label for="id_form-0-email">&nbsp;&nbsp;<strong style="font-size: 16px;">*</strong>Email:</label>
+            {{ form.email }}            
+        </div>
+
+        <div class="formFieldWrapper centre" id="c_website">
+            <label for="id_form-0-website">Website:</label>
+            {{ form.website }}            
+        </div>
+
+        <div class="formFieldWrapper centre" id="c_organization">
+            <label for="id_form-0-organization" style="vertical-align: middle; top: 50%;">Organization:</label>
+            {{ form.organization }}          
+        </div>
+
+        <div class="formFieldWrapper centre" id="c_subject">
+            <label for="id_form-0-subject"><strong style="font-size: 16px;">*</strong>Subject:</label>
+            {{ form.subject }}          
+        </div>
+
+        <div class="formFieldWrapper centre" id="c_comment">
+            <label for="id_form-0-comment" style="vertical-align: middle; top: 50%;"><strong style="font-size: 16px;">*</strong>Comment:</label>
+            {{ form.comment }}                        
+        </div>
+
+        <div class="formFieldWrapper centre" style="padding-left: 50px;" id="c_recaptcha">
+            <label for="id_form-0-human" style="vertical-align: middle; top: 50%;"><strong style="font-size: 16px;">*</strong>Type in the two words as shown below:</label>
+            {% if captcha_response %}
+                <p class="validationError">{{ captcha_response }}</p>
+                <input type="hidden" id="h_reCAP_err" value="1" />
+            {% else %}
+                <input type="hidden" id="h_reCAP_err" value="0" />
+            {% endif %}
+            <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6Lf1Yb4SAAAAAL9ddnzucm0B-jyvgPwiYRC5UmjZ">
+            </script>
+
+            <noscript>
+                <iframe src="http://api.recaptcha.net/noscript?k=6Lf1Yb4SAAAAAL9ddnzucm0B-jyvgPwiYRC5UmjZ" height="300" width="500" frameborder="0"></iframe><br />
+                <textarea name="recaptcha_challenge_field" rows="3" cols="40" id="id_form-0-human">
+                </textarea>
+                <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+            </noscript>
+        </div>
+
+        <div class="formFieldWrapper formFieldButtons centre">
+            <input type="reset" value="Clear" id="_btnReset" />
+            <input type="button" value="Send" id="_btnSubmit" />
+        </div>
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block includeScripts %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/tipsy-0.1.7/src/javascripts/jquery.tipsy.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/contact.js"></script>
+{% endblock %}
