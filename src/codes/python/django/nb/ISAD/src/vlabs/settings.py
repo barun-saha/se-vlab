@@ -1,5 +1,12 @@
 # Django settings for the Software Engineering Virtual Lab (cse08)
 
+from utils import generate_secret_key as GS
+from utils import generate_credentials as GC
+
+GS.generate_secret()
+GC.generate_credentials()
+
+
 from credentials import *
 
 DEBUG = True
