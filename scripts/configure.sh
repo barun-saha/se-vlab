@@ -34,6 +34,6 @@ ln -s /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
 #ln -s /var/vlabs/ /home/barun/codes/python/django/nb/ISAD/src/vlabs/media/vlabs
 ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 
-# Generate the secret key
-cd "$SE_PATH" && python utils/generate_secret_key.py
-cd "$CUR_PATH"
+# Generate the secret key -- No more required; invoked from settings.py
+#cd "$SE_PATH" && python utils/generate_secret_key.py
+#cd "$CUR_PATH"
