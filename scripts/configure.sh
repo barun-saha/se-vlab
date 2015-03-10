@@ -1,6 +1,7 @@
 # User account required for hosting the source code
 # Note: The default user is barun -- if you change this, you need to
 # manually update the settings.py file
+
 USER=barun
 useradd -m "$USER"
 
@@ -14,14 +15,15 @@ mkdir -p /var/vlabs/isad/cfg
 mkdir -p /var/vlabs/isad/uploads/image_uploads
 chown -R www-data /var/vlabs
 
-#mv ../codes /home/barun/codes
-mv ../codes "$HOME_PATH"/codes
-cp ../conf/httpd.conf /etc/apache2/
-mv ../conf/www /usr/local/
+# Code movement goes to Makefile
+##mv ../codes /home/barun/codes
+#mv ../codes "$HOME_PATH"/codes
+#cp ../conf/httpd.conf /etc/apache2/
+#mv ../conf/www /usr/local/
 
 # Initialize the database
 # Note: You must have the following two SQL files available
-# Create user and catalog -- TEMPORARILY disabled
+# Create user and catalog -- *TEMPORARILY* disabled
 ##mysql -u root < cse08-se_init.sql
 # Create tables and populate data
 ##mysql -u root db_isad < cse08-se_db.sql
