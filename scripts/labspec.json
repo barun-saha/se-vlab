@@ -91,7 +91,8 @@
                     "pip install django-ajaxcomments",
                     "pip install django-tinymce",
                     "pip install recaptcha-client",
-                    "sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server",
+                    "sudo apt-get install bash",
+                    "sudo apt-get install debconf-utils",
                     "sudo apt-get -y install libapache2-mod-wsgi"
                 ],
                 "lab_actions": {
