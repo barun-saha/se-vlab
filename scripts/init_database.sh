@@ -38,7 +38,7 @@ if [[ -f "$ROOT_PASSWD_FILE" && -r "$ROOT_PASSWD_FILE" ]]
 then
 	ROOT_PASSWD=$(cat "$ROOT_PASSWD_FILE")
 else
-	ROOT_PASSWD=generate_password()
+	ROOT_PASSWD=$(generate_password())
 	echo "$ROOT_PASSWD" > "$ROOT_PASSWD_FILE"
 	chmod -w "$ROOT_PASSWD_FILE"
 fi
@@ -48,7 +48,7 @@ if [[ -f "$SE_USR_PASSWD_FILE" && -r "$SE_USR_PASSWD_FILE" ]]
 then
 	USR_PASSWD=$(cat "$SE_USR_PASSWD_FILE")
 else
-	USR_PASSWD=generate_password()
+	USR_PASSWD=$(generate_password())
 	echo "$USR_PASSWD" > "$SE_USR_PASSWD_FILE"
 	chmod -w "$SE_USR_PASSWD_FILE"
 fi
@@ -63,8 +63,9 @@ SQL="${Q1}${Q2}${Q3}"
 
 $MYSQL --user=root --password=$ROOT_PASSWD --execute="$SQL"
 
-## Now initialize the databse with contents
-$MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
+## Now initialize the databse with contents -- but has the code been
+## deployed yet?
+#$MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
 
 ## Invoke syncdb to create tables necessary for django -- but has the code been
 ## deployed yet?
