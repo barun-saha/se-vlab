@@ -26,9 +26,9 @@ DATABASES = {
         'PASSWORD': app_credentials['db_password'],
         'HOST': app_credentials['db_host'],
         'PORT': app_credentials['db_port'],
-	'OPTIONS': {
-	    'init_command': 'SET storage_engine=INNODB'
-	},
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=INNODB'
+        },
     }
 }
 

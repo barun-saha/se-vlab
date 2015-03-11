@@ -66,5 +66,6 @@ $MYSQL --user=root --password=$ROOT_PASSWD --execute="$SQL"
 ## Now initialize the databse with contents
 $MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
 
-## Invoke syncdb to create tables necessary for django
-$PYTHON $SE_PATH/manage.py syncdb
+## Invoke syncdb to create tables necessary for django -- but has the code been
+## deployed yet?
+#$PYTHON $SE_PATH/manage.py syncdb
