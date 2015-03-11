@@ -39,3 +39,22 @@ ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 # Generate the secret key -- No more required; invoked from settings.py
 #cd "$SE_PATH" && python utils/generate_secret_key.py
 #cd "$CUR_PATH"
+
+
+## Database creation
+# For purging debconf settings
+echo PURGE | debconf-communicate mysql-server
+
+sudo apt-get remove --purge -y "^mysql.*"
+#sudo apt-get autoremove
+#sudo apt-get autoclean
+sudo rm -rf /var/lib/mysql
+sudo rm -rf /var/log/mysql 
+
+ROOT_PASSWD=$(cat mysql_root_passwd)
+echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
+echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
+
+
+source init_database.sh
