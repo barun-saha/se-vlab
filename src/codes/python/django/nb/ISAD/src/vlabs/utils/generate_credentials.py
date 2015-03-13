@@ -28,8 +28,12 @@ ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^
 MIN_LENGTH = 8
 MAX_LENGTH = 15
 
-
+# The name of the output Python module
 file_name = 'credentials.py'
+
+# Locations where various passwords are stored
+HOME_PATH = '/home/barun'
+SE_USR_PASSWD_FILE = '/'.join([HOME_PATH, 'se_mysql_usr_passwd',])
 
 
 def generate_credentials():
@@ -55,10 +59,13 @@ def __get_secret_key():
 	key = None
 
 	try:
-		key = open('secret.txt', 'r').read()
+		key_file = open('secret.txt', 'r')
 	except IOError, ioe:
-		print ioe
+		print 'Failed to read secret key file', str(ioe)
 		sys.exit(1)
+
+	with key_file:
+		key = key_file.read().strip()
 
 	return key
 
@@ -84,10 +91,21 @@ app_credentials = {
 	# In SE Virtual Lab, we only need database credentials
 
 	cred_name = '\t\'db_password\': '
-	password_length = random.randint(MIN_LENGTH, MAX_LENGTH)
-	password = "".join(
-		[random.choice(ALPHABET) \
-			for i in xrange(password_length + 1)])
+#	password_length = random.randint(MIN_LENGTH, MAX_LENGTH)
+#	password = "".join(
+#		[random.choice(ALPHABET) \
+#			for i in xrange(password_length + 1)])
+	
+	# Read the password from file
+	pfile = None
+	try:
+		pfile = open(SE_USR_PASSWD_FILE, 'r')
+	except IOError, ioe:
+		print 'Could not read', SE_USR_PASSWD_FILE, ':', str(ioe)
+		sys.exit(1)
+
+	with pfile:
+		password = pfile.read().strip()
 
 	password_string = ''.join(
 		[password_string, cred_name, '\'', password, '\',',]
@@ -100,17 +118,17 @@ app_credentials = {
 		[header_string, import_string, body, password_string, final_string,]
 	)
 
-	# Create the file
+	# Create the Python module
+	file_exists = os.path.exists(file_name)
+	pfile = None
 	try:
-
-		file_exists = os.path.exists(file_name)
-
 		if not file_exists:
-			open(file_name, 'w').write(final_string)
+			pfile = open(file_name, 'w')
+	except IOError, ioe:
+		print 'Failed to write to file', file_name, ':', str(ioe)
+		sys.exit(1)
 
+	with pfile:
+		pfile.write(final_string)
 		# Read-only by owner and group
 		os.chmod(file_name, stat.S_IRUSR | stat.S_IRGRP)
-
-	except IOError, ioe:
-		print ioe
-		sys.exit(1)
