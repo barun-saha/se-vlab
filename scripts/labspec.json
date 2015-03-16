@@ -12,7 +12,7 @@
                 },
                 "installer": [],
                 "os": "ubuntu",
-                "osVersion": "10",
+                "osVersion": "12",
                 "service_pack": ""
             }
         },
@@ -117,7 +117,7 @@
                     "min_required": "256mb"
                 },
                 "os": "ubuntu",
-                "osVersion": "10",
+                "osVersion": "12",
                 "servicepack": "",
                 "storage": {
                     "min_required": "10gb"
