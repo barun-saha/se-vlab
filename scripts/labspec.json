@@ -6,7 +6,7 @@
                 "build_steps": {
                     "build": ["sh build_steps.sh"],
                     "configure": [
-						"sh configure.sh",
+						"make -C ../src init",
 						"make -C ../src"
 					],
                     "post_build": [],
