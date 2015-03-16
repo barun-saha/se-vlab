@@ -4,8 +4,11 @@
             "platform": {
                 "arch": "i386",
                 "build_steps": {
-                    "build": [],
-                    "configure": [],
+                    "build": ["sh build_steps.sh"],
+                    "configure": [
+						"sh configure.sh",
+						"make -C ../src"
+					],
                     "post_build": [],
                     "pre_build": [],
                     "status": []
@@ -93,15 +96,12 @@
                     "pip install recaptcha-client",
                     "sudo apt-get install bash",
                     "sudo apt-get install debconf-utils",
-                    "sudo apt-get -y install libapache2-mod-wsgi",
-                    "make -C ../src"
+                    "sudo apt-get -y install libapache2-mod-wsgi"
                 ],
                 "lab_actions": {
                     "backup": [],
                     "clean": [],
-                    "init": [
-                        "sh configure.sh"
-                    ],
+                    "init": [],
                     "pause": [],
                     "publish": [],
                     "restore": [],

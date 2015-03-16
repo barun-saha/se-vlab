@@ -1,7 +1,24 @@
+#!/bin/sh
+#
 # User account required for hosting the source code
 # Note: The default user is barun -- if you change this, you need to
 # manually update the settings.py file
+#
+# [Originally created by Chandan Gupta (IIIT-H)]
+# Updated by Barun Saha (http://barunsaha.me)
+# 16 March 2015
+#
 
+LOG_FILE=cse08.log
+CURRENT_DIR=$(pwd)
+TIMESTAMP=$(date +'%d %h %Y %H:%M:%S')
+SYSTEM=$(hostname)
+
+echo '*** Executing configure.sh' >> "$LOG_FILE"
+echo $TIMESTAMP 'Host: ' $SYSTEM >> "$LOG_FILE"
+echo 'Current directory is: ' $CURRENT_DIR >> "$LOG_FILE"
+
+echo '1. Creating user barun' >> "$LOG_FILE"
 USER=barun
 useradd -m "$USER"
 
@@ -10,6 +27,7 @@ SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
 CUR_PATH=$(pwd)
 
 # Directories where intermediate files would be created
+echo '2. Creating directories' >> "$LOG_FILE"
 mkdir -p /var/vlabs/isad/uml/img
 mkdir -p /var/vlabs/isad/cfg
 mkdir -p /var/vlabs/isad/uploads/image_uploads
@@ -29,6 +47,7 @@ chown -R www-data /var/vlabs
 ##mysql -u root db_isad < cse08-se_db.sql
 
 # Create symlinks
+echo '3. Creating symlinks' >> "$LOG_FILE"
 #ln -s /var/vlabs/isad/ /home/barun/codes/python/django/nb/ISAD/src/vlabs/media/isad_erd
 ln -s /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
 #ln -s /var/vlabs/isad/uploads /home/barun/codes/python/django/nb/ISAD/src/vlabs/media/uploads
@@ -45,6 +64,7 @@ ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 # For purging debconf settings
 echo PURGE | debconf-communicate mysql-server
 
+echo '4. Installing MySQL' >> "$LOG_FILE"
 sudo apt-get remove --purge -y "^mysql.*"
 #sudo apt-get autoremove
 #sudo apt-get autoclean
@@ -57,4 +77,5 @@ echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debco
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
 
+echo '5. Invoking script for creating database' >> "$LOG_FILE"
 source init_database.sh
