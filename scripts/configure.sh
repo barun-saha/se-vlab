@@ -65,20 +65,20 @@ ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 
 ## Database creation
 # For purging debconf settings
-echo PURGE | debconf-communicate mysql-server
+#echo PURGE | debconf-communicate mysql-server
 
-echo '5. Installing MySQL' >> "$LOG_FILE"
-sudo apt-get remove --purge -y "^mysql.*"
-#sudo apt-get autoremove
-#sudo apt-get autoclean
-sudo rm -rf /var/lib/mysql
-sudo rm -rf /var/log/mysql 
+#echo '5. Installing MySQL' >> "$LOG_FILE"
+#sudo apt-get remove --purge -y "^mysql.*"
+##sudo apt-get autoremove
+##sudo apt-get autoclean
+#sudo rm -rf /var/lib/mysql
+#sudo rm -rf /var/log/mysql 
 
-ROOT_PASSWD=$(cat mysql_root_passwd)
-echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
-echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
+#ROOT_PASSWD=$(cat mysql_root_passwd)
+#echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
+#echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
+#sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
 
-echo '6. Invoking script for creating database' >> "$LOG_FILE"
-source init_database.sh
+#echo '6. Invoking script for creating database' >> "$LOG_FILE"
+#source init_database.sh
