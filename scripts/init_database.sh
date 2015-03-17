@@ -12,18 +12,18 @@
 
 # The root password for MySQL database is shared by both SE and ANT in case
 # they are hosted in the same container.
-# HOME_PATH and SE_PATH are inherited from the invoking script.
+# HOME_PATH and SE_PATH are inherited from the invoking script (configure.sh).
 
 LOG_FILE=cse08.log
 CURRENT_DIR=$(pwd)
 TIMESTAMP=$(date +'%F %T')
 SYSTEM=$(hostname)
-PROXY=$(echo $http_proxy)
+PROXY=$(log $http_proxy)
 
-echo '*** Executing init_database.sh' >> "$LOG_FILE"
-echo $TIMESTAMP 'Host: ' $SYSTEM >> "$LOG_FILE"
-echo 'Current directory is: ' $CURRENT_DIR >> "$LOG_FILE"
-echo 'Proxy is: ' $PROXY >> "$LOG_FILE"
+log '*** Executing init_database.sh'
+log $TIMESTAMP 'Host: ' $SYSTEM
+log 'Current directory is: ' $CURRENT_DIR
+log 'Proxy is: ' $PROXY
 
 ROOT_PASSWD_FILE=$HOME_PATH/mysql_root_passwd
 SE_USR_PASSWD_FILE=$HOME_PATH/se_mysql_usr_passwd
@@ -40,11 +40,12 @@ USR_PASSWD=x
 generate_password() {
 	cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$+=' | fold -w 12 | head -n 1
 }
+#
 
 
 # If the root password file exists, read the root password
 # Otherwise, create the file
-echo '6. Read password for MySQL root user' >> "$LOG_FILE"
+log '6. Reading password for MySQL root user'
 
 if [[ -f "$ROOT_PASSWD_FILE" && -r "$ROOT_PASSWD_FILE" ]]
 then
@@ -56,7 +57,7 @@ else
 fi
 
 
-echo '7. Read password for MySQL user' >> "$LOG_FILE"
+log '7. Reading password for MySQL user'
 
 if [[ -f "$SE_USR_PASSWD_FILE" && -r "$SE_USR_PASSWD_FILE" ]]
 then
@@ -72,9 +73,9 @@ fi
 ## Database installation
 sudo -E apt-get -y install debconf debconf-utils
 # For purging debconf settings
-echo PURGE | debconf-communicate mysql-server
+log PURGE | debconf-communicate mysql-server
 
-echo '8. Installing MySQL' >> "$LOG_FILE"
+log '8. Installing MySQL'
 sudo apt-get remove --purge -y "^mysql.*"
 #sudo apt-get autoremove
 #sudo apt-get autoclean
@@ -82,9 +83,14 @@ sudo rm -rf /var/lib/mysql
 sudo rm -rf /var/log/mysql 
 
 #ROOT_PASSWD=$(cat "$ROOT_PASSWD")
-echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
-echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
+log mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
+log mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
+
+if [[ $? -ne 0 ]]
+then
+	error 'Installation of mysql-server failed!'
+fi
 
 
 ## Database creation
@@ -95,22 +101,36 @@ Q3="FLUSH PRIVILEGES;"
 
 SQL="${Q1}${Q2}${Q3}"
 
-echo '9. Creating database' >> "$LOG_FILE"
+log '9. Creating database'
 MYSQL=$(which mysql)
-echo "mysql location is $MYSQL" >> "$LOG_FILE"
+log "mysql location is $MYSQL"
 $MYSQL --user=root --password=$ROOT_PASSWD --execute="$SQL"
 
-echo "Database $DB created." >> "$LOG_FILE"
-#echo "(current path: $(pwd))"
+if [[ $? -ne 0 ]]
+then
+	error 'Failed to create MySQL database!'
+fi
 
-## Now initialize the databse with contents -- but has the code been
-## deployed yet?
-echo '10. Restore database dump' >> "$LOG_FILE"
+log "Database $DB created."
+
+
+# Now initialize the databse with contents
+log '10. Restoring database dump'
 $MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
 
+if [[ $? -ne 0 ]]
+then
+	error 'Failed initialize database with SQL dump!'
+fi
 
-## Invoke syncdb to create tables necessary for django -- but has the code been
-## deployed yet?
-echo '11. Execute syncdb' >> "$LOG_FILE"
-PYTHON=$(which python)
-$PYTHON $SE_PATH/manage.py syncdb
+
+## Invoke syncdb to create tables necessary for Django -- but has Django been
+## installed yet?
+#log '11. Executing syncdb'
+#PYTHON=$(which python)
+#$PYTHON $SE_PATH/manage.py syncdb
+
+#if [[ $? -ne 0 ]]
+#then
+#	error 'Failed to run syncdb!'
+#fi

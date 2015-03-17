@@ -9,9 +9,6 @@ IP_ADDRESS=$(shell ip addr show eth0 | grep 'inet ')
 
 deploy:
 	echo '*** Executing make deploy' >> $(LOG_FILE)
-	echo $(TIMESTAMP) 'Host: ' $(SYSTEM) 'IP: ' $(IP_ADDRESS) >> $(LOG_FILE)
-	echo 'Current directory is: ' $(CURRENT_DIR) >> $(LOG_FILE)
-	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
 	
 	echo "Moving codes to $(HOME_PATH)/codes" >> $(LOG_FILE)
 	mkdir -p $(HOME_PATH)/codes
@@ -26,4 +23,8 @@ deploy:
 init:
 	echo '' >> $(LOG_FILE)
 	echo "Executing make init" >> $(LOG_FILE)
+	echo $(TIMESTAMP) 'Host: ' $(SYSTEM) 'IP: ' $(IP_ADDRESS) >> $(LOG_FILE)
+	echo 'Current directory is: ' $(CURRENT_DIR) >> $(LOG_FILE)
+	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
+	
 	sh ../scripts/configure.sh
