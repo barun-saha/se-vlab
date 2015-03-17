@@ -4,11 +4,8 @@
             "platform": {
                 "arch": "i386",
                 "build_steps": {
-                    "build": ["sh build_steps.sh"],
-                    "configure": [
-						"make -C ../src init",
-						"make -C ../src"
-					],
+                    "build": [],
+                    "configure": ["make -C ../src init"],
                     "post_build": [],
                     "pre_build": [],
                     "status": []

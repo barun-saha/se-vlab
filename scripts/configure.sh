@@ -7,6 +7,7 @@
 # [Originally created by Chandan Gupta (IIIT-H)]
 # Updated by Barun Saha (http://barunsaha.me)
 # 16 March 2015
+# IIT Kharagpur
 #
 
 LOG_FILE=cse08.log
@@ -26,6 +27,7 @@ HOME_PATH=/home/"$USER"
 SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
 CUR_PATH=$(pwd)
 
+
 # Directories where intermediate files would be created
 echo '2. Creating directories' >> "$LOG_FILE"
 mkdir -p /var/vlabs/isad/uml/img
@@ -42,12 +44,14 @@ echo '3. Invoking make deploy for deploying code' >> "$LOG_FILE"
 make deploy
 #echo "Cur dir is: $(pwd)"
 
+
 # Initialize the database
 # Note: You must have the following two SQL files available
 # Create user and catalog -- *TEMPORARILY* disabled
 ##mysql -u root < cse08-se_init.sql
 # Create tables and populate data
 ##mysql -u root db_isad < cse08-se_db.sql
+
 
 # Create symlinks
 echo '4. Creating symlinks' >> "$LOG_FILE"
@@ -63,22 +67,5 @@ ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 #cd "$CUR_PATH"
 
 
-## Database creation
-# For purging debconf settings
-#echo PURGE | debconf-communicate mysql-server
-
-#echo '5. Installing MySQL' >> "$LOG_FILE"
-#sudo apt-get remove --purge -y "^mysql.*"
-##sudo apt-get autoremove
-##sudo apt-get autoclean
-#sudo rm -rf /var/lib/mysql
-#sudo rm -rf /var/log/mysql 
-
-#ROOT_PASSWD=$(cat mysql_root_passwd)
-#echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
-#echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
-#sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
-
-
-#echo '6. Invoking script for creating database' >> "$LOG_FILE"
-#source init_database.sh
+echo '5. Invoking script for creating database' >> "$LOG_FILE"
+source init_database.sh

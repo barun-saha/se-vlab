@@ -14,13 +14,14 @@ deploy:
 	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
 	
 	echo "Moving codes to $(HOME_PATH)/codes" >> $(LOG_FILE)
-	mv codes $(HOME_PATH)/codes
+	mkdir -p $(HOME_PATH)/codes
+	cp -r codes/* $(HOME_PATH)/codes/
 	
 	echo "Copying Apache configuration file" >> $(LOG_FILE)
 	cp conf/httpd.conf /etc/apache2/
 	
 	echo "Moving other configuration files" >> $(LOG_FILE)
-	mv conf/www /usr/local/
+	cp -r conf/www /usr/local/
 
 init:
 	echo '' >> $(LOG_FILE)
