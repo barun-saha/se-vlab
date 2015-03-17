@@ -11,7 +11,7 @@
 
 LOG_FILE=cse08.log
 CURRENT_DIR=$(pwd)
-TIMESTAMP=$(date +'%d %h %Y %H:%M:%S')
+TIMESTAMP=$(date +'%F %T')
 SYSTEM=$(hostname)
 
 echo '*** Executing configure.sh' >> "$LOG_FILE"
@@ -38,6 +38,9 @@ chown -R www-data /var/vlabs
 #mv ../codes "$HOME_PATH"/codes
 #cp ../conf/httpd.conf /etc/apache2/
 #mv ../conf/www /usr/local/
+echo '3. Invoking make deploy for deploying code' >> "$LOG_FILE"
+make deploy
+#echo "Cur dir is: $(pwd)"
 
 # Initialize the database
 # Note: You must have the following two SQL files available
@@ -47,7 +50,7 @@ chown -R www-data /var/vlabs
 ##mysql -u root db_isad < cse08-se_db.sql
 
 # Create symlinks
-echo '3. Creating symlinks' >> "$LOG_FILE"
+echo '4. Creating symlinks' >> "$LOG_FILE"
 #ln -s /var/vlabs/isad/ /home/barun/codes/python/django/nb/ISAD/src/vlabs/media/isad_erd
 ln -s /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
 #ln -s /var/vlabs/isad/uploads /home/barun/codes/python/django/nb/ISAD/src/vlabs/media/uploads
@@ -64,7 +67,7 @@ ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 # For purging debconf settings
 echo PURGE | debconf-communicate mysql-server
 
-echo '4. Installing MySQL' >> "$LOG_FILE"
+echo '5. Installing MySQL' >> "$LOG_FILE"
 sudo apt-get remove --purge -y "^mysql.*"
 #sudo apt-get autoremove
 #sudo apt-get autoclean
@@ -77,5 +80,5 @@ echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debco
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
 
-echo '5. Invoking script for creating database' >> "$LOG_FILE"
+echo '6. Invoking script for creating database' >> "$LOG_FILE"
 source init_database.sh

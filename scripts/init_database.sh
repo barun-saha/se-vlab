@@ -14,6 +14,15 @@
 # they are hosted in the same container.
 # HOME_PATH and SE_PATH are inherited from the invoking script.
 
+LOG_FILE=cse08.log
+CURRENT_DIR=$(pwd)
+TIMESTAMP=$(date +'%F %T')
+SYSTEM=$(hostname)
+
+echo '*** Executing init_database.sh' >> "$LOG_FILE"
+echo $TIMESTAMP 'Host: ' $SYSTEM >> "$LOG_FILE"
+echo 'Current directory is: ' $CURRENT_DIR >> "$LOG_FILE"
+
 ROOT_PASSWD_FILE=$HOME_PATH/mysql_root_passwd
 SE_USR_PASSWD_FILE=$HOME_PATH/se_mysql_usr_passwd
 DUMP_FILE=$SE_PATH/../../../../../../../content/cse08-se_db.sql
@@ -43,6 +52,7 @@ else
 	chmod -w "$ROOT_PASSWD_FILE"
 fi
 
+echo 'Read password for MySQL root user' >> "$LOG_FILE"
 
 if [[ -f "$SE_USR_PASSWD_FILE" && -r "$SE_USR_PASSWD_FILE" ]]
 then
@@ -53,6 +63,7 @@ else
 	chmod -w "$SE_USR_PASSWD_FILE"
 fi
 
+echo 'Read password for MySQL user' >> "$LOG_FILE"
 
 # SQL
 Q1="CREATE DATABASE IF NOT EXISTS $DB;"
@@ -68,8 +79,10 @@ echo "(current path: $(pwd))"
 
 ## Now initialize the databse with contents -- but has the code been
 ## deployed yet?
-#$MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
+echo 'Restore database dump' >> "$LOG_FILE"
+$MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
 
 ## Invoke syncdb to create tables necessary for django -- but has the code been
 ## deployed yet?
-#$PYTHON $SE_PATH/manage.py syncdb
+echo 'Execute syncdb' >> "$LOG_FILE"
+$PYTHON $SE_PATH/manage.py syncdb
