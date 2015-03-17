@@ -3,25 +3,25 @@ HOME_PATH=/home/barun
 LOG_FILE=cse08.log
 CURRENT_DIR=$(shell pwd)
 LS_CURRENT_DIR=$(shell ls)
-TIMESTAMP=$(shell date +'%d %h %Y %H:%M:%S')
+TIMESTAMP=$(shell date +'%F %T')
 SYSTEM=$(shell hostname)
 IP_ADDRESS=$(shell ip addr show eth0 | grep 'inet ')
 
 deploy:
-	echo '*** Executing make' >> ${LOG_FILE}
-	echo ${TIMESTAMP} 'Host: ' ${SYSTEM} 'IP: ' ${IP_ADDRESS} >> ${LOG_FILE}
-	echo 'Current directory is: ' ${CURRENT_DIR} >> ${LOG_FILE}
-	echo 'Contents of current directory: ' ${LS_CURRENT_DIR} >> ${LOG_FILE}
+	echo '*** Executing make' >> $(LOG_FILE)
+	echo $(TIMESTAMP) 'Host: ' $(SYSTEM) 'IP: ' $(IP_ADDRESS) >> $(LOG_FILE)
+	echo 'Current directory is: ' $(CURRENT_DIR) >> $(LOG_FILE)
+	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
 	
-	echo "Moving codes to ${HOME_PATH}/codes" >> ${LOG_FILE}
-	mv codes ${HOME_PATH}/codes
+	echo "Moving codes to $(HOME_PATH)/codes" >> $(LOG_FILE)
+	mv codes $(HOME_PATH)/codes
 	
-	echo "Copying Apache configuration file" >> ${LOG_FILE}
+	echo "Copying Apache configuration file" >> $(LOG_FILE)
 	cp conf/httpd.conf /etc/apache2/
 	
-	echo "Moving other configuration files" >> ${LOG_FILE}
+	echo "Moving other configuration files" >> $(LOG_FILE)
 	mv conf/www /usr/local/
 
 init:
-	echo "Executing configuration script ../scripts/configure.sh" >> ${LOG_FILE}
+	echo "Executing configuration script ../scripts/configure.sh" >> $(LOG_FILE)
 	sh ../scripts/configure.sh
