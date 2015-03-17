@@ -4,8 +4,8 @@
             "platform": {
                 "arch": "i386",
                 "build_steps": {
-                    "build": [],
-                    "configure": ["make -C ../src init"],
+                    "build": ["make -C ../src init"],
+                    "configure": [],
                     "post_build": [],
                     "pre_build": [],
                     "status": []
@@ -78,23 +78,7 @@
             "platform": {
                 "arch": "i386",
                 "hosting": "dedicated",
-                "installer": [
-                    "sudo apt-get -y install python python-dev python-setuptools python-pip",
-                    "sudo apt-get -y install build-essential",
-                    "sudo apt-get -y install graphviz graphviz-dev",
-                    "sudo apt-get -y install libmysqlclient-dev",
-                    "sudo apt-get -y install pkg-config",
-                    "pip install Django==1.2.7",
-                    "pip install pygraphviz",
-                    "pip install MySQL-python",
-                    "pip install django-maintenancemode",
-                    "pip install django-ajaxcomments",
-                    "pip install django-tinymce",
-                    "pip install recaptcha-client",
-                    "sudo apt-get install bash",
-                    "sudo apt-get install debconf-utils",
-                    "sudo apt-get -y install libapache2-mod-wsgi"
-                ],
+                "installer": ["make -C ../src install_packages"],
                 "lab_actions": {
                     "backup": [],
                     "clean": [],

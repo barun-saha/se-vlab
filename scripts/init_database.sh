@@ -18,7 +18,7 @@ LOG_FILE=cse08.log
 CURRENT_DIR=$(pwd)
 TIMESTAMP=$(date +'%F %T')
 SYSTEM=$(hostname)
-PROXY=$(log $http_proxy)
+PROXY=$(echo $http_proxy)
 
 log '*** Executing init_database.sh'
 log $TIMESTAMP 'Host: ' $SYSTEM

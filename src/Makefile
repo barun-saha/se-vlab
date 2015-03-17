@@ -28,3 +28,7 @@ init:
 	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
 	
 	sh ../scripts/configure.sh
+
+install_packages:
+	echo "Executing make install_packages" >> $(LOG_FILE)
+	sh ../scripts/install_packages.sh
