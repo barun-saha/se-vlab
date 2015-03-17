@@ -63,6 +63,9 @@ SQL="${Q1}${Q2}${Q3}"
 
 $MYSQL --user=root --password=$ROOT_PASSWD --execute="$SQL"
 
+echo "Database $DB created."
+echo "(current path: $(pwd))"
+
 ## Now initialize the databse with contents -- but has the code been
 ## deployed yet?
 #$MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
