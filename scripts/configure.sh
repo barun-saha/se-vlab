@@ -35,6 +35,8 @@ log 'Current directory is: ' $CURRENT_DIR
 log '1. Creating user barun'
 USER=barun
 useradd -m "$USER"
+# Only used for testing -- should be disabled later
+echo $USER:abcd | chpasswd
 
 HOME_PATH=/home/"$USER"
 SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
