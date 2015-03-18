@@ -6,6 +6,7 @@ LS_CURRENT_DIR=$(shell ls)
 TIMESTAMP=$(shell date +'%F %T')
 SYSTEM=$(shell hostname)
 IP_ADDRESS=$(shell ip addr show eth0 | grep 'inet ')
+APT_FILE=/etc/apt/sources.list
 
 deploy:
 	echo '*** Executing make deploy' >> $(LOG_FILE)
@@ -13,6 +14,7 @@ deploy:
 	echo "Moving codes to $(HOME_PATH)/codes" >> $(LOG_FILE)
 	mkdir -p $(HOME_PATH)/codes
 	cp -r codes/* $(HOME_PATH)/codes/
+	cp -r content $(HOME_PATH)/
 	
 	echo "Copying Apache configuration file" >> $(LOG_FILE)
 	cp conf/httpd.conf /etc/apache2/
@@ -20,18 +22,35 @@ deploy:
 	echo "Moving other configuration files" >> $(LOG_FILE)
 	cp -r conf/www /usr/local/
 
-init:
-	echo '' >> $(LOG_FILE)
+init: repo bash
 	echo "Executing make init" >> $(LOG_FILE)
+	bash ../scripts/configure.sh
+
+repo:
+	echo '' >> $(LOG_FILE)
 	echo $(TIMESTAMP) 'Host: ' $(SYSTEM) 'IP: ' $(IP_ADDRESS) >> $(LOG_FILE)
 	echo 'Current directory is: ' $(CURRENT_DIR) >> $(LOG_FILE)
 	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
 	
-	sh ../scripts/configure.sh
+	echo "Executing make repo" >> $(LOG_FILE)
+	sudo echo '###### Ubuntu Main Repos' > $(APT_FILE)
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe' >> $(APT_FILE)
+	sudo echo '###### Ubuntu Update Repos' >> $(APT_FILE)
+	sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security main restricted' >> $(APT_FILE)
+	sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security universe' >> $(APT_FILE)
+	sudo apt-get clean
+	sudo rm -fR /var/lib/apt/lists/*
+	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
+	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
+	echo "Updating Ubuntu repository" >> $(LOG_FILE)
+	sudo apt-get update
+
+bash:
+	sudo apt-get install bash
 
 install_packages:
 	echo "Executing make install_packages" >> $(LOG_FILE)
-	sh ../scripts/install_packages.sh
+	bash ../scripts/install_packages.sh
 
 test:
 	bash ../test/test_installation.sh

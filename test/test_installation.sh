@@ -162,17 +162,17 @@ dpkg --get-selections | grep "^$pkg" >/dev/null
 
 # Check Python packages
 pkg=Django
-pip list | grep "$pkg" >/dev/null
+pip freeze | grep "$pkg" >/dev/null
 [[ $? -eq 0 ]] && success "$pkg found" || \
                   failure "$pkg was not found"
 
 pkg=pygraphviz
-pip list | grep "$pkg" >/dev/null
+pip freeze | grep "$pkg" >/dev/null
 [[ $? -eq 0 ]] && success "$pkg found" || \
                   failure "$pkg was not found"
 
 pkg=MySQL-python
-pip list | grep "$pkg" >/dev/null
+pip freeze | grep "$pkg" >/dev/null
 [[ $? -eq 0 ]] && success "$pkg found" || \
                   failure "$pkg was not found"
 
