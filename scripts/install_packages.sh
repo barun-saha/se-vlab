@@ -32,25 +32,25 @@ log ''
 log "$TIME_STAMP  Host: $SYSTEM Current dir: $CURRENT_DIR Proxy: $PROXY"
 log 'Installing necessary packages'
 
-sudo apt-get -y install python python-dev python-setuptools python-pip
-sudo apt-get -y install build-essential
-sudo apt-get -y install graphviz graphviz-dev
-sudo apt-get -y install libmysqlclient18 libmysqlclient-dev
-sudo apt-get -y install pkg-config
-sudo apt-get -y install bash
-sudo apt-get -y install debconf-utils
-sudo apt-get -y install libapache2-mod-wsgi
-sudo apt-get -y install gcc
+sudo -E apt-get -y install python python-dev python-setuptools python-pip
+sudo -E apt-get -y install build-essential
+sudo -E apt-get -y install graphviz graphviz-dev
+sudo -E apt-get -y install libmysqlclient18 libmysqlclient-dev
+sudo -E apt-get -y install pkg-config
+sudo -E apt-get -y install bash
+sudo -E apt-get -y install debconf-utils
+sudo -E apt-get -y install libapache2-mod-wsgi
+sudo -E apt-get -y install gcc
 
-sudo apt-get -y install --fix-missing
+sudo -E apt-get -y install --fix-missing
 
 
 log 'Installing necessary Python packages'
 
-sudo pip install Django==1.2.7
-sudo pip install pygraphviz
-sudo pip install MySQL-python
-sudo pip install django-maintenancemode
-sudo pip install django-ajaxcomments
-sudo pip install django-tinymce
-sudo pip install recaptcha-client
+sudo -E pip install Django==1.2.7
+sudo -E pip install pygraphviz
+sudo -E pip install MySQL-python
+sudo -E pip install django-maintenancemode
+sudo -E pip install django-ajaxcomments
+sudo -E pip install django-tinymce
+sudo -E pip install recaptcha-client
