@@ -82,6 +82,18 @@ ls $x > /dev/null 2>&1
 				  failure "Symlink $x does not exist"
 
 
+# Configuration files
+cfile=/etc/apache2/httpd.conf
+ls "$cfile" >/dev/null 2>&1
+[[ $? -eq 0 ]] && success "$cfile exists" || \
+				  failure "$cfile does not exist"
+
+cfile=/usr/local/www/wsgi-scripts/isad.wsgi
+ls "$cfile" >/dev/null 2>&1
+[[ $? -eq 0 ]] && success "$cfile exists" || \
+				  failure "$cfile does not exist"
+
+
 # Check database password files exist
 x=$HOME_PATH/mysql_root_passwd
 ls $x > /dev/null 2>&1
@@ -147,16 +159,21 @@ dpkg --get-selections | grep "^$pkg" >/dev/null
 				  failure "$pkg was not found"
 
 
-# Configuration files
-cfile=/etc/apache2/httpd.conf
-ls "$cfile" >/dev/null 2>&1
-[[ $? -eq 0 ]] && success "$cfile exists" || \
-				  failure "$cfile does not exist"
+# Check Python packages
+pkg=Django
+pip list | grep "$pkg" >/dev/null
+[[ $? -eq 0 ]] && success "$pkg found" || \
+				  failure "$pkg was not found"
 
-cfile=/usr/local/www/wsgi-scripts/isad.wsgi
-ls "$cfile" >/dev/null 2>&1
-[[ $? -eq 0 ]] && success "$cfile exists" || \
-				  failure "$cfile does not exist"
+pkg=pygraphviz
+pip list | grep "$pkg" >/dev/null
+[[ $? -eq 0 ]] && success "$pkg found" || \
+				  failure "$pkg was not found"
+
+pkg=MySQL-python
+pip list | grep "$pkg" >/dev/null
+[[ $? -eq 0 ]] && success "$pkg found" || \
+				  failure "$pkg was not found"
 
 
 # Display summary

@@ -32,3 +32,6 @@ init:
 install_packages:
 	echo "Executing make install_packages" >> $(LOG_FILE)
 	sh ../scripts/install_packages.sh
+
+test:
+	bash ../test/test_installation.sh
