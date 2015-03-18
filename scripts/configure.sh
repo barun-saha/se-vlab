@@ -41,9 +41,9 @@ echo $USER_ID:abcd | chpasswd
 sudo adduser $USER_ID sudo
 #*
 
-HOME_PATH=/home/"$USER_ID"
-SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
-CUR_PATH=$(pwd)
+export HOME_PATH=/home/"$USER_ID"
+export SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
+#CUR_PATH=$(pwd)
 
 
 # Directories where intermediate files would be created
