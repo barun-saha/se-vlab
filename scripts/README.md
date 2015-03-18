@@ -1,6 +1,6 @@
 The `scripts` folder contains scripts that help to automate the build and deployment process of this lab. This folder must have `labspec.json` in the specified format (template link to be published later).
 
-## Intialization ##
+## Initialization ##
 
 The following steps are performed to initialize the OS for hosting this lab.
 

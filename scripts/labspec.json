@@ -84,7 +84,7 @@
                     "clean": [],
                     "init": [],
                     "pause": [],
-                    "publish": [],
+                    "publish": ["make -C ../src deploy"],
                     "restore": [],
                     "resume": [],
                     "shutdown": [],
