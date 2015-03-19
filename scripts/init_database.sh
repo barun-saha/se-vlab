@@ -14,11 +14,7 @@
 # they are hosted in the same container.
 # HOME_PATH and SE_PATH are inherited from the invoking script (configure.sh).
 
-LOG_FILE=cse08.log
-CURRENT_DIR=$(pwd)
-TIMESTAMP=$(date +'%F %T')
-SYSTEM=$(hostname)
-PROXY=$(echo $http_proxy)
+source ../scripts/common.sh
 
 log '*** Executing init_database.sh'
 log $TIMESTAMP 'Host: ' $SYSTEM
@@ -33,15 +29,6 @@ USR=u_isad
 
 ROOT_PASSWD=x
 USR_PASSWD=x
-
-
-# A function to generate a random password
-# http://serverfault.com/a/261417/58453
-generate_password() {
-	cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$+=' | fold -w 12 | head -n 1
-}
-#
-
 
 # If the root password file exists, read the root password
 # Otherwise, create the file
@@ -73,7 +60,7 @@ fi
 ## Database installation
 sudo -E apt-get -y install debconf debconf-utils
 # For purging debconf settings
-log PURGE | debconf-communicate mysql-server
+echo PURGE | debconf-communicate mysql-server
 
 log '8. Installing MySQL'
 sudo apt-get remove --purge -y "^mysql.*"
@@ -83,8 +70,8 @@ sudo rm -rf /var/lib/mysql
 sudo rm -rf /var/log/mysql 
 
 #ROOT_PASSWD=$(cat "$ROOT_PASSWD")
-log mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
-log mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
+echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
+echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
 if [[ $? -ne 0 ]]
@@ -116,11 +103,11 @@ log "Database $DB created."
 
 # Now initialize the databse with contents
 log '10. Restoring database dump'
-$MYSQL --user=root --password=$ROOT_PASSWD < "$DUMP_FILE"
+$MYSQL --user=root --password=$ROOT_PASSWD "$DB" < "$DUMP_FILE"
 
 if [[ $? -ne 0 ]]
 then
-	error 'Failed initialize database with SQL dump!'
+	error 'Failed to initialize database with SQL dump!'
 fi
 
 

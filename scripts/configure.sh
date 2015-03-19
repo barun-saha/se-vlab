@@ -9,23 +9,7 @@
 # 16 March 2015, IIT Kharagpur
 #
 
-LOG_FILE=cse08.log
-CURRENT_DIR=$(pwd)
-TIMESTAMP=$(date +'%F %T')
-SYSTEM=$(hostname)
-
-
-# Utility functions
-log() {
-	echo "$@" >> "$LOG_FILE"
-}
-
-error() {
-	echo '* Error: ' "$@" | tee --append "$LOG_FILE"
-	exit 1
-}
-#
-
+source ../scripts/common.sh
 
 log '*** Executing configure.sh'
 log $TIMESTAMP 'Host: ' $SYSTEM
@@ -33,12 +17,16 @@ log 'Current directory is: ' $CURRENT_DIR
 
 
 log '1. Creating user barun'
-USER=barun
-useradd -m "$USER"
+USER_ID=barun
+useradd -m -s /bin/bash "$USER_ID"
+#* Only used for testing -- should be disabled later
+echo $USER_ID:abcd | chpasswd
+#* Takes effect in the next login
+sudo adduser $USER_ID sudo
+#*
 
-HOME_PATH=/home/"$USER"
-SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
-CUR_PATH=$(pwd)
+export HOME_PATH=/home/"$USER_ID"
+export SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
 
 
 # Directories where intermediate files would be created
@@ -61,4 +49,4 @@ ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 
 
 log '5. Invoking script for creating database'
-source init_database.sh
+bash ../scripts/init_database.sh
