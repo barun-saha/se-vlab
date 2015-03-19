@@ -9,12 +9,14 @@
 NSUCCESS=0
 NFAILURE=0
 
-# Utility functions
+# Color codes for Bash
+# https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 SWITCH="\033["
 NORMAL="${SWITCH}0m"
 GREEN="${SWITCH}0;32m"
 RED="${SWITCH}0;31m"
 
+# Utility functions
 success() {
 	echo -e "$GREEN[ OK ]$NORMAL $@"
 	NSUCCESS=$(expr $NSUCCESS + 1)
