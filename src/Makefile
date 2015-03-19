@@ -7,7 +7,8 @@ TIMESTAMP=$(shell date +'%F %T')
 SYSTEM=$(shell hostname)
 PYTHON=$(shell which python)
 IP_ADDRESS=$(shell ip addr show eth0 | grep 'inet ')
-APT_FILE=/etc/apt/sources.list
+APT_SRC_FILE=/etc/apt/sources.list
+APT_CONF_FILE=/etc/apt/apt.conf
 
 
 deploy:
@@ -37,26 +38,30 @@ repo:
 	echo "*** Executing make repo" >> $(LOG_FILE)
 	# Explicitly setting repositories here since the default repos resulted 
 	# in installation failure of some software
-	sudo echo '###### Ubuntu Main Repos' > $(APT_FILE)
-	##sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe' >> $(APT_FILE)
+	sudo echo '###### Ubuntu Main Repos' > $(APT_SRC_FILE)
+	##sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe' >> $(APT_SRC_FILE)
 	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main restricted' \
-		>> $(APT_FILE)
-	sudo echo '###### Ubuntu Update Repos' >> $(APT_FILE)
+		' universe' >> $(APT_SRC_FILE)
+	sudo echo '###### Ubuntu Update Repos' >> $(APT_SRC_FILE)
 	sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security' \
-		' main restricted' >> $(APT_FILE)
-	##sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security universe' >> $(APT_FILE)
-	sudo apt-get clean
-	sudo rm -fR /var/lib/apt/lists/*
+		' main restricted universe' >> $(APT_SRC_FILE)
+	##sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security universe' >> $(APT_SRC_FILE)
 	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'Acquire::Languages "none";' >> /etc/apt/apt.conf.d/00aptitude
+	
+#	$(MAKE) reset_packages
 	echo "Updating Ubuntu repository" >> $(LOG_FILE)
+	sudo apt-get clean
+	sudo rm -fR /var/lib/apt/lists/*
 	sudo apt-get update
 
 bash:
 	sudo apt-get install bash
 
-install_packages: install_python_packages install_ubuntu_packages
+install_packages:
+	$(MAKE) install_ubuntu_packages
+	$(MAKE) install_python_packages
 
 install_python_packages:
 	echo "*** Executing make: installing Python packages" >> $(LOG_FILE)
@@ -65,6 +70,16 @@ install_python_packages:
 install_ubuntu_packages:
 	echo "*** Executing make: installing Ubuntu packages" >> $(LOG_FILE)
 	bash ../scripts/install_ubuntu_packages.sh
+
+##reset_packages:
+##	echo "*** Executing make: reset packages" >> $(LOG_FILE)
+##	sudo -E apt-get -y remove python python-dev python-setuptools build-essential graphviz graphviz-dev libmysqlclient18 libmysqlclient-dev pkg-config debconf-utils libapache2-mod-wsgi gcc
+##	sudo apt-get clean
+##	sudo apt-get autoclean
+##	echo "Updating Ubuntu repository" >> $(LOG_FILE)
+##	sudo apt-get clean
+##	sudo rm -fR /var/lib/apt/lists/*
+##	sudo apt-get update
 
 test:
 	bash ../test/test_installation.sh
