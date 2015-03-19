@@ -1,10 +1,11 @@
 HOME_PATH=/home/barun
-#SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
+SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
 LOG_FILE=cse08.log
 CURRENT_DIR=$(shell pwd)
 LS_CURRENT_DIR=$(shell ls)
 TIMESTAMP=$(shell date +'%F %T')
 SYSTEM=$(shell hostname)
+PYTHON=$(shell which python)
 IP_ADDRESS=$(shell ip addr show eth0 | grep 'inet ')
 APT_FILE=/etc/apt/sources.list
 
@@ -67,3 +68,7 @@ install_ubuntu_packages:
 
 test:
 	bash ../test/test_installation.sh
+
+syncdb:
+	echo '*** Executing syncdb' >> $(LOG_FILE)
+	$(PYTHON) $(SE_PATH)/manage.py syncdb
