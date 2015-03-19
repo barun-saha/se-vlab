@@ -10,7 +10,16 @@
 # 18 March 2015, IIT Kharagpur
 #
 
-source ../scripts/common.sh
+. ../scripts/common.sh
+
+APT_CONF_FILE=/etc/apt/apt.conf
+
+proxy=$(grep -i '^Acquire::http::proxy' $APT_CONF_FILE | cut -d' ' -f2 | tr -d '"' | tr -d ';')
+export http_proxy=$proxy
+export https_proxy=$proxy
+
+echo $http_proxy
+echo $https_proxy
 
 log 'Installing necessary Python packages'
 

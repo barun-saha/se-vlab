@@ -10,8 +10,6 @@ LOG_FILE=cse08.log
 CURRENT_DIR=$(pwd)
 TIMESTAMP=$(date +'%F %T')
 SYSTEM=$(hostname)
-PROXY=$(echo $http_proxy)
-
 
 # Utility functions
 log() {
