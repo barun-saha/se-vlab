@@ -1,5 +1,5 @@
 HOME_PATH=/home/barun
-SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
+SE_PATH=$(HOME_PATH)/codes/python/django/nb/ISAD/src/vlabs
 LOG_FILE=cse08.log
 CURRENT_DIR=$(shell pwd)
 LS_CURRENT_DIR=$(shell ls)
