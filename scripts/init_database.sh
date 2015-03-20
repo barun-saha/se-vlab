@@ -53,6 +53,11 @@ else
 	USR_PASSWD=$(generate_password)
 	echo "$USR_PASSWD" > "$SE_USR_PASSWD_FILE"
 	chmod -w "$SE_USR_PASSWD_FILE"
+
+	# Since the MySQL user's password is generated again, it is possible that
+	# credentials.py used by Django contains an old database password. So,
+	# remove that file to better be safe.
+	rm -f "$SE_PATH/credentials.py"
 fi
 
 
