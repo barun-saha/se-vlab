@@ -87,3 +87,10 @@ test:
 syncdb:
 	echo '*** Executing syncdb' >> $(LOG_FILE)
 	$(PYTHON) $(SE_PATH)/manage.py syncdb
+
+clean:
+	# Clean (remove) the source code of the Django app
+	rm -rf $(HOME_PATH)/codes
+
+clean_all:
+	echo 'Not yet supported'
