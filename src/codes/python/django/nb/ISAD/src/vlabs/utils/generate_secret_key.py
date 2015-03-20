@@ -49,7 +49,7 @@ def generate_secret():
 		os.chmod(file_name, stat.S_IRUSR | stat.S_IRGRP)
 
 	except IOError, ioe:
-		print ioe
+		#print ioe
 		sys.exit(1)
 
 

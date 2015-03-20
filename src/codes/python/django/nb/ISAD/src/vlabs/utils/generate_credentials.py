@@ -61,7 +61,7 @@ def __get_secret_key():
 	try:
 		key_file = open('secret.txt', 'r')
 	except IOError, ioe:
-		print 'Failed to read secret key file', str(ioe)
+		#print 'Failed to read secret key file', str(ioe)
 		sys.exit(1)
 
 	with key_file:
@@ -101,7 +101,7 @@ app_credentials = {
 	try:
 		pfile = open(SE_USR_PASSWD_FILE, 'r')
 	except IOError, ioe:
-		print 'Could not read', SE_USR_PASSWD_FILE, ':', str(ioe)
+		#print 'Could not read', SE_USR_PASSWD_FILE, ':', str(ioe)
 		sys.exit(1)
 
 	with pfile:
@@ -110,7 +110,6 @@ app_credentials = {
 	password_string = ''.join(
 		[password_string, cred_name, '\'', password, '\',',]
 	)
-	#print password_string
 
 
 	# Generate the final contents
@@ -123,12 +122,10 @@ app_credentials = {
 	pfile = None
 	try:
 		if not file_exists:
-			pfile = open(file_name, 'w')
+			with open(file_name, 'w') as pfile:
+				pfile.write(final_string)
+				# Read-only by owner and group
+				os.chmod(file_name, stat.S_IRUSR | stat.S_IRGRP)
 	except IOError, ioe:
-		print 'Failed to write to file', file_name, ':', str(ioe)
+		#print 'Failed to write to file', file_name, ':', str(ioe)
 		sys.exit(1)
-
-	with pfile:
-		pfile.write(final_string)
-		# Read-only by owner and group
-		os.chmod(file_name, stat.S_IRUSR | stat.S_IRGRP)

@@ -709,7 +709,7 @@ def multiple_workspaces(request):
         No matching workspace was found for %s!!!
         </p>
         ''' % (page_url, )
-        print msg
+        #print msg
         return HttpResponse(msg)
     
     #html = render_to_response(
