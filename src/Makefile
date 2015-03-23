@@ -20,7 +20,7 @@ deploy:
 	cp -r content $(HOME_PATH)/
 	
 	# Set ownership of files
-	chown -r barun:www-data $(HOME_PATH)/codes
+	chown -R barun:www-data $(HOME_PATH)/codes
 	# Apache needs write permission on vlabs/ to generate two files
 	chmod g+w $(SE_PATH)
 	
