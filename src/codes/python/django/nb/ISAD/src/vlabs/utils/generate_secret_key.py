@@ -22,39 +22,23 @@
 # 06 March 2014
 #
 
-import random
 import os
+import random
 import stat
 import sys
 
 
-def generate_secret():
+def generate_secret(output_file):
 	secret = "".join(
 		[random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") \
 			for i in range(50)]
 	)
 
-	#print secret
-
-	file_name = 'secret.txt'
-
 	try:
-
-		#with open(file_name, 'w') as sfile:
-		file_exists = os.path.exists(file_name)
+		file_exists = os.path.exists(output_file)
 		if not file_exists:
-			open(file_name, 'w').write(secret)
-
-		# Read-only by owner and group
-		os.chmod(file_name, stat.S_IRUSR | stat.S_IRGRP)
-
+			open(output_file, 'w').write(secret)
 	except IOError, ioe:
 		#print ioe
 		sys.exit(1)
-
-
-
-	#
-	# The secret key has been generated. Read it from the settings.py file
-	# as open('secret.txt', 'r').read()
-	#
+		

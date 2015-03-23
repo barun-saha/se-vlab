@@ -1,10 +1,16 @@
 # Django settings for the Software Engineering Virtual Lab (cse08)
 
+SE_PATH = '/home/barun/codes/python/django/nb/ISAD/src/vlabs'
+SECRET_KEY_PATH = '/'.join([SE_PATH, 'secret.txt',])
+CREDENTIALS_PATH = '/'.join([SE_PATH, 'credentials.py',])
+
+
 from utils import generate_secret_key as GS
 from utils import generate_credentials as GC
 
-GS.generate_secret()
-GC.generate_credentials()
+# Create the secret key and credentials file at target locations
+GS.generate_secret(SECRET_KEY_PATH)
+GC.generate_credentials(SECRET_KEY_PATH, CREDENTIALS_PATH)
 
 
 from credentials import *

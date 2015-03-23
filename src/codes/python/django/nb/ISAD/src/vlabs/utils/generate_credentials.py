@@ -18,8 +18,8 @@
 # 10 March 2015
 #
 
-import random
 import os
+import random
 import stat
 import sys
 
@@ -29,18 +29,18 @@ MIN_LENGTH = 8
 MAX_LENGTH = 15
 
 # The name of the output Python module
-file_name = 'credentials.py'
+#file_name = 'credentials.py'
 
 # Locations where various passwords are stored
 HOME_PATH = '/home/barun'
 SE_USR_PASSWD_FILE = '/'.join([HOME_PATH, 'se_mysql_usr_passwd',])
 
 
-def generate_credentials():
+def generate_credentials(secret_key_file, output_file):
 	header_string = '''#
 # Warning: credentials.py should NOT go into version control
 #
-# Barun Saha (barun.saha04@gmail.com)
+# Barun Saha (http://barunsaha.me)
 # IIT Kharagpur
 # 06 March 2014
 #
@@ -59,7 +59,7 @@ def __get_secret_key():
 	key = None
 
 	try:
-		key_file = open('secret.txt', 'r')
+		key_file = open('%s', 'r')
 	except IOError, ioe:
 		#print 'Failed to read secret key file', str(ioe)
 		sys.exit(1)
@@ -76,7 +76,7 @@ def __get_secret_key():
 app_credentials = {
 	'db_name': 'db_isad',
 	'db_user': 'u_isad',
-'''
+''' % (secret_key_file,)
 
 	final_string = '''
 	'db_host': 'localhost',
@@ -118,14 +118,12 @@ app_credentials = {
 	)
 
 	# Create the Python module
-	file_exists = os.path.exists(file_name)
+	file_exists = os.path.exists(output_file)
 	pfile = None
 	try:
 		if not file_exists:
-			with open(file_name, 'w') as pfile:
+			with open(output_file, 'w') as pfile:
 				pfile.write(final_string)
-				# Read-only by owner and group
-				os.chmod(file_name, stat.S_IRUSR | stat.S_IRGRP)
 	except IOError, ioe:
-		#print 'Failed to write to file', file_name, ':', str(ioe)
+		#print 'Failed to write to file', output_file, ':', str(ioe)
 		sys.exit(1)
