@@ -82,7 +82,7 @@
                 "lab_actions": {
                     "backup": [],
                     "clean": [],
-                    "init": ["make -C ../src syncdb"],
+                    "init": [],
                     "pause": [],
                     "publish": ["make -C ../src deploy"],
                     "restore": [],
