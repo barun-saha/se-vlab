@@ -44,13 +44,18 @@ repo:
 	# Explicitly setting repositories here since the default repos resulted 
 	# in installation failure of some software
 	sudo echo '###### Ubuntu Main Repos' > $(APT_SRC_FILE)
-	##sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe' >> $(APT_SRC_FILE)
-	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main restricted' \
-		' universe' >> $(APT_SRC_FILE)
-	sudo echo '###### Ubuntu Update Repos' >> $(APT_SRC_FILE)
-	sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security' \
-		' main restricted universe' >> $(APT_SRC_FILE)
-	##sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security universe' >> $(APT_SRC_FILE)
+	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise main' \
+		' restricted universe' > $(APT_SRC_FILE)
+	sudo echo '###### Ubuntu Update Repos
+	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-security main'\
+		' restricted universe' > $(APT_SRC_FILE)
+	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-updates main'\
+		' restricted universe' > $(APT_SRC_FILE)
+	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-proposed main'\
+		' restricted universe' > $(APT_SRC_FILE)
+	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-backports main'\
+	' restricted universe' > $(APT_SRC_FILE)
+	
 	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'Acquire::Languages "none";' >> /etc/apt/apt.conf.d/00aptitude
