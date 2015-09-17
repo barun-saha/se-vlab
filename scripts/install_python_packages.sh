@@ -12,18 +12,18 @@
 
 . ../scripts/common.sh
 
-APT_CONF_FILE=/etc/apt/apt.conf
+#APT_CONF_FILE=/etc/apt/apt.conf
 
-proxy=$(grep -i '^Acquire::http::proxy' $APT_CONF_FILE | cut -d' ' -f2 | tr -d '"' | tr -d ';')
-export http_proxy=$proxy
-export https_proxy=$proxy
+#proxy=$(grep -i '^Acquire::http::proxy' $APT_CONF_FILE | cut -d' ' -f2 | tr -d '"' | tr -d ';')
+#export http_proxy=$proxy
+#export https_proxy=$proxy
 
-echo $http_proxy
-echo $https_proxy
+#echo $http_proxy
+#echo $https_proxy
 
 log 'Installing necessary Python packages'
 
-sudo -E pip install Django==1.2.7
+sudo -E pip install Django==1.8.4
 sudo -E pip install pygraphviz
 sudo -E pip install MySQL-python
 sudo -E pip install django-maintenancemode

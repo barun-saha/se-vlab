@@ -11,6 +11,14 @@ APT_SRC_FILE=/etc/apt/sources.list
 APT_CONF_FILE=/etc/apt/apt.conf
 
 
+install:
+	echo '' > $(LOG_FILE)
+	echo '*** Executing make install' >> $(LOG_FILE)
+	$(MAKE) repo
+	$(MAKE) bash
+	$(MAKE) install_packages
+	$(MAKE) deploy
+
 deploy:
 	echo '*** Executing make deploy' >> $(LOG_FILE)
 	
@@ -44,17 +52,17 @@ repo:
 	# Explicitly setting repositories here since the default repos resulted 
 	# in installation failure of some software
 	sudo echo '###### Ubuntu Main Repos' > $(APT_SRC_FILE)
-	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise main' \
-		' restricted universe' > $(APT_SRC_FILE)
-	sudo echo '###### Ubuntu Update Repos' > $(APT_SRC_FILE)
-	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-security main'\
-		' restricted universe' > $(APT_SRC_FILE)
-	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-updates main'\
-		' restricted universe' > $(APT_SRC_FILE)
-	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-proposed main'\
-		' restricted universe' > $(APT_SRC_FILE)
-	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-backports main'\
-	' restricted universe' > $(APT_SRC_FILE)
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main' \
+		' restricted universe' >> $(APT_SRC_FILE)
+	sudo echo '###### Ubuntu Update Repos' >> $(APT_SRC_FILE)
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-security main'\
+		' restricted universe' >> $(APT_SRC_FILE)
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-updates main'\
+		' restricted universe' >> $(APT_SRC_FILE)
+#	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-proposed main'\
+#		' restricted universe' >> $(APT_SRC_FILE)
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-backports main'\
+	' restricted universe' >> $(APT_SRC_FILE)
 	
 	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
@@ -62,12 +70,13 @@ repo:
 	
 #	$(MAKE) reset_packages
 	echo "Updating Ubuntu repository" >> $(LOG_FILE)
+	sudo rm -rf /var/lib/apt/lists/*
 	sudo apt-get clean
-	sudo rm -fR /var/lib/apt/lists/*
-	sudo apt-get update
+	sudo apt-get autoremove
+	sudo -E apt-get update
 
 bash:
-	sudo apt-get install bash
+	sudo -E apt-get install bash
 
 install_packages:
 	$(MAKE) install_ubuntu_packages
@@ -81,6 +90,10 @@ install_ubuntu_packages:
 	echo "*** Executing make: installing Ubuntu packages" >> $(LOG_FILE)
 	bash ../scripts/install_ubuntu_packages.sh
 
+upgrade:
+	sudo -E apt-get update
+	sudo -E apt-get -y upgrade
+	
 ##reset_packages:
 ##	echo "*** Executing make: reset packages" >> $(LOG_FILE)
 ##	sudo -E apt-get -y remove python python-dev python-setuptools build-essential graphviz graphviz-dev libmysqlclient18 libmysqlclient-dev pkg-config debconf-utils libapache2-mod-wsgi gcc

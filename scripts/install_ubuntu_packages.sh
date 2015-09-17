@@ -20,6 +20,8 @@ log 'Installing necessary Ubuntu packages'
 #sudo apt-get update
 
 sudo -E apt-get -y install python python-dev python-setuptools python-pip
+# https://github.com/Homebrew/homebrew/issues/28083#issuecomment-39432641
+sudo -E pip install --upgrade setuptools
 sudo -E apt-get -y install build-essential
 # A defensive step in case anything went wrong
 sudo -E apt-get -y install --fix-missing

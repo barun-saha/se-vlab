@@ -29,6 +29,8 @@ USR=u_isad
 
 ROOT_PASSWD=x
 USR_PASSWD=x
+# Max no. of times MySQL installation would be attempted
+MAX_ATTEMPTS=5
 
 # If the root password file exists, read the root password
 # Otherwise, create the file
@@ -36,11 +38,11 @@ log '6. Reading password for MySQL root user'
 
 if [[ -f "$ROOT_PASSWD_FILE" && -r "$ROOT_PASSWD_FILE" ]]
 then
-	ROOT_PASSWD=$(cat "$ROOT_PASSWD_FILE")
+    ROOT_PASSWD=$(cat "$ROOT_PASSWD_FILE")
 else
-	ROOT_PASSWD=$(generate_password)
-	echo "$ROOT_PASSWD" > "$ROOT_PASSWD_FILE"
-	chmod -w "$ROOT_PASSWD_FILE"
+    ROOT_PASSWD=$(generate_password)
+    echo "$ROOT_PASSWD" > "$ROOT_PASSWD_FILE"
+    chmod -w "$ROOT_PASSWD_FILE"
 fi
 
 
@@ -48,16 +50,16 @@ log '7. Reading password for MySQL user'
 
 if [[ -f "$SE_USR_PASSWD_FILE" && -r "$SE_USR_PASSWD_FILE" ]]
 then
-	USR_PASSWD=$(cat "$SE_USR_PASSWD_FILE")
+    USR_PASSWD=$(cat "$SE_USR_PASSWD_FILE")
 else
-	USR_PASSWD=$(generate_password)
-	echo "$USR_PASSWD" > "$SE_USR_PASSWD_FILE"
-	chmod -w "$SE_USR_PASSWD_FILE"
+    USR_PASSWD=$(generate_password)
+    echo "$USR_PASSWD" > "$SE_USR_PASSWD_FILE"
+    chmod -w "$SE_USR_PASSWD_FILE"
 
-	# Since the MySQL user's password is generated again, it is possible that
-	# credentials.py used by Django contains an old database password. So,
-	# remove that file to better be safe.
-	rm -f "$SE_PATH/credentials.py"
+    # Since the MySQL user's password is generated again, it is possible that
+    # credentials.py used by Django contains an old database password. So,
+    # remove that file to better be safe.
+    rm -f "$SE_PATH/credentials.py"
 fi
 
 
@@ -77,12 +79,26 @@ sudo rm -rf /var/log/mysql
 #ROOT_PASSWD=$(cat "$ROOT_PASSWD")
 echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
 echo mysql-server mysql-server/root_password_again password $ROOT_PASSWD | debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
-if [[ $? -ne 0 ]]
-then
-	error 'Installation of mysql-server failed!'
-fi
+counter=1
+while [[ $counter -le $MAX_ATTEMPTS ]]
+do
+    sudo -E DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
+    sudo -E apt-get install --fix-missing
+    
+    if [[ $? -eq 0 ]]
+    then
+        log 'mysql-server installed!'
+        break
+    else
+        if [[ $counter -eq $MAX_ATTEMPTS ]]
+        then
+            error 'Installation of mysql-server failed!'
+        fi
+    fi
+
+    counter=$((counter + 1))
+done
 
 
 ## Database creation
@@ -100,7 +116,7 @@ $MYSQL --user=root --password=$ROOT_PASSWD --execute="$SQL"
 
 if [[ $? -ne 0 ]]
 then
-	error 'Failed to create MySQL database!'
+    error 'Failed to create MySQL database!'
 fi
 
 log "Database $DB created."
@@ -112,7 +128,7 @@ $MYSQL --user=root --password=$ROOT_PASSWD "$DB" < "$DUMP_FILE"
 
 if [[ $? -ne 0 ]]
 then
-	error 'Failed to initialize database with SQL dump!'
+    error 'Failed to initialize database with SQL dump!'
 fi
 
 
@@ -124,5 +140,5 @@ fi
 
 #if [[ $? -ne 0 ]]
 #then
-#	error 'Failed to run syncdb!'
+#    error 'Failed to run syncdb!'
 #fi
