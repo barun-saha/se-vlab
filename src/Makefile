@@ -46,7 +46,7 @@ repo:
 	sudo echo '###### Ubuntu Main Repos' > $(APT_SRC_FILE)
 	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise main' \
 		' restricted universe' > $(APT_SRC_FILE)
-	sudo echo '###### Ubuntu Update Repos
+	sudo echo '###### Ubuntu Update Repos' > $(APT_SRC_FILE)
 	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-security main'\
 		' restricted universe' > $(APT_SRC_FILE)
 	sudo echo 'deb http://in.archive.ubuntu.com/ubuntu/ precise-updates main'\
