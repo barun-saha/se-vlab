@@ -37,16 +37,16 @@ mkdir -p /var/vlabs/isad/uploads/image_uploads
 chown -R www-data /var/vlabs
 
 # Code movement goes to Makefile
-log '3. Invoking make deploy for deploying code'
-make deploy
+#log '3. Invoking make deploy for deploying code'
+#make deploy
 
 
 # Create symlinks
-log '4. Creating symlinks'
+log '3. Creating symlinks'
 ln -s /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
 ln -s /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
 ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 
 
-log '5. Invoking script for creating database'
+log '4. Invoking script for creating database'
 bash ../scripts/init_database.sh
