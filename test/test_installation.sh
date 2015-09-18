@@ -9,6 +9,7 @@
 
 NSUCCESS=0
 NFAILURE=0
+SE_PATH=/home/barun/codes/python/django/nb/ISAD/src/vlabs
 
 # Color codes for Bash
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
@@ -178,6 +179,10 @@ pip freeze | grep "$pkg" >/dev/null
 [[ $? -eq 0 ]] && success "$pkg found" || \
                   failure "$pkg was not found"
 
+cd "$SE_PATH"
+python manage.py runserver >/dev/null 2>&1
+[[ $? -eq 0 ]] && success "Django working" || \
+                  failure "Django not working"
 
 # Display summary
 TOTAL=$(expr $NSUCCESS + $NFAILURE)
