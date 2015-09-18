@@ -24,7 +24,9 @@
 log 'Installing necessary Python packages'
 
 sudo -E pip install Django==1.8.4
-sudo -E pip install pygraphviz
+# Library loading issues with pygraphviz
+# https://github.com/pygraphviz/pygraphviz/issues/71
+sudo -E pip install pygraphviz --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/"
 sudo -E pip install MySQL-python
 sudo -E pip install django-maintenancemode
 sudo -E pip install django-ajaxcomments
