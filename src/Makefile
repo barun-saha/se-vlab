@@ -14,8 +14,7 @@ APT_CONF_FILE=/etc/apt/apt.conf
 install:
 	echo '' > $(LOG_FILE)
 	echo '*** Executing make install' >> $(LOG_FILE)
-	$(MAKE) repo
-	$(MAKE) bash
+	$(MAKE) init
 	$(MAKE) install_packages
 	$(MAKE) deploy
 
@@ -52,17 +51,12 @@ repo:
 	# Explicitly setting repositories here since the default repos resulted 
 	# in installation failure of some software
 	sudo echo '###### Ubuntu Main Repos' > $(APT_SRC_FILE)
-	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise main' \
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu precise main'\
 		' restricted universe' >> $(APT_SRC_FILE)
-	sudo echo '###### Ubuntu Update Repos' >> $(APT_SRC_FILE)
-	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-security main'\
+	sudo echo 'deb http://archive.ubuntu.com/ubuntu precise-updates main'\
 		' restricted universe' >> $(APT_SRC_FILE)
-	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-updates main'\
+	sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security main'\
 		' restricted universe' >> $(APT_SRC_FILE)
-#	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-proposed main'\
-#		' restricted universe' >> $(APT_SRC_FILE)
-	sudo echo 'deb http://archive.ubuntu.com/ubuntu/ precise-backports main'\
-	' restricted universe' >> $(APT_SRC_FILE)
 	
 	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
@@ -73,7 +67,10 @@ repo:
 	sudo rm -rf /var/lib/apt/lists/*
 	sudo apt-get clean
 	sudo apt-get autoremove
-	sudo -E apt-get update
+	# To prevent exiting when update fails
+	# WARNING: Package installation may fail because of this; needs to be
+	# handled manually in such a scenario
+	sudo -E apt-get update || true
 
 bash:
 	sudo -E apt-get install bash
