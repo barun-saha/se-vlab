@@ -8,9 +8,10 @@
     <h1>Solution</h1>
     <hr />
 
+    {% load staticfiles %}
     <h2>Screenshot</h2>
     <div id="solution_image" align="center">
-        <img src="{{ MEDIA_URL }}images/__solutions/{{ solution_image }}" alt="Solution screenshot"
+        <img src="{% static 'isad/images/__solutions/{{ solution_image }}' %}" alt="Solution screenshot"
              style="border: 1px solid blue; padding: 7px;" />
     </div>
 
@@ -21,7 +22,7 @@
     <hr />
 
     <div id="close">
-        <a href="javascript:window.close();"><img src="/isad/v_media/images/new/cancel_32.png" style="border: 0; padding: 3px;" alt="Close"/></a>
+        <a href="javascript:window.close();"><img src="{% static 'isad/images/new/cancel_32.png' %}" style="border: 0; padding: 3px;" alt="Close"/></a>
     </div>
 
 </body>

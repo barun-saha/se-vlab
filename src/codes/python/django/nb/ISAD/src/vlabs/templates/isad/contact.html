@@ -1,6 +1,7 @@
 {% extends 'general.html' %}
 
-{% block icon %} {{ MEDIA_URL }}images/new/about/mail2_80_1.png {% endblock %}
+{% load staticfiles %}
+{% block icon %} {% static 'images/new/about/mail2_80_1.png' %} {% endblock %}
 
 {% block heading %}
     Contact Us
@@ -21,7 +22,6 @@
     }
     div.formFieldWrapper {
         padding: 7px;
-        /*background-image: url(/isad/v_media/images/new/about/gradient_white_blue.png);*/
         background-repeat: repeat-x;
         border-bottom: 1px solid silver;        
         vertical-align: middle;

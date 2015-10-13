@@ -1,7 +1,8 @@
 {% extends 'general.html' %}
 
+{% load staticfiles %}
 {% block icon %}
-    {{ MEDIA_URL }}images/new/about/user_80.png
+    {% static 'isad/images/new/about/user_80.png' %}
 {% endblock %}
 
 {% block heading %}
@@ -15,10 +16,10 @@
         }
     </style>
     
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/about_us.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'isad/css/about_us.css' %}">
 
     <div id="contents" class="aboutUs rounded-border-shadow" style="padding: 15px; background-color: white;">
-        <div style="background-image: url(/cse08/isad/v_media/images/new/about/weather_sun_24.png);" class="creditsIcon">
+        <div style="background-image: url({% static 'isad/images/new/about/weather_sun_24.png' %});" class="creditsIcon">
             <h2 class="creditsHeader">Project Guides</h2>
         </div>
         <p class="aboutUs aboutUsText">
@@ -36,11 +37,11 @@
     </div>
 
     <div class="rounded-border-shadow" style="margin-top: 15px; padding: 15px; background-color: white;">
-        <div style="background-image: url(/cse08/isad/v_media/images/new/about/user_group_24.png); margin-top: 10px;" class="creditsIcon">
+        <div style="background-image: url({% static 'isad/images/new/about/user_group_24.png' %}); margin-top: 10px;" class="creditsIcon">
             <h2 class="creditsHeader">Developers</h2>
         </div>
         <p class="aboutUs aboutUsText">
-            <a href="http://in.linkedin.com/in/barunsaha/"><strong>Barun Kumar Saha</strong></a> <br>
+            <a href="http://barunsaha.me/"><strong>Barun Kumar Saha</strong></a> <br>
             Junior Project Officer <br />
             School of Information Technology  <br>
             Indian Institute of Technology Kharagpur
@@ -51,7 +52,7 @@
             School of Information Technology  <br>
             Indian Institute of Technology Kharagpur
         </p>        
-	<p class="aboutUs aboutUsText" style="margin-top: 15px;">
+	   <p class="aboutUs aboutUsText" style="margin-top: 15px;">
             <strong>Bibudhendu Pati</strong> <br>
             Senior Research Fellow  <br>
             School of Information Technology  <br>
@@ -77,5 +78,3 @@
         </p>
     </div>
 {% endblock %}
-
-

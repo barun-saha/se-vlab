@@ -1,15 +1,15 @@
 {% extends 'general.html' %}
 
-
+{% load staticfiles %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/home.css">
+<link rel="stylesheet" type="text/css" href="{% static 'isad/css/home.css' %}">
 
 
 <h1>Introduction</h1>
 
 <div id="lab-introduction" class="rounded-border-shadow home-page-section" style="background-color: white;">
     <p>
-        <img src="/isad/v_media/images/new/system_software_update_64.png" 
+        <img src="{% static 'isad/images/new/system_software_update_64.png' %}" 
 	style="float: left; vertical-align: top; padding-right: 15px; padding-bottom: 5px;" alt="SE VLabs">
         Research analysis manifests clear trends of growing interest of the Computer Science students towards 
         e-learning. To keep this trend as well as the pace with the rapid advancement of software technologies, the
@@ -48,8 +48,7 @@
     <ol id="exp_list" style="">
     {% for t in theory %}
     <li style="" class="experiment" id="exp-{{ forloop.counter }}">
-        <!--a id="exp{{ forloop.counter }}" href="{% url theory t.id %}" original-title="{{ t.tooltip }}">{{ t.title }}</a-->
-        <a id="exp{{ forloop.counter }}" href="{% url introduction t.id %}" style="font-size: 1.1em;">{{ t.title }}</a>
+        <a id="exp{{ forloop.counter }}" href="{% url 'introduction' t.id %}" style="font-size: 1.1em;">{{ t.title }}</a>
         <!--span class="show-hide show-hide-exp-outline">[Show]</span-->
         <div class="experiment-outline">
             {{ t.tooltip }}
@@ -111,16 +110,16 @@
     
     <ul>
         <li>
-            <img src="/isad/v_media/images/new/icons/browsers/firefox24x24.png">Firefox 3.6, 5.0
+            <img src="{% static 'isad/images/new/icons/browsers/firefox24x24.png' %}">Firefox 3.6, 5.0
         </li>
         <li style="margin-top: 3px;">
-            <img src="/isad/v_media/images/new/icons/browsers/chrome24x24.png">Google Chrome 13.0
+            <img src="{% static 'isad/images/new/icons/browsers/chrome24x24.png' %}">Google Chrome 13.0
         </li>
         <li style="margin-top: 3px;">
-            <img src="/isad/v_media/images/new/icons/browsers/opera24x24.png">Opera 11.0
+            <img src="{% static 'isad/images/new/icons/browsers/opera24x24.png' %}">Opera 11.0
         </li>
         <li style="margin-top: 3px;">
-            <img src="/isad/v_media/images/new/icons/browsers/internet_explorer24x24.png">Internet Explorer 7
+            <img src="{% static 'isad/images/new/icons/browsers/internet_explorer24x24.png' %}">Internet Explorer 7
         </li>
     </ul>   
     </p>
@@ -134,8 +133,8 @@
 
 
 {% block includeScripts %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/tipsy-0.1.7/src/javascripts/jquery.tipsy.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}js/tipsy-0.1.7/src/stylesheets/tipsy.css" />
+    <script type="text/javascript" src="{% static 'isad/js/tipsy-0.1.7/src/javascripts/jquery.tipsy.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'isad/js/tipsy-0.1.7/src/stylesheets/tipsy.css' %}" />
     <script type="text/javascript" language="JavaScript">
         // (#20: #2)
         //$(document).ready(function() {$('a[id^=exp]').tipsy({fade: true});});

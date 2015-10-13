@@ -53,3 +53,4 @@ SEQ_PIC_PATH = '/usr/local/lib/umlgraph-5.4/lib/sequence.pic'
 
 # Change #27: #1
 PLANT_UML_JAR = settings.MEDIA_ROOT + 'lib/jar/plantuml.jar'
+

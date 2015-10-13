@@ -1,5 +1,6 @@
 {% extends 'base2.html' %}
 
+{% load staticfiles %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -23,7 +24,7 @@
             <div class="clear"></div>
             <div class="centerAlign" style="padding-top: 5px; padding-bottom: 3px;">
                 <button type="button" id="btnSubmit" class="button-icon">
-                    <img src="/isad/v_media/images/new/icons/workspace/next24x24.png" class="button-run" />
+                    <img src="{% static 'isad/images/new/icons/workspace/next24x24.png' %}" class="button-run" />
                     <strong>Submit</strong>
                 </button>
             </div>
@@ -53,10 +54,9 @@
 <!--div id="divStoreGraphForServer" class="clear"></div-->
 <input type="hidden" id="hObjId" value="{{ object_id }}" />
 
-<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}js/exercises.js"></script>
-
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/center-plugin_1.0.1.js"></script>
+<script type="text/javascript" src="{% static 'isad/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/js/exercises.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/lib/center-plugin_1.0.1.js' %}"></script>
 
 
 {% endblock %}

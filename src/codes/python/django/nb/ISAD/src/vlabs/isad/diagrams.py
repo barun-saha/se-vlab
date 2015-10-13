@@ -1,5 +1,5 @@
 # For diagrams
-from vlabs.isad.models import *
+from isad.models import *
 from django.core.context_processors import request
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
@@ -13,7 +13,7 @@ import json
 import pygraphviz as pgv
 
 import globals
-import settings
+import vlabs.settings
 
 JAVA = globals.JAVA_PATH
 

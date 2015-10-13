@@ -1,6 +1,6 @@
 # SE
 
-from vlabs.isad.models import *
+from .models import *
 from django.core.context_processors import request
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
@@ -16,8 +16,8 @@ from recaptcha.client import captcha
 import pygraphviz as pgv
 import time
 
-import vlabs.isad.teacher as teacher
-import vlabs.isad.graph_comparison as gc
+from . import teacher
+from . import graph_comparison as gc
 import globals
 import diagrams
 

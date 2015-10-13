@@ -1,9 +1,10 @@
 {% extends 'base2.html' %}
 
+{% load staticfiles %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<link href="{{ MEDIA_URL }}css/simulation.css" rel="stylesheet" type="text/css">
+<link href="{% static 'isad/css/simulation.css' %}" rel="stylesheet" type="text/css">
 &nbsp;
 
 <!-- Fix the positioning of div tags for IE and Firefox -->
@@ -67,9 +68,9 @@ padding: 0;
     <div id="simulation" class="simulation-video">
         {% if simulation.type == 'flash' %}
 	<object
-	type="application/x-shockwave-flash" data="{{ MEDIA_URL }}video/simulations/{{ object_id }}/{{ simulation.video_url }}" 
+	type="application/x-shockwave-flash" data="{% static 'isad/video/simulations/' %}{{ object_id }}/{{ simulation.video_url }}" 
 	width="510" height="415">
-            <param name="movie" value="{{ MEDIA_URL }}video/simulations/{{ object_id }}/{{ simulation.video_url }}">
+            <param name="movie" value="{% static 'isad/video/simulations/' %}{{ object_id }}/{{ simulation.video_url }}">
             <param name="quality" value="high">
             <param name="play" value="true">
             <param name="loop" value="true">

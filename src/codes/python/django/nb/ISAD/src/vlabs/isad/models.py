@@ -107,7 +107,7 @@ class Book(models.Model):
 
 class Reference(models.Model):
     theory	= models.ForeignKey(Theory)
-    url         = models.URLField(verify_exists=False, null=True, blank=True)
+    url         = models.URLField(null=True, blank=True)
     url_desc    = models.TextField(null=True, blank=True)
     book        = models.ForeignKey(Book, null=True, blank=True)
 

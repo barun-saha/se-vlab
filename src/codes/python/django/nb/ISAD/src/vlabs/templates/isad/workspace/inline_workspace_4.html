@@ -1,4 +1,5 @@
-<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+{% load staticfiles %}
+<link href="{% static 'isad/css/isad_workspace.css' %}" rel="stylesheet" type="text/css">
 
 <style type="text/css">
     .primaryKey {
@@ -35,7 +36,7 @@
                 <td>
                     <!-- <input type="button" value="Add" id='btnAddEntity'/> -->
                     <button  type="button" id="btnAddEntity">
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}"
                              class="button-image buttonAddImage" />
                         <span class="button-text">Add</span>
                     </button>
@@ -72,7 +73,7 @@
                 </td>
                 <td>
                     <button type="button" id='btnAddAttribute'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}"
                              class="button-image buttonAddImage" />
                         <span class="button-text">Add</span>
                     </button>
@@ -118,7 +119,7 @@
                 <td>
                     <!-- <input type="button" value="Add" id='btnAddRelation'/>//14th change -->
                     <button type="button" id='btnAddRelation'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}"
                              class="button-image buttonAddImage" />
                         <span class="button-text">Add</span>
                     </button>

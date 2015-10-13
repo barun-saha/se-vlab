@@ -4,17 +4,19 @@
 <head>
     <title>Software Engineering Virtual Labs - IIT Kharagpur</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="Virtual Lab, VLabs, Software Engineering, UML, WireIt, Use case diagrams, Python">
-    <link rel="shortcut icon" type="image/png" href="/isad/v_media/images/folder_labs_32.png">
+    <meta name="keywords" content="Virtual Lab, VLabs, Software Engineering, UML, Use case diagrams, Django">
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'isad/images/folder_labs_32.png' %}">
 
-    <link href="{{ MEDIA_URL }}css/isad.css" rel="stylesheet" type="text/css" />
-    <link href="{{ MEDIA_URL }}css/default.css" rel="stylesheet" type="text/css" />
-    <link href="{{ MEDIA_URL }}css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'isad/css/isad.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'isad/css/default.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'isad/css/custom.css' %}" rel="stylesheet" type="text/css" />
 
-    <script async type="text/javascript" src="{{ MEDIA_URL }}ddtabmenufiles/ddtabmenu.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}ddtabmenufiles/glowtabs.css" />
+    <script async type="text/javascript" src="{% static 'isad/ddtabmenufiles/ddtabmenu.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'isad/ddtabmenufiles/glowtabs.css' %}" />
 
-    <script async type="text/javascript" src="{{ MEDIA_URL }}lib/SyntaxHighlighter/scripts/shCore.js"></script>
+    <script async type="text/javascript" src="{% static 'isad/lib/SyntaxHighlighter/scripts/shCore.js' %}">
+    </script>
 
     <!--[if IE]>
     <style type="text/css">
@@ -26,7 +28,7 @@
         float: left;
         width: 90%;
         line-height: normal;
-        border-bottom: 2px solid #7e9fff; /*Add border strip to bottom of menu*/
+        border-bottom: 2px solid #7e9fff; 
         margin-bottom: 5px;
     }
     </style>
@@ -44,18 +46,18 @@
 
 </head>
 
-<body bgcolor="#FFFFFF" style="">
+<body bgcolor="#FFFFFF">
 
 <div id="header_main">
-    <img src="{{ MEDIA_URL }}images/iit_kgp_80.png" align="right" class="iitLogo" />
+    <img src="{% static 'isad/images/iit_kgp_80.png' %}" align="right" class="iitLogo" />
 </div>
 <div id="no_print"></div>
 
 <!-- Header -->
 <div id="header">
     <ul id="menuTop">
-        <li><a href="/isad/" target="_self" title="Visit the home page of Software Engineering Virtual Lab">Home</a></li>
-        <li><a href="/isad/about_us/" target="_self" title="Know about the great minds behind Software Engineering Virtual Lab">Credits</a></li>
+        <li><a href="{% url 'index' %}" target="_self" title="Visit the home page of Software Engineering Virtual Lab">Home</a></li>
+        <li><a href="{% url 'about_us' %}" target="_self" title="Know about the great minds behind Software Engineering Virtual Lab">Credits</a></li>
 
         <li><a href="http://virtual-labs.ac.in/feedback/" target="_blank" title="Official feedback page for Software Engineering Virtual Lab">Feedback</a></li>
 	<li><a href="http://virtual-labs.ac.in/cse28/" title="Advanced Network Technologies Virtual Lab">Advanced Network Technolgoies Virtual Lab</a></li>
@@ -87,7 +89,7 @@
 
 <!-- Footer -->
 <div class="footer" style="position: relative; height: 90px;">
-	<img src="{{ MEDIA_URL }}images/new/footer-curve.jpg" width="1024" height="31" alt="">
+	<img src="{% static 'isad/images/new/footer-curve.jpg' %}" width="1024" height="31" alt="">
 
 
 	<a href="http://www.djangoproject.com/" style="border: 0px solid red; width: 120px; float: left; padding-left: 50px; padding-top: 15px;">
@@ -104,7 +106,7 @@
 				margin: 0px; margin-right: 5px; float: left; clear: right;" 
 				src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
 		</a>
-		Except where otherwise <a href="{% url license %}">noted</a>, 
+		Except where otherwise <a href="{% url 'license' %}">noted</a>, 
 		content on this site  is licensed under a <a rel="license" 
 		href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC-BY-NC-SA-3.0 
 		License</a>.
@@ -120,27 +122,17 @@
 		<a href="http://vlab.co.in/disclaimer.php" target="_blank" class="tos">Disclaimer</a>
 	</div>
 
-	<div class="copyright">Copyright &copy; 2010-2014 IIT Kharagpur</div>
+	<div class="copyright">Copyright &copy; 2010-2015 IIT Kharagpur</div>
 	</div>
 </div>
 
-<!--div class="footer">
-    <img src="{{ MEDIA_URL }}images/new/footer-curve.jpg" width="1024" height="31" alt="">
-    <div class="tos">
-        <a href="http://virtual-labs.ac.in/nmeict/" target="_blank" class="tos">Sponsored by MHRD (NME-ICT)</a>
-        <span class="tos">&nbsp; | &nbsp;</span>
-        <a href="http://virtual-labs.ac.in/licensing/" target="_blank" class="tos">Licensing Terms</a>
-    </div>
-    <div class="copyright">Copyright &copy; 2010-2013 IIT Kharagpur</div>
-    <br>
-</div-->
 
 <div  id="top_arrow" class="topArrow">
-    <img src="{{ MEDIA_URL }}images/arrow_up2.png" alt="Top"  align="right" />
+    <img src="{% static 'isad/images/arrow_up2.png' %}" alt="Top"  align="right" />
 </div>
 
-<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
-<script async type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
+<script type="text/javascript" src="{% static 'isad/js/jquery.min.js' %}"></script>
+<script async type="text/javascript" src="{% static 'isad/js/common.js' %}"></script>
 
 {% block includeScripts %} {% endblock %}
 

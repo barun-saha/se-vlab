@@ -1,11 +1,11 @@
 # SE
 
-from django.conf.urls.defaults import patterns
-from django.conf.urls.defaults import *
-from vlabs.isad.models import *
+from django.conf.urls import url, patterns
+#from models import *
 from django.conf import settings
+#from . import views
 
-urlpatterns = patterns('vlabs.isad.views',
+urlpatterns = patterns('isad.views',
     url(r'^$',                                  'index',         name='index'),
     url(r'^(?P<object_id>\d+)/$',               'introduction',        name='introduction'),
     url(r'^(?P<object_id>\d+)/theory/$',        'theory',        name='theory'),
@@ -27,13 +27,17 @@ urlpatterns = patterns('vlabs.isad.views',
     url(r'^answer_posted/(?P<theory_id>\d+)/(?P<ref_id>\d+)/$',    'answer_posted', name='answer_posted_successfully'),
 )
 
-urlpatterns += patterns('',
+#urlpatterns = [
+#    url(r'^$', views.index, name='index'),
+#]
+
+#urlpatterns += patterns('',
     #url(r'^comments/', include('django.contrib.comments.urls'),  name='comments'),
     #url(r'^(?P<object_id>\d+)/theory/load_comments/$', 'vlabs.isad.views.comments',  name='theory_comments'),
-)
+#)
 
 # Ajax based request URLs
-urlpatterns += patterns('vlabs.isad.views',
+urlpatterns += patterns('isad.views',
     url(r'^load_exercise/(?P<exercise_id>\d+)/$',    'get_exercise_problem'),
     url(r'^load_workspace/(?P<exercise_id>\d+)/(?P<object_id>\d+)/(?P<problem_id>\d+)/$',   'get_exercise_workspace'),
     url(r'^wireit/$',                               'wireit',),
@@ -58,24 +62,24 @@ urlpatterns += patterns('vlabs.isad.views',
     # (Rev #61: #4)
     url(r'experiments-list/$',                          'experiments_list'),    
 )
-
-# UML diagrams
-urlpatterns += patterns('vlabs.isad.diagrams',
-    # (Rev #18: #1)
-    url(r'class_diagram/$',                         'class_diagram'),
-    url(r'sequence_diagram/$',                      'sequence_diagram'),
-    # (Changes #27: #1)
-    url(r'^uml_dia/$',                              'plantuml_diagram'),
-    # (Rev #68: #1)
-    url(r'cfg/$',                                   'generate_cfg'),
-
-    url(r'^graphviz/$',                          'graphviz_diagram', name='graphviz',),
-)
-
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^v_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-        url(r'^xhr_test$',  'vlabs.isad.views.xhr_test'),
-        url(r'^ajax/$',     'vlabs.isad.views.ajax_test'),
-        url(r'^url_test/$',     'vlabs.isad.views.url_test'),
-    )
+#
+## UML diagrams
+#urlpatterns += patterns('vlabs.isad.diagrams',
+#    # (Rev #18: #1)
+#    url(r'class_diagram/$',                         'class_diagram'),
+#    url(r'sequence_diagram/$',                      'sequence_diagram'),
+#    # (Changes #27: #1)
+#    url(r'^uml_dia/$',                              'plantuml_diagram'),
+#    # (Rev #68: #1)
+#    url(r'cfg/$',                                   'generate_cfg'),
+#
+#    url(r'^graphviz/$',                          'graphviz_diagram', name='graphviz',),
+#)
+#
+#if settings.DEBUG:
+#    urlpatterns += patterns('',
+#        url(r'^v_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+#        url(r'^xhr_test$',  'vlabs.isad.views.xhr_test'),
+#        url(r'^ajax/$',     'vlabs.isad.views.ajax_test'),
+#        url(r'^url_test/$',     'vlabs.isad.views.url_test'),
+#   )

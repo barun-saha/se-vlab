@@ -1,0 +1,943 @@
+/*
+ * Image sources (GPL/CC):
+    http://www.oxygen-icons.org/
+    http://rrze-icon-set.berlios.de/index.html
+    http://yellowicon.com/
+    http://www.icon-king.com/
+    PDF file icon from: (Last accessed 29 April 2011; free for commercial use
+    http://www.smashingmagazine.com/2010/04/15/the-ultimate-free-web-designer-s-icon-set-750-icons-incl-psd-sources/
+ */
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #012943;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #454545;
+
+    /* Barun; 31-Oct-2010 */
+    margin: 0 auto;
+    text-align: center;
+    /*width: 100em; */
+}
+
+div#contentBoxBack {
+    text-align: justify;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    margin-top: 1px;
+    color: #8C0209;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    padding-right: 0;
+    text-align: left;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: #3F5C10;
+}
+
+a:hover {
+    border-bottom: none;
+}
+
+a:visited {
+    color: purple;
+}
+
+a img {
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+img.left {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+img.right {
+    float: right;
+    margin: 0 0 0 20px;
+    color: #FFF;
+}
+
+img#diagram, .diagram, .diagram-label {
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid #3399FF;
+    text-align: center;
+    vertical-align: middle;
+    display: block;
+}
+.diagram-label {
+    border: none;
+    margin-bottom: 10px;
+}
+
+
+center {
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+blockquote {
+    margin-left: 15px;
+    margin-right: 17px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-style: italic;
+    background-image: url(../images/quote.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-left: 20px;
+}
+
+#logo p {
+    display: block;
+    padding-top: 80px;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #FFFFFF;
+}
+
+#logo a {
+    border: none;
+    text-decoration: none;
+    color:#000000;
+}
+
+.light-shade {
+    background-image: url(../images/new/light_shade.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    border: 0;
+}
+
+.entry {
+    font-size: 13.4px;
+    padding-left: 0px;
+}
+.entry #contents {
+    font-family:Arial, Verdana, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+.entry thead {
+    font-size: 14px;
+}
+.entry tbody {
+    font-size: 12.5px;
+}
+.entry #contents p, h1, h2, h3, h4, h5 {
+    text-align: left;
+    padding: 5px;
+    padding-right: 5px;
+}
+.entry #contents p {
+    padding-right: 10px;
+    text-align: justify;
+    font-size: 1.1em;
+}
+.entry #contents li {
+    padding-right: 15px;
+    margin-left: 1em;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+div#simulator p {
+    text-align: left;
+    padding: 5px;
+    padding-right: 5px;
+}
+
+.entry #contents table {
+    /* Disable -- causing alignment problems
+    margin-right: 24%;
+    margin-left: 24%;
+    */
+    width: 50%;
+    /*
+    text-align: center;
+    */
+}
+.entry #contents table.exercises {
+    margin-left: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+ul, ol {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 2em;
+}
+ul li {
+    padding-left: 5px;    
+    list-style-position: outside;
+    list-style-type: disc;
+    text-align: left;
+}
+ol li {
+    padding-left: 5px;    
+    list-style-position: outside;
+    list-style-type: decimal;
+    text-align: left;    
+}
+ol#roman li {
+    margin-left: 1em;
+    list-style-position: outside;
+    text-align: left;
+    list-style-type: lower-roman;
+}
+
+.topSpacing {
+    position: absolute;
+    top: 100px;
+    margin-left: 0;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 5px;
+    padding-bottom: 5px;
+    padding-right: 1px;
+    overflow: auto;
+    float: right;
+    border: 0;
+}
+
+.exerciseProblem {
+    border: 0;
+    margin-left: 0%;
+    margin-bottom: 5px;
+    height: auto;
+    text-align: justify;
+    position: relative;
+}
+
+.problemStatement {
+    /*
+    float: left;
+    padding-left: 2px;
+
+    padding-bottom: 5px;
+    margin-bottom: 3px;
+
+    border-bottom: 1px dotted silver;
+
+    position: relative;
+    */
+    float: left; padding: 5px; text-align: justify;
+
+}
+.problemStatementWireIt {
+    float: left; padding: 5px; padding-left: 20px; padding-right: 25px; text-align: justify;
+}
+
+.workSpace {
+    margin-left: 37.5%;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: auto;
+    height: 110%;
+    border: 0;
+    border-left: 1px dotted silver;
+    margin-top: -0px;
+    text-align: justify;
+}
+
+.centerAlign {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.contentEquation {
+    font-family: Courier, monospace, "Courier New";
+    font-size: 16px;
+    font-style: oblique;
+    display: block;
+    text-align: center;
+}
+
+/* Tables for exercise */
+table.techno {
+    border:1px solid #3e83c9;
+    border-collapse: collapse;
+    font-family: arial,sans-serif;
+    font-size: 1.2em;
+    padding: 0px;
+    margin-left: 10px;
+}
+table.techno td {
+    text-align: center;
+    border: 1px solid #95bce2;
+    border-bottom: 1px solid #95bce2;
+    padding: 5px;
+}
+table.techno thead tr th {
+    background: #3e83c9;
+    border: 1px solid #95bce2;
+
+    color: #fff;
+    padding: 3px;
+}
+table.techno tbody th {
+    text-align: left;
+    background: #69c;
+}
+table.techno tbody tr.alt td {
+    background: #ecf6fc;
+    padding: 3px;
+}
+table.techno tbody tr {
+    background: #fff;
+}
+table.techno tr.alt:hover td, table.techno tr:hover td {
+    background: #bdd5ed;
+}
+
+/* Tables for presenting any data */
+table.data {
+    border: 1px solid silver;
+    border-collapse: collapse;
+    font-family: arial,sans-serif;
+    font-size: 1.2em;
+    padding: 0px;
+}
+table.data thead th {
+    background: #dedede;
+    border-bottom: 1px solid  #3e50ff;
+    padding: 3px;
+}
+table.data td {
+    border: 1px dotted #dedede;
+    padding: 1px;
+}
+
+.footer, .copyright, .tos {
+    margin:auto; width: 1024px;
+    background-color:#0e8de0;
+    font-size: 12px;
+    text-align: center;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #FFF;
+    line-height: 1.5em;
+}
+.copyright, .tos {
+    padding-top: 3px;
+    width: auto;
+}
+.copyright {
+    padding-top: 10px;
+}
+
+
+
+/* Self evaluation */
+div#choices {
+    padding: 5px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    color: black;
+    border-top: 1px dotted silver;
+}
+.option {
+    padding-top: 2px;
+    margin-left: 9px;
+    padding-left: 2px;
+    vertical-align: middle;
+    border: 0;
+    border-bottom: 1px dotted #dbdbdb;
+    width: 98%;
+    background-color: #FEFEFE;
+}
+.wrong {
+    color: red;
+}
+.correct {
+    background-color: #dcffdc;
+}
+.ansImage {
+    display: inline;
+    padding-left: 20px;
+    border: 0px;
+}
+.ansImageInvisible {
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+.ansImageVisible {
+    display: inline;
+    padding-left: 20px;
+    border: 0px;
+}
+.correctAns{
+    background: url(../images/accept.png) no-repeat right center;
+}
+.wrongAns {
+    background: url(../images/exclamation.gif) no-repeat right center;
+}
+
+#highlight {
+    background-color: #ffff99;
+}
+
+
+#contentBox {
+    padding: 0px;
+    padding-left: 50px;
+    padding-right: 40px;
+    width: auto;
+    height: auto;
+}
+
+#contentBoxBack {
+    background-repeat: repeat-y;
+    background-image:url(../images/new/content_bg.jpg);
+    position: relative;
+    margin: auto;
+    width: 1024px;
+    min-height:400px;
+}
+
+.problemId {
+    border: 0;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted silver;
+}
+
+.twoColContainer {
+    border: 0px dotted red;
+    width: 100%;
+}
+.twoColLeft {
+    float: left;
+    width: 40%;
+    border: 0;
+    padding-right: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.twoColRight {
+    float: right;
+    width: 58%;
+    padding: 5px;
+}
+.twoColTopRow {
+    border: 0;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted silver;
+}
+
+.homeTwoColContainer {
+    width: 60%;
+    display: inline;
+}
+.homeTwoColLeft {
+    float: left;
+    width: 80px;
+    border: 0;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 5px;
+    padding-left: 20px;
+}
+.homeTwoColRight {
+    float: left;
+    width: 500px;
+    padding: 5px;
+}
+
+.inline {
+    display: inline;
+}
+.rightAlign {
+    text-align: right;
+}
+
+.clear {
+    clear: both;
+    width: 100%;
+    border: 0;
+}
+
+.hidden {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+.visible {
+    height: auto;
+    width: auto;
+    visibility: visible;
+}
+
+#exp_list li a:hover {
+    color: #012943;
+    font-weight: bold;
+}
+
+.note {
+    background-image: url(../images/new/knotes_48.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-left: 50px;
+    font-style: normal;
+    text-transform: inherit;
+}
+
+.topArrow {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
+div.topArrow img {
+    border: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.iitLogo {
+    padding-right:25px;
+    padding-top: 5px;
+    float: right;
+}
+
+.comment-toggle {
+    display: block;
+}
+.comments-header {
+    margin-top: 20px;
+    padding-top: 5px;
+    border-top: 1px dotted silver;
+}
+.comment-error {
+    padding: 20px;
+    font-weight: bold;
+}
+.comment-waiting {
+    padding: 20px;
+}
+.comment-ajax-loader {
+    margin: 15px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+}
+.gravatar {
+    float: right;
+    border: 0px solid green;
+    margin-top: 5px;
+    margin-right: 5px;
+    padding-right: 5px;
+}
+.comment-list-item {
+    list-style: none;
+    background-color: #F5FDFF;
+    border-top: 1px solid #0E8DE0;
+    border-bottom: 1px solid silver;
+    width: auto;
+    margin-right: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 10px; display: block;
+    -moz-box-shadow: 3px 3px 5px #E0E0E0;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 3px 3px 5px #E0E0E0;
+    -khtml-box-shadow: 5px 5px 5px #E0E0E0;
+}
+.comment-number {
+    float: left; color: #012943; border: 0px solid green; margin-top: 5px; padding-right: 10px;
+}
+.comment-date {
+    border: 0px solid green;
+    padding: 0px;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    float: left;
+    background-image: url(../images/new/blue4_48x49.png);
+    background-repeat: no-repeat;
+}
+.comment-date-year {
+    text-align: center; color: white; font-weight: bold; line-height: 1;
+}
+.comment-date-month {
+    text-align: center; color: #012943;  line-height: 1; padding-top: 2px;
+}
+.comment-date-day {
+    text-align: center;
+}
+.comment-message-block {
+    border: 0px solid blue; padding: 10px; width: 456px; padding-left: 0px; margin-left: 80px;
+    display: block;
+}
+.comment-author {
+    font-weight: bold;
+    color: #012943;
+    padding-left: 6px;
+    padding-top: 5px;
+}
+.comment-message {
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 15px;
+    display: block;
+}
+.comment-permalink {
+    display: block; padding-right: 10px; padding-bottom: 1px; float: right; clear: left;
+}
+.comment-thanks {
+    padding: 5px;
+    padding-left: 55px;
+    padding-right: 15px;
+    font-weight: bold;
+}
+.commentPostLabel {
+    padding-left: 15px;
+    font-weight: bold;
+}
+.commentPostEntry {
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.button-text {
+    display: inline;
+    padding-left: 0px;
+}
+button > image {
+    display: inline;
+    vertical-align: middle;
+}
+.button-image {
+    display: inline;
+    vertical-align: middle;
+}
+.button-icon {
+    margin: 1px;
+    margin-top: 2px;
+    padding: 0px;
+    padding-right: 2px;
+    text-align: right;
+}
+button.button-icon img {
+    display: inline;
+    vertical-align: middle;
+}
+
+.dotted-line {
+    border: none;
+    border-top: 1px dotted silver;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 1px;
+}
+
+.experiment-objectives {
+    background-image: url(../images/new/stock_task_32x32.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+div.experiment-objectives ul li {
+    list-style-image: url(../images/new/icons/bullets/bullet_blue2_16x16.png);
+}
+.experiment-duration {
+    background-image: url(../images/new/hourglass_32x32.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+
+/* For forms */
+.form-header {
+    background-color: #E3F2FC;
+    border-bottom: 1px solid #3e83c9;
+    padding-left: 0;
+    margin-left: 0;
+    width: 98.5%;
+}
+.form-label {
+    color: #012943;
+    font-size: 1.1em;
+}
+h3.form-header-label {
+    color: #012943;
+    background-color: #E3F2FC;
+}
+.form-label-asterisk {
+    color: red;
+    font-weight: bold;
+}
+.formFieldWrapper {
+    text-align: left;
+    padding: 5px;
+    border-bottom: 1px dotted silver;
+    width: 97%;
+}
+.formFieldWrapper label {
+    vertical-align: middle;
+    right: 90%;
+}
+.form-footer {
+    padding-top: 5px;
+    border: 0;
+    width: 98.5%;
+}
+
+
+/* Exercise */
+div#exercise-problem p {
+    font-size: 1.1em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+form.self-evaluation-questions p{
+    font-size: 1.1em;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 96%;
+}
+
+.center-align {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-align-image {
+    display: block;
+}
+
+
+/* Different types of borders */
+.silver-dotted-1px-pad-10 {
+    border: 1px dotted silver;
+    padding: 10px;
+}
+.silver-dotted-1px {
+    border: 1px dotted silver;
+}
+.top-silver-dotted-1px {
+    border: 0;
+    border-top: 1px dotted silver;
+}
+.bottom-silver-dotted-1px {
+    border: 0;
+    border-bottom: 1px dotted silver;
+}
+
+.padding-5px {
+    padding: 5px;
+}
+
+
+.table-title-blue {
+    padding-bottom: 0;
+    margin-bottom: -5px;
+    color: #012943;
+    font-size: 1.2em;
+    padding-top: 20px;
+}
+
+.syntax {
+    background-color: #EEEEEE;
+    padding: 1px;
+}
+
+/* Case study */
+.case-study {
+}
+.case-number, .case-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.case-number {
+    color: #454545;
+}
+.case-title {
+    font-size: 1.3em;
+}
+.case-description {
+    background-color: #F6F6F6;
+    padding: 5px;
+    margin-right: 5px;
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}
+.case-analysis {
+    background-color: #F5F9FF;
+    border-top: 1px solid #a1ceef;
+    border-bottom: 1px solid #a1ceef;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.show-hide {
+    clear: left;
+    float: right;
+    display: inline;
+    text-align: right;
+    font-size: 0.9em;
+    color: #012943;
+}
+
+
+pre.code-message {
+    padding: 10px;
+    width: 820px;
+    white-space: pre-wrap;
+    border: 1px solid #AEBDCC;
+    background-color: #F9F9F9;
+}
+
+/* Rounded borders (not for IE6/7) */
+.rounded-border-shadow {
+    -moz-border-radius: 8px 8px 8px 8px;
+    -moz-box-shadow: 1px 2px 10px #E0E0E0;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -webkit-box-shadow: 1px 2px 10px #E0E0E0;
+    -khtml-box-shadow: 5px 5px 5px #E0E0E0;
+    -khtml-border-radius: 8px 8px 8px 8px;
+    box-shadow: 1px 2px 10px #E0E0E0;    /* For IE9 */
+    border: 1px solid #BFD2F4;
+    behavior: url(../css/border-radius.htc); /* For IE */
+}
+
+.bottom-shadow-5px {
+    border: 0;
+    -moz-box-shadow: 0px 5px 5px #E0E0E0;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 0px 5px 5px #E0E0E0;
+    -khtml-box-shadow: 0px 5px 5px #E0E0E0;
+}
+.bottom-shadow-1px {
+    border: 0;
+    -moz-box-shadow: 0px 1px 5px #E0E0E0;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 0px 1px 5px #E0E0E0;
+    -khtml-box-shadow: 0px 1px 5px #E0E0E0;
+}
+
+.permalink {
+    font-size: 0.85em;
+}
+a.permalink:hover {
+    color: #0E8DE0;
+    font-weight: bold;
+}
+
+
+/*.textbox-focus-border {*/
+.focus-box:focus {
+    border: 1px solid #FFAC30;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    padding: 2px;
+    behavior: url(../css/border-radius.htc); /* For IE */
+    box-shadow: 0 0 7px gold;
+    -moz-box-shadow: 0 0 7px gold;
+    -webkit-box-shadow: 0 0 7px gold;
+}
+
+
+/* Statechart diagrams -- inline add option */
+.add-item-inline {    
+    display: inline;        
+    vertical-align: middle;
+    text-align: center;
+}
+.add-item-inline:hover {           
+}
+
+
+div.drawing-area {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #3E83C9;
+    -moz-box-shadow: 0 0 5px #193551;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 0 0 5px #193551;
+    -khtml-box-shadow: 0 0 5px #193551;
+    box-shadow: 0 0 5px #193551;    /* For IE9 */
+}
+
+.icons-toolbar {
+    display: block;
+    padding: 0px;
+    padding-right: 3px;
+    margin: 0;    
+    float: right;
+    position: fixed; top: 45%; right: 5px; display: block;
+}
+.icons-toolbar img {
+    padding: 0;    
+}
+
+/* Different font sizes */
+.font-small { font-size: .8em; }
+.font-normal { font-size: 1.0em; }
+.font-medium { font-size: 1.2em; }
+.font-large { font-size: 1.4em; }
+.font-xtra-large { font-size: 1.6em; }
+
+.experiment-list-popup {
+    font-size: 1.05em;
+    padding: 5px;    
+    background-color: white;
+    border: 1px solid #3E83C9;
+    -moz-box-shadow: 0 0 5px #193551;   /* horizontal_offset vertical_offset blur_radius */
+    -webkit-box-shadow: 0 0 5px #193551;
+    -khtml-box-shadow: 0 0 5px #193551;
+    box-shadow: 0 0 5px #193551;    /* For IE9 */
+    width: 400px; height: 160px;
+    overflow: auto;
+    position: absolute;
+    z-index: 12345;
+}
+.experiment-list-popup li {
+    padding: 2px;
+}

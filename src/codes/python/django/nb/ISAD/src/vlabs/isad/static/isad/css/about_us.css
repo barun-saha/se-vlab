@@ -1,0 +1,14 @@
+.aboutUs {
+    padding-left: 10px;
+}
+p.aboutUsText {
+    margin-left: 25px;
+    font-size: 1.1em;
+}
+.creditsIcon {
+    background-position: left;
+    background-repeat: no-repeat;
+}
+.creditsHeader {
+    padding-left: 30px;
+}

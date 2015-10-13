@@ -9,5 +9,6 @@
 <div id="workspace_from_javascript"></div>
 
 <!-- Exercise specific JavaScript code -->
-<script type="text/javascript" language="javascript" src="{{ MEDIA_URL }}js/exercises/exercise_{{ object_id }}_{{ problem_id }}.js">
+{% load staticfiles %}
+<script type="text/javascript" language="javascript" src="{% static 'isad/js/exercises/exercise_{{ object_id }}_{{ problem_id }}.js' %}">
 </script>

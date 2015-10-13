@@ -1,6 +1,5 @@
-
 <form method="" action="">  
-
+    {% load staticfiles %}
     {% for item in entries %}
     <div id="question_{{ forloop.counter }}">
         <h2 id="q_{{ forloop.counter }}" style="padding-top: 8px;">{{ item.0 }}</h2>
@@ -8,7 +7,7 @@
             {% for question in item.1 %}
             <p id="option{{ forloop.parentloop.counter }}_{{ forloop.counter }}" class="option">
                 <input type="checkbox" name="q_{{ forloop.counter }}" value="{{ question.0 }}" /> {{ question.1 }} 
-                <img src="/cse08/isad/v_media/images/transparent_2x2.png" class="ansImageInvisible" style="display: inline; padding-left: 20px;" />
+                <img src="{% static 'isad/images/transparent_2x2.png' %}" class="ansImageInvisible" style="display: inline; padding-left: 20px;" />
             </p>
             {% endfor %}            
         </div>
@@ -71,7 +70,7 @@
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").removeClass("ansImage");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").removeClass("ansImageInvisible");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").addClass("ansImageVisible");
-                            $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("src", "/cse08/isad/v_media/images/accept.png");
+                            $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("src", "{% static 'isad/images/accept.png' %}");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("height", "16");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("width", "16");
                         }
@@ -81,7 +80,7 @@
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").removeClass("ansImage");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").removeClass("ansImageInvisible");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").addClass("ansImageVisible");
-                            $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("src", "/cse08/isad/v_media/images/exclamation.gif");
+                            $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("src", "{% static 'isad/images/exclamation.gif' %}");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("height", "16");
                             $("div#question_" + iQuestion + " p#option" + iQuestion + "_" + iOption + " img").attr("width", "16");
                         }

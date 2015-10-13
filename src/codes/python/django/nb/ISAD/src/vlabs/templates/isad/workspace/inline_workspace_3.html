@@ -1,4 +1,5 @@
-<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+{% load staticfiles %}
+<link href="{% static 'isad/css/isad_workspace.css' %}" rel="stylesheet" type="text/css">
 
 
 <form method=" " action=" " id=" ">
@@ -17,7 +18,7 @@
             <tr>
                 <td><input type="text" name="textActorName" id="textActor"/></td>
                 <td><button type="button" value="Add" id="btnActorAdd">
-                        <img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+                        <img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -41,7 +42,7 @@
             <tr>
                 <td><input type="text" name="textUCName" id="textUC"/></td>
                 <td><button type="button" value="Add" id="btnUCAdd">
-                        <img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+                        <img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -87,7 +88,7 @@
                 <td><input type="text" name="textLabelName" id="textLabelName"/></td>
 
                 <td style="width: 100px;"><button type="button" value="Add" id="btnRelationAdd">
-                        <img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+                        <img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -144,14 +145,14 @@
 
     <p style="margin-top: 30px; margin-bottom: 10px;">
         <button type="button" id='btnUseCaseDiagram'>
-            <img src="/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+            <img src="{% static 'isad/images/new/icons/preferences_desktop_color_24x24.png' %}"
                  class="button-image buttonAddImage" alt="Draw diagram" title="Draw diagram">
             <span class="button-image button-text"><strong>Draw</strong></span>
         </button>
     </p>
 
     <div style="margin-bottom: 5px; width: auto;" class="silver-dotted-1px-pad-10 uml-diagram-container">
-        <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" class="uml-diagram" alt="Use Case Diagram"
+        <img src="{% static 'isad/images/ajax/8_8_transparent.png' %}" class="uml-diagram" alt="Use Case Diagram"
              class="center-align center-align-image">
     </div>
     <p>&nbsp;</p>
@@ -159,10 +160,9 @@
 </form>
 
 
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery.min.js'></script>
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery-ui.min.js'></script>
-<script type="text/javascript" src="/isad/v_media/js/common.js"></script>
-<script type="text/javascript" src="/isad/v_media/js/exercises/draw_uml_diagram.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/center-plugin_1.0.1.js"></script>
-
-<script type="text/javascript" src="/isad/v_media/js/exercises/use_case_dia.js"></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery.min.js' %}"></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/js/common.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/js/exercises/draw_uml_diagram.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/lib/center-plugin_1.0.1.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/js/exercises/use_case_dia.js' %}"></script>
