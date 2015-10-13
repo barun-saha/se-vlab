@@ -35,6 +35,8 @@ sudo -E apt-get -y install libapache2-mod-wsgi
 sudo -E apt-get -y install --fix-missing
 sudo -E apt-get -y install gcc
 sudo -E apt-get -y install --fix-missing
+sudo -E apt-get -y install default-jre
+sudo -E apt-get -y install --fix-missing
 
 # Enable WSGIScriptAlias for Apache2
 sudo a2enmod wsgi
