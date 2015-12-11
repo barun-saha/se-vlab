@@ -33,3 +33,4 @@ sudo -E pip install django-ajaxcomments
 sudo -E pip install django-tinymce
 sudo -E pip install recaptcha-client
 sudo -E pip install PIL
+sudo -E pip install django-js-reverse

@@ -179,10 +179,12 @@ pip freeze | grep "$pkg" >/dev/null
 [[ $? -eq 0 ]] && success "$pkg found" || \
                   failure "$pkg was not found"
 
-cd "$SE_PATH"
-python manage.py runserver >/dev/null 2>&1
-[[ $? -eq 0 ]] && success "Django working" || \
-                  failure "Django not working"
+cd "$SE_PATH"  >/dev/null 2>&1 && success "Source code directory found" || \
+                 failure "Source code directory not found"
+
+python manage.py runserver >/dev/null 2>&1 && \
+                 success "Django app working" || \
+                 failure "Django app not working"
 
 # Display summary
 TOTAL=$(expr $NSUCCESS + $NFAILURE)
