@@ -23,6 +23,10 @@
 
 log 'Installing necessary Python packages'
 
+# Upgrade pip
+sudo -E pip install -U setuptools
+sudo -E pip install -U pip
+
 sudo -E pip install Django==1.8.4
 # Library loading issues with pygraphviz
 # https://github.com/pygraphviz/pygraphviz/issues/71
