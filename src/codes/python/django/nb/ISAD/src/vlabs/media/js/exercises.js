@@ -1,4 +1,4 @@
-var ajax_loading = "<img src='/cse08/isad/v_media/images/ajax/ajax_loader.gif' alt='Loading ...' \n\
+var ajax_loading = "<img src='/isad/v_media/images/ajax/ajax_loader.gif' alt='Loading ...' \n\
                      style='width: auto; height: auto; border: 0; margin: 0;\n\
                      padding-left: 44.5%; padding-right: 44.5%; padding-top: 25px; padding-bottom: 25px;' />";
 
@@ -16,7 +16,7 @@ var ajax_loading = "<img src='/cse08/isad/v_media/images/ajax/ajax_loader.gif' a
            if (eval(e_value) > 0) {
                $("#problem_statement").html(ajax_loading);
                $("#problem_statement").load(
-                    "/cse08/isad/isad/load_exercise/" + e_value + "/",
+                    "/isad/isad/load_exercise/" + e_value + "/",
                     "",
                     function(responseText, textStatus, XMLHttpRequest) {
                         if(textStatus == 'error') {
@@ -26,10 +26,10 @@ var ajax_loading = "<img src='/cse08/isad/v_media/images/ajax/ajax_loader.gif' a
                         $('#btnSubmit').attr('disabled', false);
 
                         // Order is: exercise_id/object_id/problem_id/
-                        var target_url = "/cse08/isad/isad/load_workspace/" + e_value + "/" + $("#hObjId").val() + "/" + e_text + "/";
+                        var target_url = "/isad/isad/load_workspace/" + e_value + "/" + $("#hObjId").val() + "/" + e_text + "/";
 
                         $(document.createElement('img'))
-                        .attr({'src': '/cse08/isad/v_media/images/ajax/ajax_loader.gif', 'alt': 'Loading ...'})
+                        .attr({'src': '/isad/v_media/images/ajax/ajax_loader.gif', 'alt': 'Loading ...'})
                         .css({'width': 'auto', 'height': 'auto', 'border': 0, 'margin': 0, 'padding-left': '44.5%', 'padding-right': '44.5%', 'padding-top': '25px', 'padding-bottom': '25px'})
                         .appendTo('#workspace');
 
@@ -95,7 +95,7 @@ var ajax_loading = "<img src='/cse08/isad/v_media/images/ajax/ajax_loader.gif' a
                 ""
             );
             */
-            var soln_url = "/cse08/isad/isad/show_solution/" + e_value + "/";
+            var soln_url = "/isad/isad/show_solution/" + e_value + "/";
             $('#view_solution').empty();
             $('#view_solution').append(
 		$(document.createElement('input'))

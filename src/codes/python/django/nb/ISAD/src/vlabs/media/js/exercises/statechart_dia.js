@@ -15,8 +15,8 @@ $(document).ready(function() {
 
         $('.editable').editable();
 
-        var removeImageURL = '/cse08/isad/v_media/images/remove16x16.png';
-        var editImageURL = '/cse08/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
+        var removeImageURL = '/isad/v_media/images/remove16x16.png';
+        var editImageURL = '/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
         var errorColor = '#FF6666';
 
         var edit_options = {
@@ -592,7 +592,7 @@ $(document).ready(function() {
                       result = $.parseJSON(mesg);
                       if (result['error']) {
                           alert('An error was encountered: ' + result['error']);
-                          $('img#uml-diagram').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
+                          $('img#uml-diagram').attr('src', '/isad/v_media/images/ajax/8_8_transparent.png');
                       }
                       else {
                           //alert(result['diagram_url']);
@@ -603,7 +603,7 @@ $(document).ready(function() {
                   },
                   error:      function(XmlHttpRequet, txtStatus, errorThrown) {
                       alert('Failed to draw the UML diagram!!!\n' + errorThrown);
-                      $('img#uml-diagram').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
+                      $('img#uml-diagram').attr('src', '/isad/v_media/images/ajax/8_8_transparent.png');
                   }
             });
 

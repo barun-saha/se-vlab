@@ -1,10 +1,10 @@
-var ajax_loading_image = '/cse08/isad/v_media/images/ajax/ajax_loader.gif';
+var ajax_loading_image = '/isad/v_media/images/ajax/ajax_loader.gif';
 
 function drawUmlDiagram(strUML) {
     $('img#uml-diagram, img.uml-diagram').attr('src', ajax_loading_image);
     $.ajax({
           type:     'POST',
-          url:      '/cse08/isad/isad/uml_dia/',
+          url:      '/isad/isad/uml_dia/',
           data:     { 'diagram': strUML },
           dataType: 'json',
           cache:    false,
@@ -15,7 +15,7 @@ function drawUmlDiagram(strUML) {
 		//alert(result)
               if (result['error']) {
                   alert('An error was encountered: ' + result['error']);
-                  $('img#uml-diagram, img.uml-diagram').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
+                  $('img#uml-diagram, img.uml-diagram').attr('src', '/isad/v_media/images/ajax/8_8_transparent.png');
               }
               else {
                   //alert(result['diagram_url']);
@@ -26,7 +26,7 @@ function drawUmlDiagram(strUML) {
           },
           error:      function(XmlHttpRequet, txtStatus, errorThrown) {
               alert('Failed to draw the UML diagram!!!\n' + errorThrown);
-              $('img#uml-diagram, img.uml-diagram').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
+              $('img#uml-diagram, img.uml-diagram').attr('src', '/isad/v_media/images/ajax/8_8_transparent.png');
           }
     });
 }

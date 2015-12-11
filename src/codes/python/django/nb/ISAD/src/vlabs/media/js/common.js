@@ -112,11 +112,11 @@ $(document).ready(function() {
 });
 
 
-SyntaxHighlighter.config.clipboardSwf = '/cse08/isad/v_media/lib/wireit/res/SyntaxHighlighter/clipboard.swf';
+SyntaxHighlighter.config.clipboardSwf = '/isad/v_media/lib/wireit/res/SyntaxHighlighter/clipboard.swf';
 SyntaxHighlighter.all();
 
-var ajax_loading_image = '/cse08/isad/v_media/images/ajax/ajax_loader.gif';
-var ajax_loading = "<img src='/cse08/isad/v_media/images/ajax/ajax_loader.gif' alt='Loading ...' \n\
+var ajax_loading_image = '/isad/v_media/images/ajax/ajax_loader.gif';
+var ajax_loading = "<img src='/isad/v_media/images/ajax/ajax_loader.gif' alt='Loading ...' \n\
                      style='width: auto; height: auto; border: 0; margin: 0;\n\
                      padding-left: 44.5%; padding-right: 44.5%; padding-top: 25px; padding-bottom: 25px;' />";
 
@@ -188,7 +188,3 @@ function multiple_workspaces(url, targetContainer) {
        }
     });
 }
-
-
-
-

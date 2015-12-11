@@ -1,4 +1,4 @@
-var media = '/cse08/isad/v_media/ajaxcomments';
+var media = '/isad/v_media/ajaxcomments';
 
 $(document).ready(function() {
     $('#btnCmntPost').click(function() {

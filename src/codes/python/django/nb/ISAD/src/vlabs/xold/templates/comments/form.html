@@ -1,0 +1,77 @@
+{% load comments %}
+
+<div class="comment-form">
+    <form action="{% comment_form_target %}" method="post">
+        {% csrf_token %}
+
+        <!--input type="hidden" name="next" value="{% url theory theory.id %}#theory_comments" /-->
+
+      {% for field in form %}
+
+        {% if field.is_hidden %}
+          {{ field }}
+        {% else %}
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+          <p>
+            <div class="commentPostLabel"
+            {% if field.errors %} class="error"{% endif %}
+            {% ifequal field.name "honeypot" %} style="display:none;" {% endifequal %}
+            {% ifequal field.name "url" %} style="display:none;" {% endifequal %} >
+
+              {{ field.label_tag }}*
+            </div>
+            <div class="commentPostEntry"
+            {% if field.errors %} class="error"{% endif %}
+            {% ifequal field.name "honeypot" %} style="display:none;" {% endifequal %}
+            {% ifequal field.name "url" %} style="display:none;" {% endifequal %} >
+
+            {{ field }}
+            </div>
+          </p>
+        {% endif %}
+
+      {% endfor %}
+
+      <!--p id="apologies">
+          Sorry for this, but we just want to make sure that you are a real human
+          being, and not a machine. <br>
+          Please type in <strong>exactly</strong> the <strong>two words</strong>
+          that you see below in the <strong>text box</strong> just below the images.
+      </p>
+
+      <div id="terminator">
+      </div-->
+
+        <button type="button" style="margin-left: 15px;" id="btnSubmit" class="button-icon">
+            <img src="/isad/v_media/images/new/icons/workspace/next24x24.png" class="button-run" />
+            <strong>Submit</strong>
+        </button>
+        &nbsp;
+        <button type="button" id="btnReset" class="button-icon button-reset-icon">
+            <img src="/isad/v_media/images/new/icons/workspace/edit_clear24x24_b.png" class="button-clear" />
+            Clear
+        </button>
+
+      <!--p class="submit">
+          <input type="submit" id="btnCmntPost" style="margin-left: 15px;" class="submit-post" value="Submit" />
+          <input type="reset" class="submit-reset" value="Clear" />
+      </p-->
+    </form>
+
+</div>
+
+<script type="text/javascript" src="{{ MEDIA_URL }}ajaxcomments/js/post-comment.js"></script>
+<script type="text/javascript" language="javascript" src="{{ MEDIA_URL }}js/comment.js"></script>
+
+<!--script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+<script type="text/javascript">
+    Recaptcha.create(
+        "6LftR8oSAAAAAOMSy23Ny7dpEdN7uZAIVpb4hXSP",
+        "terminator",
+        {
+          theme: "red"
+        }
+    );
+</script-->

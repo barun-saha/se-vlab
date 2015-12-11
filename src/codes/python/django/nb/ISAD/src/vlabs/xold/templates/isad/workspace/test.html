@@ -1,0 +1,264 @@
+<!-- Activity diagrams -->
+
+<style type="text/css">
+    table.techno {
+        margin-top: 10px;
+    }
+    table.techno tbody td li {
+        text-align: left;
+    }
+    table.techno tbody td input.pkCheck {
+        text-align: center;
+    }
+    .removeImage {
+        width: 16px;
+        height: 16px;
+        border: 0;
+        display: inline;
+        padding-left: 5px;
+    }
+    #uml-diagram {
+        margin-left: 15px;
+    }
+    .buttonAddImage {
+        display: inline;
+        vertical-align: middle;
+    }
+    .inputText{
+        width: 110px;
+    }
+    .editable:hover, .editableSelect:hover {
+        background-color: #aaaaaa;
+    }
+</style>
+
+
+<form method="" action="">
+    <!-- #1: Diagram components -->
+    <h3 class="table-title-blue">Table #1: Add components</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="tbl-add-component">
+        <thead>
+            <tr>
+                <th>Component Type</th>
+                <th>Description/Label</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td id="component-type">
+                    <select id="component-type-list" class="component-types">
+                        <option value="0" selected>Component type</option>
+                        <option value="activity">Activity</option>
+                        <option value="flow">Flow</option>
+                        <option value="decision">Decision</option>
+                        <option value="merge">Merge</option>
+                        <option value="fork">Fork</option>
+                        <option value="join">Join</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="component-name">
+                </td>
+                <td>
+                    <button  type="button" id="add-component" title="Add a component">
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                             class="button-image buttonAddImage" alt="Add">
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    Note: Please provide a description for every component (optional for decisions). This is required
+    to uniquely identify each component.
+
+    <!-- #2: Add notes -->
+    <h3 class="table-title-blue">Table #2: Add a note [optional]</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" style="width: auto;" id="tbl-add-note">
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Note</th>
+                <th>Position</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td id="component-list-container">
+                    <select id="component-list" class="all-components">
+                        <option value="0" selected>Component</option>
+                        <optgroup label="Activity">
+                        </optgroup>
+                        <optgroup label="Flow">
+                        </optgroup>
+                        <optgroup label="Fork">
+                        </optgroup>
+                        <optgroup label="Join">
+                        </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="note">
+                </td>
+                <td style="">
+                    <select id="note-position">
+                        <option value="0" selected>Select position</option>
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                        <option value="top">Top</option>
+                        <option value="bottom">Bottom</option>
+                    </select>
+                </td>
+                <td>
+                    <button  type="button" id="add-note" title="Attach a note">
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                             class="button-image buttonAddImage" alt="Add">
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- #4: List of states -->
+    <!--h3 class="table-title-blue">Table #4: List of system states</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="tbl-state-details" style="width: auto;">
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>Activites</th>
+                <th>Note</th>
+                <th>Position</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table-->
+
+    <!-- #3: Transitions -->
+    <h3 class="table-title-blue">Table #3: Define workflow</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="tbl-add-transition" style="width: auto;">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th></th>
+                <th>Guard Condition</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <select id="from-component" class="all-components">
+                        <option value="0" selected>Current component</option>
+                        <option value="initial">Initial node</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="to-component" class="all-components">
+                        <option value="0" selected>Next component</option>
+                        <option value="final">Final node</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="transition-guard-condition">
+                </td>
+                <td>
+                    <button type="button" id='add-transition' title="Add a state transition">
+                        <img src="/isad/v_media/images/new/icons/add_16x16.png"
+                             class="button-image buttonAddImage" alt="Add">
+                        <span class="button-text">Add</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- #6: List of transitions -->
+    <h3 class="table-title-blue">Table #6: List of state transitions</h3>
+    <table class="techno exercises" cellpadding="0" cellspacing="0" id="tbl-state-transitions">
+        <thead>
+            <tr>
+                <th>Current State</th>
+                <th>Event</th>
+                <th>Guard Condition</th>
+                <th>Action</th>
+                <th>Next State</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 30px; margin-bottom: 10px;">
+        <button type="button" id='draw-diagram'>
+            <img src="/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+                 class="button-image buttonAddImage" alt="Draw diagram">
+            <span class="button-image button-text"><strong>Draw</strong></span>
+        </button>
+    </p>
+</form>
+
+<div style="margin-bottom: 5px; " class="silver-dotted-1px-pad-10" id="uml-diagram-container">
+    <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" id="uml-diagram" alt="Statechart Diagram"
+         class="center-align center-align-image">
+</div>
+<p>&nbsp;</p>
+
+
+
+<script type='text/javascript' src='/isad/v_media/js/jquery.min.js'></script>
+<script type='text/javascript' src='/isad/v_media/js/jquery-ui.min.js'></script>
+<script type='text/javascript' src='{{ MEDIA_URL }}lib/jquery.editable-1.3.3.min.js'></script>
+<!--script type="text/javascript" src="{{ MEDIA_URL }}js/exercises/exercise_06.js"></script-->
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('.editable').editable();
+
+        var removeImageURL = '{{ MEDIA_URL }}images/remove16x16.png';
+        var editImageURL = '{{ MEDIA_URL }}images/new/icons/workspace/pencil2_16x16.png';
+        var errorColor = '#FF6666';
+
+        var edit_options = {
+            'background-image': 'url('+editImageURL+')',
+            'background-position': 'right',
+            'background-repeat': 'no-repeat',
+            'padding-right': '20px'
+        };
+        var edit_out_options = {
+            'background-image': 'none',
+            'padding-right': '0'
+        };
+
+        $('.editable, .editablePosition').live('mouseover', function() {
+            $(this).css(edit_options);
+
+        });
+        $('.editable, .editablePosition').live('mouseout', function() {
+             $(this).css(edit_out_options);
+        });
+
+
+        function isValidInput(text) {
+            if (text.length == 0)
+                return false;
+
+            return true;
+        }
+
+    });
+
+</script>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    var removeImageURL = '/cse08/isad/v_media/images/remove16x16.png';
-    //var editImageURL = '/cse08/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
+    var removeImageURL = '/isad/v_media/images/remove16x16.png';
+    //var editImageURL = '/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
     var errorColor = '#FF6666';
 
     $( "#message-list" ).sortable({ placeholder: "ui-state-highlight" });
