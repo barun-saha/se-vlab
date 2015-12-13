@@ -16,7 +16,7 @@ install:
 	echo '*** Executing make install' >> $(LOG_FILE)
 	$(MAKE) init
 	$(MAKE) install_packages
-	$(MAKE) deploy
+	$(MAKE) init_db
 
 deploy:
 	echo '*** Executing make deploy' >> $(LOG_FILE)
@@ -37,10 +37,14 @@ deploy:
 	echo "Moving other configuration files" >> $(LOG_FILE)
 	cp -r conf/www /usr/local/
 
-init: repo bash
+init: repo bash deploy
 	echo "Executing make init" >> $(LOG_FILE)
 	bash ../scripts/configure.sh
 
+init_db:
+	echo "Executing make init_db" >> $(LOG_FILE)
+	bash ../scripts/init_database.sh
+	
 repo:
 	echo '' >> $(LOG_FILE)
 	echo $(TIMESTAMP) 'Host: ' $(SYSTEM) 'IP: ' $(IP_ADDRESS) >> $(LOG_FILE)

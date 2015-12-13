@@ -48,5 +48,5 @@ ln -s /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
 ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
 
 
-log '4. Invoking script for creating database'
-bash ../scripts/init_database.sh
+#log '4. Invoking script for creating database'
+#bash ../scripts/init_database.sh
