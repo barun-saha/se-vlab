@@ -41,11 +41,11 @@ chown -R www-data /var/vlabs
 #make deploy
 
 
-# Create symlinks
+# Create symlinks (force if already exists)
 log '3. Creating symlinks'
-ln -s /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
-ln -s /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
-ln -s /var/vlabs/ "$SE_PATH"/media/vlabs
+ln -sf /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
+ln -sf /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
+ln -sf /var/vlabs/ "$SE_PATH"/media/vlabs
 
 
 #log '4. Invoking script for creating database'
