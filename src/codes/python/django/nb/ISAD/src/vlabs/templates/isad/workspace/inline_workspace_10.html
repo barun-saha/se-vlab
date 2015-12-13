@@ -1,9 +1,10 @@
+{% load staticfiles %}
 <!--Required for jquery.sheet-->
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}lib/jquery.sheet/jquery.sheet.css">
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/jquery-ui.css">      
+<link rel="stylesheet" type="text/css" href="{% static 'isad/lib/jquery.sheet/jquery.sheet.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'isad/css/jquery-ui.css' %}">      
 <!--/Required-->
 
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/test_suite_design.css">      
+<link rel="stylesheet" type="text/css" href="{% static 'isad/css/test_suite_design.css' %}">      
 
 
 <h3 title="Code to be tested">Code</h3>
@@ -24,19 +25,19 @@
 <div id="custom-script"></div>
 
 
-<script type="text/javascript" src="/isad/v_media/js/jquery.min.js"></script>  
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/jquery.class.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/underscore-min.js"></script>
+<script type="text/javascript" src="{% static 'isad/js/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'isad/lib/jquery.class.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/lib/underscore-min.js' %}"></script>
 <!--Required for jquery.sheet-->               
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/jquery.sheet/jquery.sheet.js"></script>  
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/jquery.sheet/parser.js"></script>
+<script type="text/javascript" src="{% static 'isad/lib/jquery.sheet/jquery.sheet.js' %}"></script>  
+<script type="text/javascript" src="{% static 'isad/lib/jquery.sheet/parser.js' %}"></script>
 <!--/Required-->
 
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/TextArea_Resizer_1.0.4/jquery.textarearesizer.min.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/editarea_0_8_2/edit_area/edit_area_full.js"></script>
-<script type='text/javascript' src='{{ MEDIA_URL }}lib/jquery.editable-1.3.3.min.js'></script>
+<script type="text/javascript" src="{% static 'isad/lib/TextArea_Resizer_1.0.4/jquery.textarearesizer.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/lib/editarea_0_8_2/edit_area/edit_area_full.js' %}"></script>
+<script type='text/javascript' src="{% static 'isad/lib/jquery.editable-1.3.3.min.js' %}"></script>
 
     
-<script type="text/javascript" src="{{ MEDIA_URL }}js/exercises/test_suite_design.js">
+<script type="text/javascript" src="{% static 'isad/js/exercises/test_suite_design.js' %}">
 </script>
 

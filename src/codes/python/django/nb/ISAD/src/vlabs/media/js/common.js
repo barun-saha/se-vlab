@@ -1,3 +1,12 @@
+// URL prefix for accessing static files
+var STATIC_URL = '/isad_static/';
+
+function get_static(url) {
+    var str = STATIC_URL;
+    str += url;
+    return str;
+}
+
 $(document).ready(function() {
     $('#top_arrow').mouseover(function() {
         $(this).css('cursor', 'pointer');
@@ -112,11 +121,13 @@ $(document).ready(function() {
 });
 
 
-SyntaxHighlighter.config.clipboardSwf = '/isad/v_media/lib/wireit/res/SyntaxHighlighter/clipboard.swf';
+SyntaxHighlighter.config.clipboardSwf = get_static('isad/lib/SyntaxHighlighter/clipboard.swf');
 SyntaxHighlighter.all();
 
-var ajax_loading_image = '/isad/v_media/images/ajax/ajax_loader.gif';
-var ajax_loading = "<img src='/isad/v_media/images/ajax/ajax_loader.gif' alt='Loading ...' \n\
+var ajax_loading_image = get_static('isad/images/ajax/ajax_loader.gif');
+var ajax_loading = "<img src='";
+ajax_loading += ajax_loading_image;
+ajax_loading += "' alt='Loading ...' \n\
                      style='width: auto; height: auto; border: 0; margin: 0;\n\
                      padding-left: 44.5%; padding-right: 44.5%; padding-top: 25px; padding-bottom: 25px;' />";
 

@@ -54,9 +54,9 @@
 <!--div id="divStoreGraphForServer" class="clear"></div-->
 <input type="hidden" id="hObjId" value="{{ object_id }}" />
 
-<script type="text/javascript" src="{% static 'isad/js/jquery.min.js' %}"></script>
+{% endblock %}
+
+
+{% block includeScripts %}
 <script type="text/javascript" src="{% static 'isad/js/exercises.js' %}"></script>
-<script type="text/javascript" src="{% static 'isad/lib/center-plugin_1.0.1.js' %}"></script>
-
-
 {% endblock %}

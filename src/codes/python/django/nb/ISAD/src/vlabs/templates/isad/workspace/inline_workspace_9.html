@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <style type="text/css">    
     .table-title-blue {
         font-size: 1.1em;
@@ -14,7 +15,7 @@
 
     <p style="margin-top: 20px; margin-bottom: 10px;">
         <button type="button" id="compile">
-            <img src="/cse08/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+            <img src="{% static 'isad/images/new/icons/preferences_desktop_color_24x24.png' %}"
                  class="button-image buttonAddImage" alt="Compile program">
             <span class="button-image button-text"><strong>Compile program</strong></span>
         </button>
@@ -28,15 +29,15 @@
     <pre id="basic-blocks"></pre>
 
     <h3 class="table-title-blue">Control Flow Graph of the program</h3>
-    <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" id="cfg" 
+    <img src="{% static 'isad/images/ajax/8_8_transparent.png' %}" id="cfg" 
         alt="Control Flow Graph" class="center-align center-align-image">
 </form>
 
 
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery.min.js'></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery.min.js' %}"></script>
 <!--script type='text/javascript' src='{{ MEDIA_URL }}js/jquery-ui.min.js'></script-->
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/TextArea_Resizer_1.0.4/jquery.textarearesizer.min.js"></script>
-<script type="text/javascript" src="{{ MEDIA_URL }}lib/editarea_0_8_2/edit_area/edit_area_full.js"></script>
+<script type="text/javascript" src="{% static 'isad/lib/TextArea_Resizer_1.0.4/jquery.textarearesizer.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/lib/editarea_0_8_2/edit_area/edit_area_full.js' %}"></script>
 
 <script type="text/javascript">
 
@@ -60,7 +61,7 @@ $(document).ready(function(){
     $('#compile').click(function() {
         $('#compilation-error').text('');
         $('#basic-blocks').text('');
-        $('img#cfg').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
+        $('img#cfg').attr('src', "{% static 'isad/images/ajax/8_8_transparent.png' %}");
         $.ajax({
             'type': 'POST',
             'url':  '/cse08/isad/isad/cfg/',

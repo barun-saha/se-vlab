@@ -1,4 +1,5 @@
-<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+{% load staticfiles %}
+<link href="{% static 'isad/css/isad_workspace.css' %}" rel="stylesheet" type="text/css">
 
 <form method=" " action=" " id=" ">
 
@@ -19,7 +20,7 @@
 
                 <td>                    
                     <button type="button" value="Add" id='btnAddClass'>
-                        <img src="{{ MEDIA_URL }}images/new/icons/add_16x16.png" class="buttonAddImage" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
                     </button> 
                 </td>
@@ -67,7 +68,7 @@
 
                 <td>
                     <button type="button" value="Add" id='btnAddAttribute'>
-                        <img src="{{ MEDIA_URL }}images/new/icons/add_16x16.png" class="buttonAddImage" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
                     </button> 
                 </td>
@@ -115,7 +116,7 @@
 
                 <td>                    
                     <button type="button" value="Add" id='btnAddOperation'>
-                        <img src="{{ MEDIA_URL }}images/new/icons/add_16x16.png" class="buttonAddImage" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
                     </button> 
                 </td>
@@ -154,7 +155,7 @@
 
             <td>
                 <button type="button" value="Add" id='btnAddInheritance'>
-                    <img src="{{ MEDIA_URL }}images/new/icons/add_16x16.png" class="buttonAddImage" />
+                    <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                     <span class="buttonText">Add</span>
                 </button> 
             </td>
@@ -239,7 +240,7 @@
 
                 <td>                    
                     <button type="button" value="Add" id='btnAddAssociation'>
-                        <img src="{{ MEDIA_URL }}images/new/icons/add_16x16.png" class="buttonAddImage" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
                     </button> 
                 </td>
@@ -303,14 +304,14 @@
 
 <p style="margin-top: 30px; margin-bottom: 10px;">
     <button type="button" id='btnClassDiagram'>
-        <img src="{{ MEDIA_URL }}images/new/icons/preferences_desktop_color_24x24.png"
+        <img src="{% static 'isad/images/new/icons/preferences_desktop_color_24x24.png' %}"
              class="button-image buttonAddImage" alt="Draw diagram" title="Draw diagram">
         <span class="button-image button-text"><strong>Draw</strong></span>
     </button>
 </p>
 
 <div style="margin-bottom: 5px; width: auto;" class="silver-dotted-1px-pad-10 uml-diagram-container">
-    <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" class="uml-diagram" alt="Class Diagram"
+    <img src="{% static 'isad/images/ajax/8_8_transparent.png' %}" class="uml-diagram" alt="Class Diagram"
          class="center-align center-align-image">
 </div>
 <p>&nbsp;</p>
@@ -318,8 +319,8 @@
 </form>
 
 
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery.min.js'></script>
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery-ui.min.js'></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery.min.js' %}"></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery-ui.min.js' %}"></script>
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -480,7 +481,7 @@
                     $('#selectSubClass').append($("<option>" + textClass + "</option>"));
                     $('#selectClass1ForAssociation').append($("<option>" + textClass + "</option>"));
                     $('#selectClass2ForAssociation').append($("<option>" + textClass + "</option>"));
-                    $(".tbodyClassInformation").append($("<tr><td>" + textClass + "<a class='removeClasses' href='#'><img src='{{ MEDIA_URL }}images/remove16x16.png' width='16' height='16' border='0' /></a></td><td><ul id='attributeOf" + textClass + "'></ul></td><td><ul id='operationOf" + textClass + "'></ul></td></tr>"));
+                    $(".tbodyClassInformation").append($("<tr><td>" + textClass + "<a class='removeClasses' href='#'><img src='{% static 'isad/images/remove16x16.png' %}' width='16' height='16' border='0' /></a></td><td><ul id='attributeOf" + textClass + "'></ul></td><td><ul id='operationOf" + textClass + "'></ul></td></tr>"));
                     $('html, body').animate({scrollTop: $('.tbodyClassInformation').offset().top}, 'fast');
                     //$('.tbodyClassInformation').effect("highlight", {color: errorColor}, 2500);
                 }
@@ -519,7 +520,7 @@
                 else if (!textAttribute.match(/^[a-zA-Z]+$/) ) 
 
                 {
-                    alert("Write Attribute name again , you are allowed to use  alphabates only");
+                    alert("Write Attribute name again , you are allowed to use  alphabets only");
                 }
                 else
                 {
@@ -544,7 +545,7 @@
                     {
 					
                         //$('#attributeOf' + textClassId).append($("<li>" + textAttribute + "<a class='removeAttribute' href='#'><img src='removepic.png' width='16' height='16' border='0' /></li>"));
-                        $('#attributeOf' + textClassId).append($("<li><a>" + textType + '  ' + "</a>" + textAttribute + "<a class='removeAttribute' href='#'><img src='{{ MEDIA_URL }}images/remove16x16.png' width='16' height='16' border='0' /></li>"));
+                        $('#attributeOf' + textClassId).append($("<li><a>" + textType + '  ' + "</a>" + textAttribute + "<a class='removeAttribute' href='#'><img src='{% static 'isad/images/remove16x16.png' %}' width='16' height='16' border='0' /></li>"));
                         //effect
                         $('html, body').animate({scrollTop: $('.tbodyClassInformation').offset().top}, 'fast');
                         /*$('#selectClassForAttribute').append($("<option>" + textClass + "</option>"));
@@ -560,7 +561,7 @@
                     //Give proper message for already inserted Nouns 
                     else
                     {
-                        alert("You have already enter that attribute under the Class");
+                        alert("You have already added that attribute under the Class");
                     }
 
 			 
@@ -619,7 +620,7 @@
                     if (alreadyExistOperation == 0)
                     {
                         returnType = returnType + ' ';
-                        $('#operationOf' + textClassId).append($("<li>" + returnType + textOperation + "<a class='removeOperation' href='#'><img src='{{ MEDIA_URL }}images/remove16x16.png' width='16' height='16' border='0' /></li>"));
+                        $('#operationOf' + textClassId).append($("<li>" + returnType + textOperation + "<a class='removeOperation' href='#'><img src='{% static 'isad/images/remove16x16.png' %}' width='16' height='16' border='0' /></li>"));
                         //effect
                         $('html, body').animate({scrollTop: $('.tbodyClassInformation').offset().top}, 'fast');
 
@@ -635,7 +636,7 @@
                     //Give proper message for already inserted operations 
                     else
                     {
-                        alert("You have already enter that function under the Class");
+                        alert("You have already added that function under the Class");
                     }
 
 			 
@@ -674,7 +675,7 @@
                     });
                     if (alreadyExist == 0)
                     {
-                        $('.tbodyInheritance').append($("<tr><td>" + textSubClass + "<a class='removeSubClasses' href='#'><img src='{{ MEDIA_URL }}images/remove16x16.png' width='16' height='16' border='0' /></a></td><td><ul id='superClassOf" + textSubClass + "'></ul></td></tr>"));
+                        $('.tbodyInheritance').append($("<tr><td>" + textSubClass + "<a class='removeSubClasses' href='#'><img src='{% static 'isad/images/remove16x16.png' %}' width='16' height='16' border='0' /></a></td><td><ul id='superClassOf" + textSubClass + "'></ul></td></tr>"));
                     }
                     var alreadyInherited = 0;
                     $('#superClassOf' + textSubClass + ' li').each(function(index) {
@@ -686,7 +687,7 @@
                     });
                     if (alreadyInherited == 0)
                     {
-                        $('#superClassOf' + textSubClass).append($("<li>" + textSuperClass + "<a class='removeSuperClasses' href='#'><img src='{{ MEDIA_URL }}images/remove16x16.png' width='16' height='16' border='0' /></li>"));
+                        $('#superClassOf' + textSubClass).append($("<li>" + textSuperClass + "<a class='removeSuperClasses' href='#'><img src='{% static 'isad/images/remove16x16.png' %}' width='16' height='16' border='0' /></li>"));
                         //effect
                         $('html, body').animate({scrollTop: $('.tbodyInheritance').offset().top}, 'fast');
                     }
@@ -718,7 +719,7 @@
             else {
 
 
-                $('#tbodyAssociation').append($("<tr><td>" + textClass1 + "<a class='removeRelation' href='#'><img src='{{ MEDIA_URL }}images/remove16x16.png' width='16' height='16' border='0' /></a></td><td>" + textRoleFirst + "</td><td>" + textMulFirst + "</td><td>" + textAssociationName + "</td><td>" + selectAssociationType + "</td><td>" + selectMultiplicityForClass2 + "</td><td>" + textRole2 + "</td><td>" + selectClass2ForAssociation + "</td></tr>"));
+                $('#tbodyAssociation').append($("<tr><td>" + textClass1 + "<a class='removeRelation' href='#'><img src='{% static 'isad/images/remove16x16.png' %}' width='16' height='16' border='0' /></a></td><td>" + textRoleFirst + "</td><td>" + textMulFirst + "</td><td>" + textAssociationName + "</td><td>" + selectAssociationType + "</td><td>" + selectMultiplicityForClass2 + "</td><td>" + textRole2 + "</td><td>" + selectClass2ForAssociation + "</td></tr>"));
 		
                 $('html, body').animate({scrollTop: $('#tbodyAssociation').offset().top}, 'fast');
             }
@@ -915,7 +916,7 @@
                     var result = $.parseJSON(mesg);
                     if (result['error']) {
                         alert('An error was encountered: ' + result['error']);
-                        $('img.uml-diagram').attr('src', '{{ MEDIA_URL }}images/ajax/8_8_transparent.png');                                
+                        $('img.uml-diagram').attr('src', "{% static 'isad/images/ajax/8_8_transparent.png' %}");                                
                     }
                     else {
                         //alert(result['diagram_url']);
@@ -926,7 +927,7 @@
                 },
                 error:      function(XmlHttpRequet, txtStatus, errorThrown) {
                     alert('Failed to draw the UML diagram!!!\n' + errorThrown);
-                    $('img.uml-diagram').attr('src', '{{ MEDIA_URL }}images/ajax/8_8_transparent.png');
+                    $('img.uml-diagram').attr('src', "{% static 'isad/images/ajax/8_8_transparent.png' %}");
                 },
                 dataType:   'html'
             });

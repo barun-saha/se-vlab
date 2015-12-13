@@ -1,7 +1,8 @@
 {% extends 'general.html' %}
 
+{% load staticfiles %}
 {% block icon %}
-    {{ MEDIA_URL }}images/new/icons/_packs/gpl/customized/500error.png
+    {% static 'isad/images/new/icons/_packs/gpl/customized/500error.png' %}
 {% endblock %}
 
 {% block heading %}
@@ -36,7 +37,7 @@
                 An error has occured while trying to access the resource <strong><em>{{ request_path }}</em></strong> in this server!
             </p>
             <p>
-                Please try again later. If the problem persists, report the issue to barun&lt;DOT&gt;saha04&lt;AT&gt;gmail&lt;DOT&gt;com
+                Please try again later. If the problem persists, report the issue to <a href="http://barunsaha.me">Barun Saha</a>.
             </p>
         </div>
     </div>

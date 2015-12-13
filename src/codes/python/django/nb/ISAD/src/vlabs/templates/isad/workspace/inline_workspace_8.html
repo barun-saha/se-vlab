@@ -1,4 +1,5 @@
-<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+{% load staticfiles %}
+<link href="{% static 'isad/css/isad_workspace.css' %}" rel="stylesheet" type="text/css">
 
 <form method=" " action=" " id=" ">
 
@@ -17,7 +18,7 @@
           <tr>
 			<td><input type="text" name="textEE" id="textExternalEntity"/></td>
 			<td><button type="button" value="Add" id="btnExternalEntityAdd">
-					<img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+					<img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
 					<span class="button-text">Add</span>
 				</button>
 			</td>			  
@@ -42,7 +43,7 @@
 				<td><input type="text" name="textPL" id="textProcessLevel"/></td>				
 				<td>
 				    <button type="button" value="Add" id="btnProcessAdd">
-						<img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+						<img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
 						<span class="button-text">Add</span>
 					</button>
 				</td>			  
@@ -65,7 +66,7 @@
 				<td><input type="text" name="textDS" id="textDataStore"/></td>				
 				<td>
 				    <button type="button" value="Add" id="btnDataStoreAdd">
-						<img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+						<img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
 						<span class="button-text">Add</span>
 					</button>
 				</td>			  
@@ -111,7 +112,7 @@
 			    </td>
 				<td><select id='selectTo'></select></td>
 				<td><button type="button" value="Add" id="btnDataFlowAdd">
-						<img class="button-image buttonAddImage" alt="" src="/isad/v_media/images/new/icons/add_16x16.png">
+						<img class="button-image buttonAddImage" alt="" src="{% static 'isad/images/new/icons/add_16x16.png' %}">
 						<span class="button-text">Add</span>
 					</button>
 				</td>					  
@@ -165,7 +166,7 @@
 </p>
 
 <div style="margin-bottom: 5px; " class="silver-dotted-1px-pad-10" id="uml-diagram-container">
-    <img src="{{ MEDIA_URL }}images/ajax/8_8_transparent.png" id="dfd_draw" alt="Data Flow Diagram"
+    <img src="{% static 'isad/images/ajax/8_8_transparent.png' %}" id="dfd_draw" alt="Data Flow Diagram"
          class="center-align center-align-image " />
 </div>
 
@@ -174,8 +175,8 @@
 
 
 
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery.min.js'></script>
-<script type='text/javascript' src='{{ MEDIA_URL }}js/jquery-ui.min.js'></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery.min.js' %}"></script>
+<script type='text/javascript' src="{% static 'isad/js/jquery-ui.min.js' %}"></script>
 
 <script type="text/javascript">
 
@@ -186,19 +187,19 @@ $(document).ready(function(){
         
     function addLevelFigure(LNo, FNo)
 	{
-		$('.tbody6').append($("<tr><td>" + LNo + "</td><td>" + FNo + "</td><td><a class='removeLandF' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></a></td></tr>"));
+		$('.tbody6').append($("<tr><td>" + LNo + "</td><td>" + FNo + "</td><td><a class='removeLandF' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></a></td></tr>"));
 	}
 	function addEdgeType1(tD, tP)
 	{
-		$('.tbody81').append($("<tr><td>" + tD + "</td><td>" + tP + "</td><td><a class='removeEdgeType1' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></a></td></tr>"));
+		$('.tbody81').append($("<tr><td>" + tD + "</td><td>" + tP + "</td><td><a class='removeEdgeType1' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></a></td></tr>"));
 	}
 	function addEdgeType3(tD, tP)
 	{
-		$('.tbody83').append($("<tr><td>" + tP + "</td><td>" + tD + "</td><td><a class='removeEdgeType3' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></a></td></tr>"));
+		$('.tbody83').append($("<tr><td>" + tP + "</td><td>" + tD + "</td><td><a class='removeEdgeType3' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></a></td></tr>"));
 	}
 	function addEdgeType2(tL, tD, tR)
 	{
-		$('.tbody82').append($("<tr><td>" + tL + "</td><td>" + tD + "</td><td>" + tR + "</td><td><a class='removeEdgeType2' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></a></td></tr>"));
+		$('.tbody82').append($("<tr><td>" + tL + "</td><td>" + tD + "</td><td>" + tR + "</td><td><a class='removeEdgeType2' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></a></td></tr>"));
 	}
 	/*
 	
@@ -472,7 +473,7 @@ $("a.removeP").live('click', function(event) {
 		        //alert(rowCount);
 		        if (rowCount != 0)
 		        {
-			        alert("You have already specify the level number and figure number for the DFD , if you want to make a change then first remove your previous inputs from Table #6");
+			        alert("You have already specified the level number and figure number for the DFD. If you want to make any change then first remove your previous inputs from Table #6");
 		        }else{
 		        var levelNo = $('#textLevelNo').val();
 		        var figNo = $('#textFigureNo').val();
@@ -484,7 +485,7 @@ $("a.removeP").live('click', function(event) {
 		         }
 		        else if (!levelNo.match(/^[0-9]+$/))
 		        {
-			        alert("Level of DFD will be an integer value only");
+			        alert("Level of DFD can be an integer value only");
 		        }
 		        else
 		        {
@@ -501,7 +502,7 @@ $("a.removeP").live('click', function(event) {
 			        }
 			        else if (!figNo.match(/^[0-9]+$/))
 			        {
-				        alert("Figure number of DFD will be an integer value only");
+				        alert("Figure number of DFD can be an integer value only");
 			        }
 			        else
 			        {
@@ -543,7 +544,7 @@ $('#btnExternalEntityAdd').click(function() {
 		else if (!textEE.match(/^[a-zA-Z ]+$/) ) 
 
 		 {
-				alert("Write name of external entity again! You are allowed to use  alphabets and white-space only.");
+				alert("Write name of external entity again! You are allowed to use alphabets and white-space only.");
 				$('#textExternalEntity').parent().effect("highlight", {color: errorColor}, 2500);	
 		 }
 		else
@@ -592,7 +593,7 @@ $('#btnExternalEntityAdd').click(function() {
 					*/
 					//<END BLOCK :  DEC 2012>
 					
-					$("#listEE").append($("<li>" + textEE + "<a class='removeEE' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></li>"));
+					$("#listEE").append($("<li>" + textEE + "<a class='removeEE' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></li>"));
 
 					//alert("Added successfully. You may check Table #7.");
 					//$('html, body').animate({scrollTop: $('.tbody7').offset().top}, 'fast');
@@ -603,15 +604,15 @@ $('#btnExternalEntityAdd').click(function() {
 				//Give proper message for already inserted actor 
 				else if(alreadyExistEE == 1)
 				{
-					alert("You have already enter that external entity");
+					alert("You have already added that external entity");
 				}
 				else if(alreadyExistEE == 2)
 				{
-					alert("You have already enter a data store by the same name");
+					alert("You have already added a data store by the same name");
 				}
 				else
 				{
-					alert("You have already enter a process by the same name");
+					alert("You have already added a process by the same name");
 				}
 
 			 
@@ -725,7 +726,7 @@ $('#btnProcessAdd').click(function() {
 					*/
 					//<END BLOCK :  DEC 2012>
 					
-					$("#listP").append($("<li>" + textPModified + "<a class='removeP' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></li>"));
+					$("#listP").append($("<li>" + textPModified + "<a class='removeP' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></li>"));
 
 					// alert("Added successfully. You may check Table #7.");
 					//$('html, body').animate({scrollTop: $('.tbody7').offset().top}, 'fast');
@@ -837,7 +838,7 @@ $('#btnDataStoreAdd').click(function() {
 					
 					//$('#selectRightActorOrUC').append($("<option class='classActor'>" + textActor + "</option>"));
 					
-					$("#listDS").append($("<li>" + textDS + "<a class='removeDS' href='#'><img src='/cse08/isad/v_media/images/new/icons/remove16x16.png' width='16' height='16' border='0' /></li>"));
+					$("#listDS").append($("<li>" + textDS + "<a class='removeDS' href='#'><img src='{% static 'isad/images/new/icons/remove16x16.png' %}' width='16' height='16' border='0' /></li>"));
 
 					//alert("Added successfully. You may check Table #7.");
 					//$('html, body').animate({scrollTop: $('.tbody7').offset().top}, 'fast');
@@ -1859,7 +1860,6 @@ $('#btnDFD').click(function() {
         $.ajax({
             type:    'POST' ,
             url:     '/cse08/isad/isad/graphviz/',
-            //url:     '{% url graphviz %}',
             data:    {
                 'graphString': drawDFD
             },

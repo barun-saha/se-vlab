@@ -1,7 +1,8 @@
-<link href="{{ MEDIA_URL }}css/isad_workspace.css" rel="stylesheet" type="text/css">
+{% load staticfiles %}
+<link href="{% static 'isad/css/isad_workspace.css' %}" rel="stylesheet" type="text/css">
 
 
-<script type="text/javascript" src="{{ MEDIA_URL}}js/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'isad/js/jquery.min.js' %}"></script>
 <script type="text/javascript">
 
 
@@ -171,7 +172,7 @@
                 {
 
                     $('.potentialObjects').append($("<li class='nounPotentialObjects' id='noun" + textNoun.replace(/ /g, '_') + "'><a class='checkPotentialObjects'><input type='checkbox' name='chk" + textNoun.replace(/ /g, '_') + "' id='check" + textNoun.replace(/ /g, '_') + "'/></a>" + textNoun +
-                        "<a class='removePotentialObjects'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+                        "<a class='removePotentialObjects'   ><img src='{% static 'isad/images/remove16x16.png' %}'   class='removeImage' /></a></li>"));
                 }
 
                 //Give proper message for already inserted Nouns
@@ -189,7 +190,7 @@
         }*/
             else
             {
-                alert("Read the problem statement carefully and then insert noun or noun phrase 'exactly same' as in the problem statement ");
+                alert("Read the problem statement carefully and then insert noun or noun phrase 'exactly same' as in the problem statement");
 
             }
 
@@ -285,7 +286,7 @@ $('#btnAddAdditionalClass').click(function() {
         if (alreadyExistNoun == 0)
         {
             //alert("its new");
-            $(".tbodyClassWithObjects").append($("<tr class='experienceBasedClasses'><td>" + txtClass + "<a class='removeDomainClass'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></td><td>" + "Experience Based" + "</td></tr>"));
+            $(".tbodyClassWithObjects").append($("<tr class='experienceBasedClasses'><td>" + txtClass + "<a class='removeDomainClass'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></td><td>" + "Experience Based" + "</td></tr>"));
 
         }
 
@@ -348,7 +349,7 @@ $('#btnAddInCategory').click(function() {
                         //alert("sdf");
                         $(".tbodyObjectCategory #" + recentCategory).append($("<li id='category" + temp.replace(/ /g, '_') + "'>" + temp +
 
-                            "<a class='removeCategorizedObjects'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+                            "<a class='removeCategorizedObjects'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>"));
                         $('#check' + temp.replace(/ /g, '_')).hide();
                         if (recentCategory != 'Redundant')
                         {
@@ -360,10 +361,10 @@ $('#btnAddInCategory').click(function() {
                     else
                     {
                         if(jQuery.inArray(temp,redundantClass) > -1) {
-                            alert("Is " + temp + " playing an important role to build solution space ? ");
+                            alert("Is " + temp + " playing an important role to build solution space?");
                         }
                         else{
-                            alert("You have Choose wrong Category for '" + temp + ", try again");
+                            alert("You have chosen wrong Category for '" + temp + ", try again");
                         }
                     }
 
@@ -375,7 +376,7 @@ $('#btnAddInCategory').click(function() {
                     if (recentCategory != "Redundant")
                     {
                         $(".tbodyObjectCategory #" + recentCategory).append($("<li id='category" + temp.replace(/ /g, '_') + "'>" + temp +
-                            "<a class='removeCategorizedObjects'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+                            "<a class='removeCategorizedObjects'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>"));
                         //$('#selectObjToAssignAttr').append($("<option id='selectObj" + temp + "'>" + temp + "</option>"));
                         $('#check' + temp.replace(/ /g, '_')).hide();
                         //$(document.getElementById(chktemp)).hide();
@@ -425,7 +426,7 @@ $('#btnAddAttributeToObject').click(function() {
         //In case, the class we want to add is not already exists.
         if (existsObject == 0)
         {
-            $(".tbodyObjectWithProperty").append($("<tr><td id='objInObjectPropertyTable" + textObject.replace(/ /g, '_') + "'>" + textObject + "<a class='removeObjectWithProperty'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></td><td><ul id='propertyForObject" + textObject.replace(/ /g, '_') + "'></ul></td></tr>"));
+            $(".tbodyObjectWithProperty").append($("<tr><td id='objInObjectPropertyTable" + textObject.replace(/ /g, '_') + "'>" + textObject + "<a class='removeObjectWithProperty'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></td><td><ul id='propertyForObject" + textObject.replace(/ /g, '_') + "'></ul></td></tr>"));
         }
 
         //Taking categorized objects as attributes of Top level classes
@@ -435,7 +436,7 @@ $('#btnAddAttributeToObject').click(function() {
             {
                 if (!$('#property' + textObject.replace(/ /g, '_') + temp1.replace(/ /g, '_')).length)
                 {
-                    $('#propertyForObject' + textObject.replace(/ /g, '_')).append($("<li id='property" + textObject.replace(/ /g, '_') + temp1.replace(/ /g, '_') + "'>" + temp1 + "<a class='removeProperty'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                    $('#propertyForObject' + textObject.replace(/ /g, '_')).append($("<li id='property" + textObject.replace(/ /g, '_') + temp1.replace(/ /g, '_') + "'>" + temp1 + "<a class='removeProperty'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>" ));
                     //$('#categoryCheck' + temp1).hide();
                 }
                 else
@@ -480,7 +481,7 @@ $('#btnAddExternalAttribute').click(function() {
         {
             var tmpid = txtExternalAttribute.replace(/ /g, '_');
             //alert(tmpid);
-            $(".preDefineAttributeList").append($("<li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_" + txtExternalAttribute.replace(/ /g, '_') + "'/></a>" + txtExternalAttribute + "<a class='removeAttributeFromList'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>"));
+            $(".preDefineAttributeList").append($("<li><a class='objAttributeList'><input type='checkbox' name='objAttributeCheck' id='checkAttributeForObj_" + txtExternalAttribute.replace(/ /g, '_') + "'/></a>" + txtExternalAttribute + "<a class='removeAttributeFromList'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>"));
 
             $(".attributeListForClass").append($("<li><a class='classAttributeList'><input type='checkbox' name='classAttributeCheck' id='checkAttributeForClass_" + txtExternalAttribute.replace(/ /g, '_') + "'/></a>" + txtExternalAttribute + "</li>"));
 
@@ -561,7 +562,7 @@ $('#btnAddClass').click(function() {
                     if (t == 0)
                     {alert("You have to select at least one attribute from the list");
                     }else{
-                        $(".tbodyForTopClasses").append($("<tr><td>" + textClass + "<a class='removeClasses'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></td><td><ul id='attributeFor" + textClass.replace(/ /g, '_') + "'></ul></td></tr>"));
+                        $(".tbodyForTopClasses").append($("<tr><td>" + textClass + "<a class='removeClasses'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></td><td><ul id='attributeFor" + textClass.replace(/ /g, '_') + "'></ul></td></tr>"));
                     }
                 }
 
@@ -574,7 +575,7 @@ $('#btnAddClass').click(function() {
                     {
                         if (!$('#attribute' + textClass.replace(/ /g, '_') + tempAttr.replace(/ /g, '_')).length)
                         {
-                            $('#attributeFor' + textClass.replace(/ /g, '_')).append($("<li id='attribute" + textClass.replace(/ /g, '_') + tempAttr.replace(/ /g, '_') + "'>" + tempAttr + "<a class='removeAttribute'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                            $('#attributeFor' + textClass.replace(/ /g, '_')).append($("<li id='attribute" + textClass.replace(/ /g, '_') + tempAttr.replace(/ /g, '_') + "'>" + tempAttr + "<a class='removeAttribute'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>" ));
                             //$('#categoryCheck' + temp1).hide();
 
                         }
@@ -678,7 +679,7 @@ $('#viewClassWithObjects').click(function() {
                     /*$('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
                         tempObject.replace(/ /g, '_') + "'>" + tempObject + "</li>" ));*/
                     $('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
-                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "<a class='removeObjectFromFinalClass'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "<a class='removeObjectFromFinalClass'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>" ));
                 }
                 else
                 {
@@ -686,7 +687,7 @@ $('#viewClassWithObjects').click(function() {
                         tempObject.replace(/ /g, '_') + "'>" + tempObject + "</li>" ));
 					*/
 						$('#objectForClass' + maxMatchClass.replace(/ /g, '_')).append($("<li id='objectOf" + maxMatchClass.replace(/ /g, '_') +
-                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "<a class='removeObjectFromFinalClass'   ><img src='{{ MEDIA_URL }}images/remove16x16.png' class='removeImage' /></a></li>" ));
+                        tempObject.replace(/ /g, '_') + "'>" + tempObject + "<a class='removeObjectFromFinalClass'   ><img src='{% static 'isad/images/remove16x16.png' %}' class='removeImage' /></a></li>" ));
                 }
             }
 
@@ -745,7 +746,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
                     <!-- <input type="button" value="Add" id='btnAddNoun'/> -->
                     <!-- change -->
                     <button type="button" id='btnAddNoun'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="button-image" />
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -782,7 +783,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
                 </td>
                 <td>
                     <button type="button" id='btnAddInCategory'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="button-image" />
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -846,7 +847,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
                 </td>
                 <td>
                     <button type="button" id='btnAddAttributeToObject'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="button-image" />
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -870,7 +871,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
 
                 <td>
                     <button type="button" id='btnAddExternalAttribute'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="button-image" />
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -920,7 +921,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
                 </td>
                 <td>
                     <button type="button" id='btnAddClass'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="button-image" />
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -955,7 +956,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
                 </td>
                 <td>
                     <button type="button" id='btnAddAdditionalClass'>
-                        <img src="/isad/v_media/images/new/icons/add_16x16.png" class="button-image" />
+                        <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="button-image" />
                         <span class="button-text">Add</span>
                     </button>
                 </td>
@@ -965,7 +966,7 @@ var finalString = entrySection + subGraphModule + remainderSection;
 
     <p style="padding-top: 20px; padding-bottom: 10px;">
         <button type="button" id='viewClassWithObjects' title="Generate top level classes">
-            <img src="/isad/v_media/images/new/icons/preferences_desktop_color_24x24.png"
+            <img src="{% static 'isad/images/new/icons/preferences_desktop_color_24x24.png' %}"
                  class="button-image buttonAddImage" />
             <span class="button-text"><strong>Top Level Classes</strong></span>
         </button>
@@ -985,6 +986,3 @@ var finalString = entrySection + subGraphModule + remainderSection;
 
     <p>&nbsp;</p>
 </form>
-
-
-
