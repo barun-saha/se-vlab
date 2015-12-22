@@ -31,7 +31,7 @@ sudo -E apt-get -y install libmysqlclient18 libmysqlclient-dev
 sudo -E apt-get -y install --fix-missing
 sudo -E apt-get -y install pkg-config
 sudo -E apt-get -y install debconf-utils
-sudo -E apt-get -y install libapache2-mod-wsgi
+sudo -E apt-get -y install apache2 libapache2-mod-wsgi
 sudo -E apt-get -y install --fix-missing
 sudo -E apt-get -y install gcc
 sudo -E apt-get -y install --fix-missing
