@@ -16,6 +16,7 @@
 
 source ../scripts/common.sh
 
+log ' 5. Invoking script for creating database'
 log '*** Executing init_database.sh'
 log $TIMESTAMP 'Host: ' $SYSTEM
 log 'Current directory is: ' $CURRENT_DIR
@@ -34,7 +35,7 @@ MAX_ATTEMPTS=5
 
 # If the root password file exists, read the root password
 # Otherwise, create the file
-log '5. Reading password for MySQL root user'
+log ' 6. Reading password for MySQL root user'
 
 if [[ -f "$ROOT_PASSWD_FILE" && -r "$ROOT_PASSWD_FILE" ]]
 then
@@ -46,7 +47,7 @@ else
 fi
 
 
-log '6. Reading password for MySQL user'
+log ' 7. Reading password for MySQL user'
 
 if [[ -f "$SE_USR_PASSWD_FILE" && -r "$SE_USR_PASSWD_FILE" ]]
 then
@@ -69,7 +70,7 @@ sudo -E apt-get -y install debconf debconf-utils
 # For purging debconf settings
 echo PURGE | debconf-communicate mysql-server
 
-log '7. Installing MySQL'
+log ' 8. Installing MySQL'
 sudo DEBIAN_FRONTEND=noninteractive apt-get remove --purge -y "^mysql.*"
 #sudo apt-get autoremove
 #sudo apt-get autoclean
@@ -109,7 +110,7 @@ Q3="FLUSH PRIVILEGES;"
 
 SQL="${Q1}${Q2}${Q3}"
 
-log '8. Creating database'
+log ' 9. Creating database'
 MYSQL=$(which mysql)
 log "mysql location is $MYSQL"
 $MYSQL --user=root --password=$ROOT_PASSWD --execute="$SQL"
@@ -123,7 +124,7 @@ log "Database $DB created."
 
 
 # Now initialize the databse with contents
-log '9. Restoring database dump'
+log '10. Restoring database dump'
 $MYSQL --user=root --password=$ROOT_PASSWD "$DB" < "$DUMP_FILE"
 
 if [[ $? -ne 0 ]]

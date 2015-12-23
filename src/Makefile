@@ -1,6 +1,6 @@
-HOME_PATH=/home/barun
-SE_PATH=$(HOME_PATH)/codes/python/django/nb/ISAD/src/vlabs
-LOG_FILE=cse08.log
+export HOME_PATH=/home/barun
+export SE_PATH=$(HOME_PATH)/codes/python/django/nb/ISAD/src/vlabs
+export LOG_FILE=cse08.log
 CURRENT_DIR=$(shell pwd)
 LS_CURRENT_DIR=$(shell ls)
 TIMESTAMP=$(shell date +'%F %T')
@@ -18,28 +18,12 @@ install:
 	$(MAKE) install_packages
 	$(MAKE) init_db
 
-deploy:
-	echo '*** Executing make deploy' >> $(LOG_FILE)
-	
-	echo "Moving codes to $(HOME_PATH)/codes" >> $(LOG_FILE)
-	mkdir -p $(HOME_PATH)/codes
-	cp -r codes/* $(HOME_PATH)/codes/
-	cp -r content $(HOME_PATH)/
-	
-	# Set ownership of files
-	chown -R barun:www-data $(HOME_PATH)/codes
-	# Apache needs write permission on vlabs/ to generate two files
-	chmod g+w $(SE_PATH)
-	
-	echo "Copying Apache configuration file" >> $(LOG_FILE)
-	cp conf/httpd.conf /etc/apache2/
-	
-	echo "Moving other configuration files" >> $(LOG_FILE)
-	cp -r conf/www /usr/local/
-
-init: repo bash deploy
+init: repo bash
 	echo "Executing make init" >> $(LOG_FILE)
 	bash ../scripts/configure.sh
+
+init_db:
+	bash ../scripts/init_database.sh
 
 repo:
 	echo '' >> $(LOG_FILE)

@@ -27,7 +27,8 @@ sudo -E apt-get -y install build-essential
 sudo -E apt-get -y install --fix-missing
 sudo -E apt-get -y install graphviz graphviz-dev
 sudo -E apt-get -y install --fix-missing
-sudo -E apt-get -y install libmysqlclient18 libmysqlclient-dev
+sudo -E apt-get -y install libmysqlclient18
+sudo -E apt-get -y install libmysqlclient-dev
 sudo -E apt-get -y install --fix-missing
 sudo -E apt-get -y install pkg-config
 sudo -E apt-get -y install debconf-utils

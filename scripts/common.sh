@@ -6,7 +6,6 @@
 # 18 March 2015, IIT Kharagpur
 #
 
-LOG_FILE=cse08.log
 CURRENT_DIR=$(pwd)
 TIMESTAMP=$(date +'%F %T')
 SYSTEM=$(hostname)
