@@ -27,6 +27,8 @@ sudo adduser $USER_ID sudo
 
 export HOME_PATH=/home/"$USER_ID"
 export SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
+APACHE_DEFAULT_FILE=/etc/apache2/sites-available/default
+APACHE_DEFAULT_SSL_FILE=/etc/apache2/sites-available/default-ssl
 
 
 # Directories where intermediate files would be created
@@ -48,16 +50,21 @@ chown -R barun:www-data "$HOME_PATH/codes"
 # Apache needs write permission on vlabs/ to generate two files
 chmod g+w "$SE_PATH"
 
-#echo "Copying Apache configuration file" >> $(LOG_FILE)
-#cp conf/httpd.conf /etc/apache2/
 
-#echo "Moving other configuration files" >> $(LOG_FILE)
-#cp -r conf/www /usr/local/
+# Copying Apache configuration files
+log ' 4. Copying Apache configuration file'
+echo '' > /etc/apache2/httpd.conf
 
+# Remove the default configuration files
+[ -f "$APACHE_DEFAULT_FILE" ] && rm "$APACHE_DEFAULT_FILE"
+[ -f "$APACHE_DEFAULT_SSL_FILE" ] && rm "$APACHE_DEFAULT_SSL_FILE"
+cp conf/default "$APACHE_DEFAULT_FILE"
+
+apache2ctl restart
 
 
 # Create symlinks (force if already exists)
-log ' 4. Creating symlinks'
+log ' 5. Creating symlinks'
 ln -sf /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
 ln -sf /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
 ln -sf /var/vlabs/ "$SE_PATH"/media/vlabs

@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+    ServerAdmin barun<DOT>saha04<AT>gmail<DOT>com
+
+    Alias /isad_static/ /home/barun/codes/python/django/nb/ISAD/src/vlabs/isad/static/
+
+    <Directory /home/barun/codes/python/django/nb/ISAD/src/vlabs/isad/static>
+        Allow from all
+    </Directory>
+
+    <Directory /home/barun/codes/python/django/nb/ISAD/src/vlabs/vlabs>
+        <Files wsgi.py>
+#            Require all granted
+            # http://stackoverflow.com/a/18747320/147021
+            Allow from all
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess vlab_isad python-path=/home/barun/codes/python/django/nb/ISAD/src/vlabs
+    WSGIProcessGroup vlab_isad
+    WSGIScriptAlias / /home/barun/codes/python/django/nb/ISAD/src/vlabs/vlabs/wsgi.py
+</VirtualHost>
