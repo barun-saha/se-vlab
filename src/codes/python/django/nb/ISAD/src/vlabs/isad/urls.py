@@ -38,13 +38,13 @@ urlpatterns = patterns('isad.views',
 
 # Ajax based request URLs
 urlpatterns += patterns('isad.views',
-    url(r'^load_exercise/(?P<exercise_id>\d+)/$',    'get_exercise_problem'),
-    url(r'^load_workspace/(?P<exercise_id>\d+)/(?P<object_id>\d+)/(?P<problem_id>\d+)/$',   'get_exercise_workspace'),
+    url(r'^load_exercise/(?P<exercise_id>\d+)/$',    'get_exercise_problem', name='get_exercise_problem'),
+    url(r'^load_workspace/(?P<exercise_id>\d+)/(?P<object_id>\d+)/(?P<problem_id>\d+)/$',   'get_exercise_workspace', name='get_exercise_workspace'),
     url(r'^wireit/$',                               'wireit',),
-    url(r'^answer/(?P<object_id>\d+)/(?P<exercise_id>\d+)/$',           'get_exercise_answer'),
-    url(r'^show_solution/(?P<exercise_id>\d+)/$',    'show_solution'),
+    url(r'^answer/(?P<object_id>\d+)/(?P<exercise_id>\d+)/$',           'get_exercise_answer', name='get_exercise_answer'),
+    url(r'^show_solution/(?P<exercise_id>\d+)/$',    'show_solution', name='show_solution'),
     # HTML based simulator
-    url(r'^(?P<object_id>\d+)/html_sim/$',          'html_simulator'),
+    url(r'^(?P<object_id>\d+)/html_sim/$',          'html_simulator', name='html_simulator'),
     # Rev #12: #8
     url(r'post_text_answer/(?P<exercise_id>\d+)/(?P<theory_id>\d+)/(?P<problem_id>\d+)/$',  'show_mentor'),
     url(r'hi_mentor/$',                             'show_mentor'),
@@ -52,30 +52,30 @@ urlpatterns += patterns('isad.views',
     url(r'post_uml/$',                             'test_uml'),
     #url(r'draw_uml/$',                             'draw_uml_diagram'),
     # (Rev #37: #5)
-    url(r'uml/statechart/$',                       'multiple_workspaces'),
-    url(r'uml/activity/$',                         'multiple_workspaces'),
+    url(r'uml/statechart/$',                       'multiple_workspaces', name='multiple_workspaces_statechart'),
+    url(r'uml/activity/$',                         'multiple_workspaces', name='multiple_workspaces_activity'),
     # (Rev #39: #1)
-    url(r'uml/class-dia/$',                       'multiple_workspaces'),
-    url(r'uml/sequence-dia/$',                         'multiple_workspaces'),
+    url(r'uml/class-dia/$',                       'multiple_workspaces', name='multiple_workspaces_class'),
+    url(r'uml/sequence-dia/$',                         'multiple_workspaces', name='multiple_workspaces_sequence'),
     # (Rev #41: #3)
     url(r'recaptchajaX/$',                          'verify_recaptcha'),
     # (Rev #61: #4)
-    url(r'experiments-list/$',                          'experiments_list'),    
+    url(r'experiments-list/$',                          'experiments_list', name='experiments_list'),    
 )
 #
-## UML diagrams
-#urlpatterns += patterns('vlabs.isad.diagrams',
-#    # (Rev #18: #1)
-#    url(r'class_diagram/$',                         'class_diagram'),
-#    url(r'sequence_diagram/$',                      'sequence_diagram'),
-#    # (Changes #27: #1)
-#    url(r'^uml_dia/$',                              'plantuml_diagram'),
-#    # (Rev #68: #1)
-#    url(r'cfg/$',                                   'generate_cfg'),
-#
-#    url(r'^graphviz/$',                          'graphviz_diagram', name='graphviz',),
-#)
-#
+# UML diagrams
+urlpatterns += patterns('isad.diagrams',
+    # (Rev #18: #1)
+    url(r'class_diagram/$',                         'class_diagram', name='class_diagram'),
+    url(r'sequence_diagram/$',                      'sequence_diagram', name='sequence_diagram'),
+    # (Changes #27: #1)
+    url(r'^uml_dia/$',                              'plantuml_diagram', name='uml_dia'),
+    # (Rev #68: #1)
+    url(r'cfg/$',                                   'generate_cfg', name='generate_cfg'),
+
+    url(r'^graphviz/$',                          'graphviz_diagram', name='graphviz'),
+)
+
 #if settings.DEBUG:
 #    urlpatterns += patterns('',
 #        url(r'^v_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
