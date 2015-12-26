@@ -6,7 +6,7 @@
  *
  * Created on: 18-Aug-2011
  *
- * Copyright (C) Barun Saha, 2011
+ * Copyright (C) Barun Saha, 2011-2015
  *
  * Licence: GNU GPL v2
  */
@@ -15,8 +15,8 @@ $(document).ready(function() {
 
         $('.editable').editable();
 
-        var removeImageURL = '/cse08/isad/v_media/images/remove16x16.png';
-        var editImageURL = '/cse08/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
+        var removeImageURL = get_static('isad/images/remove16x16.png');
+        var editImageURL = get_static('isad/images/new/icons/workspace/pencil2_16x16.png');
         var errorColor = '#FF6666';
 
         var edit_options = {
@@ -580,34 +580,5 @@ $(document).ready(function() {
             var strUML = START +  EOL + param + EOL + states + EOL + notes + EOL + transitions + END;
             //alert(strUML);
             drawUmlDiagram(strUML);
-
-            /*
-            $.ajax({
-                  type:     'POST',
-                  url:      '/isad/isad/uml_dia/',
-                  data:     { 'diagram': strUML },
-                  dataType: 'html',
-                  cache:    false,
-                  success:    function(mesg, txtStatus, XmlHttpRequest) {
-                      result = $.parseJSON(mesg);
-                      if (result['error']) {
-                          alert('An error was encountered: ' + result['error']);
-                          $('img#uml-diagram').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
-                      }
-                      else {
-                          //alert(result['diagram_url']);
-                          var timestamp = new Date().getTime();
-                          $('img#uml-diagram').attr('src', result['diagram_url']+'?ts='+timestamp)
-                          $('#uml-diagram-container').effect("highlight", {color: '#fcfca8'}, 2500);;
-                      }
-                  },
-                  error:      function(XmlHttpRequet, txtStatus, errorThrown) {
-                      alert('Failed to draw the UML diagram!!!\n' + errorThrown);
-                      $('img#uml-diagram').attr('src', '/cse08/isad/v_media/images/ajax/8_8_transparent.png');
-                  }
-            });
-
-        });
-        */
     });
 });

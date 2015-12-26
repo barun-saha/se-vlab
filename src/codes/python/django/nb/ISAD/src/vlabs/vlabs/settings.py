@@ -114,4 +114,4 @@ STATIC_URL = '/isad_static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static_media/')
 
 __ENV_PROD__ = True
-__ENV_PROD__ = False
+#__ENV_PROD__ = False

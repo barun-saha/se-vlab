@@ -17,8 +17,8 @@ $(document).ready(function() {
         
     $('.editable').editable();
         
-    var editImageURL = '/cse08/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
-    var removeImageURL = '/cse08/isad/v_media/images/remove16x16.png';
+    var editImageURL = get_static('isad/images/new/icons/workspace/pencil2_16x16.png');
+    var removeImageURL = get_static('isad/images/remove16x16.png');
         
     var edit_options = {
         'background-image': 'url('+editImageURL+')',
@@ -39,7 +39,7 @@ $(document).ready(function() {
         $(this).css(edit_out_options);
     });
 
-    SyntaxHighlighter.config.clipboardSwf = '/cse08/isad/v_media/lib/wireit/res/SyntaxHighlighter/clipboard.swf';
+    SyntaxHighlighter.config.clipboardSwf = get_static('isad/lib/SyntaxHighlighter/clipboard.swf');
     SyntaxHighlighter.all();
 
     var spreadsheet = '';
@@ -277,7 +277,7 @@ $(document).ready(function() {
                                
                         var spreadsheet = $('#' + 'tc-for-' + obj['id']).sheet({
                             //buildSheet: $.sheet.makeTable.json( tc_initial_contents ),
-                            urlGet: '/cse08/isad/v_media/static_html/test_case_template.html',
+                            urlGet: get_static('isad/static_html/test_case_template.html'),
                             autoAddCells: true,
                             editable: true,
                             autoFiller: true,

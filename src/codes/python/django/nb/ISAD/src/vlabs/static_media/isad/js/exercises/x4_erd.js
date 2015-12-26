@@ -2,7 +2,7 @@ $(document).ready(function(){
     var s1 = '';
     var entityArr = [];
     var entityAttrArr = [];
-    var removeImagePath = '/cse08/isad/v_media/images/remove16x16.png';
+    var removeImagePath = get_static('isad/images/remove16x16.png');
 
 
     $('a.removeAttribute').live('click', function(event) {
@@ -88,7 +88,7 @@ $(document).ready(function(){
 
                 if (alreadyExistsEntity == 1)
                 {
-                    alert("you have already enter that Entity");
+                    alert("You have already added that Entity");
                 }
                 else
                 {
@@ -112,7 +112,8 @@ $(document).ready(function(){
 
                     var re = '   REMOVE';
                     $('#showEntityTable .tbody1').append($("<tr id=" + textEntity + " class=" + wkClass + "> <td>" + textEntity +
-                        "<a class='removeEntity' href='#'><img src='/cse08/isad/v_media/images/remove16x16.png' class='removeImage' /></a></td> <td> <ul id=" + ulid + //9th change
+                        "<a class='removeEntity' href='#'><img src='" +
+                                                           get_static('isad/images/remove16x16.png') + "'  class='removeImage' /></a></td> <td> <ul id=" + ulid + //9th change
                         "> </ul> </td><td>" + weakOrStrongEntity + "</td></tr>"));
                 }
             }
@@ -131,7 +132,7 @@ $(document).ready(function(){
         if (!textAttribute.match(/^[a-zA-Z0-9_ -]+$/) )
 
         {
-            alert("give alphanumaric characters, blankspace hyphen underscore only");
+            alert("Use alphanumaric characters, blankspace hyphen underscore only");
         }
         else
         {
@@ -140,7 +141,7 @@ $(document).ready(function(){
 
             if (isBlank(textAttribute))
             {
-                alert("Write informations in adjacent feilds");
+                alert("Write informations in adjacent fields");
             }
             else
             {
@@ -217,7 +218,7 @@ $(document).ready(function(){
 
                     var Linktext = '   remove';
                     var newAttribute = $("<li class='" + pkClass + "'>" + textAttribute +
-                        "<a class='removeAttribute' href='#'><img src='/cse08/isad/v_media/images/remove16x16.png' class='removeImage' /></a></li>");
+                        "<a class='removeAttribute' href='#'><img src='" + get_static('isad/images/remove16x16.png') + "' class='removeImage' /></a></li>");
                     $("#showEntityTable .tbody1 #" + selected).append(newAttribute);
                 }
             }
@@ -248,7 +249,7 @@ $(document).ready(function(){
             //MAKE SHOW_RELATION_TABLE
             if (isBlank(textRelation))
             {
-                alert("Write informations in adjacent feilds");
+                alert("Write informations in adjacent fields");
             }
             else
             {
@@ -291,7 +292,7 @@ $(document).ready(function(){
                         $("#ent_1 option:selected").val() + "</td> <td>" + textRelation +
                         "</td> <td class=" + '_' + $("#ent_2 option:selected").val() + ">" +
                         $("#ent_2 option:selected").val() +
-                        "</td> <td class='relationConstraint'>" +$("#relation .relationConstraint option:selected").val() + "<td class='removeRelation' href='#'><img src='/cse08/isad/v_media/images/remove16x16.png' class='removeImage' /></td></tr>"));
+                        "</td> <td class='relationConstraint'>" +$("#relation .relationConstraint option:selected").val() + "<td class='removeRelation' href='#'><img src='" + get_static('isad/images/remove16x16.png') + "'  class='removeImage' /></td></tr>"));
 
 
                 }

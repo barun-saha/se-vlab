@@ -1,9 +1,9 @@
 <VirtualHost *:80>
     ServerAdmin barun<DOT>saha04<AT>gmail<DOT>com
 
-    Alias /isad_static/ /home/barun/codes/python/django/nb/ISAD/src/vlabs/isad/static/
+    Alias /isad_static/ /home/barun/codes/python/django/nb/ISAD/src/vlabs/static_media/
 
-    <Directory /home/barun/codes/python/django/nb/ISAD/src/vlabs/isad/static>
+    <Directory /home/barun/codes/python/django/nb/ISAD/src/vlabs/static_media>
         Allow from all
     </Directory>
 

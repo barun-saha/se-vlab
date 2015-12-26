@@ -6,7 +6,7 @@
 *
 * Created on: 18-Aug-2011
 *
-* Copyright (C) Barun Saha, 2011
+* Copyright (C) Barun Saha, 2011-2015
 *
 * Licence: GNU GPL v2
 */
@@ -16,8 +16,8 @@ $(document).ready(function() {
 
     $('.editable').editable();
 
-    var removeImageURL = '/cse08/isad/v_media/images/remove16x16.png';
-    var editImageURL = '/cse08/isad/v_media/images/new/icons/workspace/pencil2_16x16.png';
+    var removeImageURL = get_static('isad/images/remove16x16.png');
+    var editImageURL = get_static('isad/images/new/icons/workspace/pencil2_16x16.png');
     var errorColor = '#FF6666';
 
     var edit_options = {

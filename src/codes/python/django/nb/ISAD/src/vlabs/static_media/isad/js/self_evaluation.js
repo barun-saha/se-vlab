@@ -39,7 +39,7 @@ $(document).ready(function() {
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").removeClass("ansImage");
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").removeClass("ansImageInvisible");
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").addClass("ansImageVisible");
-                $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("src", "../images/exclamation.gif");
+                $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("src", get_static('isad/images/exclamation.gif'));
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("height", "16");
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("width", "16");
             }
@@ -48,7 +48,7 @@ $(document).ready(function() {
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").removeClass("ansImage");
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").removeClass("ansImageInvisible");
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").addClass("ansImageVisible");
-                $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("src", "../images/accept.png");
+                $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("src", get_static("isad/images/accept.png"));
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("height", "16");
                 $("div#question_" + i + " p#option" + i + "_" + answers[i] + " img").attr("width", "16");
                 ++ nCorrect;

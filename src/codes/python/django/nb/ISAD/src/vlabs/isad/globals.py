@@ -8,7 +8,8 @@ from django.conf import settings
 TOOL_TIP_PATTERN = r'<(h2|h3)>(?P<header>.*?)</\1>'
 
 # Path to the java executable (Sun JDK)
-JAVA_PATH = '/opt/jdk1.6.0_23/bin/java'
+#JAVA_PATH = '/opt/jdk1.6.0_23/bin/java'
+JAVA_PATH='/usr/bin/java'
 
 if settings.__ENV_PROD__:
     # ER diagram
@@ -52,5 +53,5 @@ else:
 SEQ_PIC_PATH = '/usr/local/lib/umlgraph-5.4/lib/sequence.pic'
 
 # Change #27: #1
-PLANT_UML_JAR = settings.MEDIA_ROOT + 'lib/jar/plantuml.jar'
+PLANT_UML_JAR = settings.STATIC_ROOT + 'isad/lib/jar/plantuml.jar'
 

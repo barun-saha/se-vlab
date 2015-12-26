@@ -8,7 +8,7 @@ $(document).ready(function(){
         var labelText = $('#textLabelName').val();
         //$('#dynamicMsgRow').remove();
         //alert(labelText);
-        $('.tbodyRelationList').append($("<tr><td>" + LeftActorOrUC + "</td><td>" + RelationTypeName + "</td><td>" + RightActorOrUC + "</td><td>" + labelText + "</td><td><a class='removeRelation' href='#'><img src='/cse08/isad/v_media/images/remove16x16.png' width='16' height='16' border='0' /></a></td></tr>"));
+        $('.tbodyRelationList').append($("<tr><td>" + LeftActorOrUC + "</td><td>" + RelationTypeName + "</td><td>" + RightActorOrUC + "</td><td>" + labelText + "</td><td><a class='removeRelation' href='#'><img src='" + get_static('isad/images/remove16x16.png') + "' width='16' height='16' border='0' /></a></td></tr>"));
 
         $('html, body').animate({
             scrollTop: $('.tbodyRelationList').offset().top
@@ -140,7 +140,7 @@ $(document).ready(function(){
                 $('#selectLeftActorOrUC').append($("<option class='classActor'>" + textActor + "</option>"));
                 $('#selectRightActorOrUC').append($("<option class='classActor'>" + textActor + "</option>"));
 					
-                $("#completeActorList").append($("<li>" + textActor + "<a class='removeActor' href='#'><img src='/cse08/isad/v_media/images/remove16x16.png' width='16' height='16' border='0' /></li>"));
+                $("#completeActorList").append($("<li>" + textActor + "<a class='removeActor' href='#'><img src='" + get_static('isad/images/remove16x16.png') + "' width='16' height='16' border='0' /></li>"));
                 $('html, body').animate({
                     scrollTop: $('.tbodyActorAndUCList').offset().top
                     }, 'fast');
@@ -211,7 +211,7 @@ $(document).ready(function(){
                 $('#selectLeftActorOrUC').append($("<option class='classUC'>" + textUC + "</option>"));
                 $('#selectRightActorOrUC').append($("<option class='classUC'>" + textUC + "</option>"));
 					
-                $("#completeUCList").append($("<li>" + textUC + "<a class='removeUC' href='#'><img src='/cse08/isad/v_media/images/remove16x16.png' width='16' height='16' border='0' /></li>"));
+                $("#completeUCList").append($("<li>" + textUC + "<a class='removeUC' href='#'><img src='" + get_static('isad/images/remove16x16.png') + "' width='16' height='16' border='0' /></li>"));
                 $('html, body').animate({
                     scrollTop: $('.tbodyActorAndUCList').offset().top
                     }, 'fast');
