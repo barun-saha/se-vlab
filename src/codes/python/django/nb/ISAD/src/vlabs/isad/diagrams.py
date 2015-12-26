@@ -88,7 +88,7 @@ def uml_diagram(request):
         else:
             output['diagram_url'] = ''.join((globals.UML_DIAGRAMS_ACCESS_PATH, '/', fname, '.png',))
 
-        return HttpResponse(json.dumps(output), mimetype="application/json")
+        return HttpResponse(json.dumps(output), content_type="application/json")
     else:
         return HttpResponse('/isad/v_media/images/ajax/8_8_transparent.png')
 
@@ -117,7 +117,7 @@ def class_diagram(request):
 #            print 'An IO error has occured!'
 #            print str(ioe)
             output['error'] = str(ioe)
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         finally:
             if src_file:
                 src_file.close()
@@ -141,11 +141,11 @@ def class_diagram(request):
             #print 'Sub process failed!'
             #print error
             output['error'] = ''.join('Sub process failed!', error,)
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         else:
             output['diagram_url'] = img_file_storage_path
             #print output
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
 
 # (Rev #18: #1)
 def sequence_diagram(request):
@@ -169,7 +169,7 @@ def sequence_diagram(request):
             #print 'An IO error has occured!'
             #print str(ioe)
             output['error'] = str(ioe)
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         finally:
             if src_file:
                 src_file.close()
@@ -186,7 +186,7 @@ def sequence_diagram(request):
             #print 'Failed to create diagram'
             #print str(ioe)
             output['error'] = ': '.join(('Failed to create diagram', str(ioe),))
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         finally:
             if img_file:
                 img_file.close()
@@ -195,10 +195,10 @@ def sequence_diagram(request):
             #print 'Sub process failed!'
             #print error
             output['error'] = ''.join(('Sub process failed!', error,))
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         else:
             output['diagram_url'] = img_file_storage_path
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
 
 
 # (Changes #27: #1)
@@ -228,12 +228,12 @@ def plantuml_diagram(request):
             #print 'Failed to create diagram'
             #print str(ioe)
             output['error'] = ': '.join(('Failed to create temp diagram file', str(ioe), 'Please report this back to us.',))
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         except Exception, err:
             #print 'Failed to create temp diagram file for some unknown reason'
             #print str(ioe)
             output['error'] = ': '.join(('Failed to create temp diagram file for some unknown reason', str(err), 'Please report this back to us.',))
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         finally:
             if src_file:
                 src_file.close()
@@ -256,7 +256,7 @@ def plantuml_diagram(request):
         except Exception, xcptn:
             output['error'] = ''.join(('Sub process failed!', str(xcptn), 'Please report this back to us.',))
 
-        return HttpResponse(json.dumps(output), mimetype="application/json")
+        return HttpResponse(json.dumps(output), content_type="application/json")
 
     else:
         return render_to_response(
@@ -302,7 +302,7 @@ def generate_cfg(request):
                 program_file.close()       
 
         if is_error:
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
             is_error = False
                         
         # 2. Compile the program
@@ -329,7 +329,7 @@ def generate_cfg(request):
             is_error = True
 
         if is_error:
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
 
         #print 'This is disgusting'                                
         
@@ -357,7 +357,7 @@ def generate_cfg(request):
                 cfg_file.close()    
 
         if is_error:
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
         
         # 4. Generate .ps file from the <session_id>*.vcg file
         ps_file_name = '%s.ps' % (request.session.session_key,)
@@ -385,7 +385,7 @@ def generate_cfg(request):
             is_error = True
 
         if is_error:
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
             
         # 5. Convert PS to PNG, and send back the URL
         png_file_name = '%s.png' % (request.session.session_key,)
@@ -410,7 +410,7 @@ def generate_cfg(request):
         #if is_error:
             #return HttpResponse(json.dumps(output))                                    
             
-    return HttpResponse(json.dumps(output), mimetype="application/json")
+    return HttpResponse(json.dumps(output), content_type="application/json")
 
 
 # 29 Dec 2012
@@ -449,4 +449,4 @@ def graphviz_diagram(request):
 	output['diagram'] = image_file_name
 	image_file_name = '/isad/v_media/images/ajax/8_8_transparent.png'
         
-    return HttpResponse(json.dumps(output), mimetype="application/json")
+    return HttpResponse(json.dumps(output), content_type="application/json")

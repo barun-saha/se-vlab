@@ -379,7 +379,7 @@ def get_exercise_workspace(request, exercise_id, object_id, problem_id=1):
         workspace = ew.workspace.code
 
     #workspace = { 'workspace': workspace, }
-    #return HttpResponse(json.dumps(workspace), mimetype="application/json")
+    #return HttpResponse(json.dumps(workspace), content_type="application/json")
     return HttpResponse(workspace)
 
 # An extremely simple, but very lengthy function
@@ -661,8 +661,8 @@ def get_er_diagram(request):
 
 	output['diagram_url'] = '/cse08/isad/v_media/images/ajax/8_8_transparent.png'
         if not graph_string:
-            #return HttpResponse('/cse08/isad/v_media/images/ajax/8_8_transparent.png', mimetype="application/json")
-            return HttpResponse(json.dumps(output), mimetype="application/json")
+            #return HttpResponse('/cse08/isad/v_media/images/ajax/8_8_transparent.png', content_type="application/json")
+            return HttpResponse(json.dumps(output), content_type="application/json")
 
         session_id = request.session.session_key
         fname = session_id # + str(time.time())
@@ -678,14 +678,14 @@ def get_er_diagram(request):
 #        f.write(os.getcwd())
 #        f.close()
 
-        #return HttpResponse('/cse08/isad/v_media/isad_erd/' + fname + '.png', mimetype="application/json")
+        #return HttpResponse('/cse08/isad/v_media/isad_erd/' + fname + '.png', content_type="application/json")
 	output['diagram_url'] = '/cse08/isad/v_media/isad_erd/' + fname + '.png'
 	#return HttpResponseRedirect(output['diagram_url'])
-    	return HttpResponse(json.dumps(output), mimetype="application/json")
+    	return HttpResponse(json.dumps(output), content_type="application/json")
     else:
-        #return HttpResponse('/cse08/isad/v_media/images/ajax/8_8_transparent.png', mimetype="application/json")
+        #return HttpResponse('/cse08/isad/v_media/images/ajax/8_8_transparent.png', content_type="application/json")
 	output['diagram_url'] = '/cse08/isad/v_media/images/ajax/8_8_transparent.png'
-    	return HttpResponse(json.dumps(output), mimetype="application/json")
+    	return HttpResponse(json.dumps(output), content_type="application/json")
 
 
 # (Rev #37: #5)
@@ -721,7 +721,7 @@ def multiple_workspaces(request):
     )
     #return html
     tabs = { 'tabs': html, }
-    return HttpResponse( json.dumps(tabs), mimetype="application/json" )
+    return HttpResponse( json.dumps(tabs), content_type="application/json" )
     
 
 # (Rev #41: #2)
