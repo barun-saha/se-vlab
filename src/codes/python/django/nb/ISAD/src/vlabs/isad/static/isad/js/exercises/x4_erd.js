@@ -589,10 +589,10 @@ $(document).ready(function(){
         var stringForERDiagram = sEntrySec + TotalNode + TotalGraph + sRemainderSec;
         //alert(stringForERDiagram);
 
-
+        setUpCsrf();
         $.ajax({
             type:    'POST' ,
-            url:     '/cse08/isad/isad/get_erd/',
+            url:     Urls.erd(),
             data:    {
                 'erd': stringForERDiagram
             },

@@ -11,6 +11,10 @@ secret.txt
 # App's media files
 src/codes/python/django/nb/ISAD/src/vlabs/isad/static
 
+# Skip symlinks
+src/codes/python/django/nb/ISAD/src/vlabs/static_media/isad_erd
+src/codes/python/django/nb/ISAD/src/vlabs/static_media/vlabs
+
 # Uploaded files -- should we exclude?
 media/uploads/*
 

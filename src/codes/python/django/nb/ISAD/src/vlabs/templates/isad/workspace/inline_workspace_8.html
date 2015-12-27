@@ -1856,10 +1856,10 @@ $('#btnDFD').click(function() {
 
 		drawDFD = initGraph + completeNodes + completeEdges + end;
 		//alert(drawDFD);
-
+        setUpCsrf();
         $.ajax({
             type:    'POST' ,
-            url:     '/cse08/isad/isad/graphviz/',
+            url:     Urls.graphviz(),
             data:    {
                 'graphString': drawDFD
             },

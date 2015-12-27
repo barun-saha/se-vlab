@@ -906,10 +906,10 @@
             //alert(totalClass);
             //$('#p1').append(totalClass);
             //alert($('#p1').text());
-            
+            setUpCsrf();
             $.ajax({
                 type:       'POST',
-                url:         '/cse08/isad/isad/class_diagram/',
+                url:         Urls.class_diagram(),
                 data:       { 'diagram':  totalClass, 'size': 150 },
                 cache:      false,
                 success:    function(mesg, txtStatus, XmlHttpRequest) {

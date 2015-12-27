@@ -659,7 +659,8 @@ def get_er_diagram(request):
         #print graph_string
 
 
-	output['diagram_url'] = '/cse08/isad/v_media/images/ajax/8_8_transparent.png'
+	#output['diagram_url'] = '/cse08/isad/v_media/images/ajax/8_8_transparent.png'
+	output['diagram_url'] = settings.STATIC_URL + 'images/ajax/8_8_transparent.png'
         if not graph_string:
             #return HttpResponse('/cse08/isad/v_media/images/ajax/8_8_transparent.png', content_type="application/json")
             return HttpResponse(json.dumps(output), content_type="application/json")
@@ -679,12 +680,12 @@ def get_er_diagram(request):
 #        f.close()
 
         #return HttpResponse('/cse08/isad/v_media/isad_erd/' + fname + '.png', content_type="application/json")
-	output['diagram_url'] = '/cse08/isad/v_media/isad_erd/' + fname + '.png'
+	output['diagram_url'] = settings.STATIC_URL + 'isad_erd/' + fname + '.png'
 	#return HttpResponseRedirect(output['diagram_url'])
     	return HttpResponse(json.dumps(output), content_type="application/json")
     else:
         #return HttpResponse('/cse08/isad/v_media/images/ajax/8_8_transparent.png', content_type="application/json")
-	output['diagram_url'] = '/cse08/isad/v_media/images/ajax/8_8_transparent.png'
+	output['diagram_url'] = settings.STATIC_URL + 'images/ajax/8_8_transparent.png'
     	return HttpResponse(json.dumps(output), content_type="application/json")
 
 

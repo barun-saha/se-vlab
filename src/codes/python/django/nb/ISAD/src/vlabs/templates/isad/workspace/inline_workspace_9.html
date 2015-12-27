@@ -62,9 +62,10 @@ $(document).ready(function(){
         $('#compilation-error').text('');
         $('#basic-blocks').text('');
         $('img#cfg').attr('src', "{% static 'isad/images/ajax/8_8_transparent.png' %}");
+        setUpCsrf();
         $.ajax({
             'type': 'POST',
-            'url':  '/cse08/isad/isad/cfg/',
+            'url':  Urls.generate_cfg(),
             'data': {'program': $.trim(editAreaLoader.getValue('program'))},
             'dataType': 'json',
             'cache':    false,
