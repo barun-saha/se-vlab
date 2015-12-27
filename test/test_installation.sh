@@ -70,32 +70,32 @@ ls $x > /dev/null 2>&1
 
 
 # Check symlinks exists
-x="$SE_PATH"/media/isad_erd
+x="$SE_PATH"/static_media/isad_erd
 ls $x > /dev/null 2>&1
 [[ $? -eq 0 ]] && success "Symlink $x exists" || \
                   failure "Symlink $x does not exist"
 
-x="$SE_PATH"/media/uploads
-ls $x > /dev/null 2>&1
-[[ $? -eq 0 ]] && success "Symlink $x exists" || \
-                  failure "Symlink $x does not exist"
+#x="$SE_PATH"/media/uploads
+#ls $x > /dev/null 2>&1
+#[[ $? -eq 0 ]] && success "Symlink $x exists" || \
+#                  failure "Symlink $x does not exist"
 
-x="$SE_PATH"/media/vlabs
+x="$SE_PATH"/static_media/vlabs
 ls $x > /dev/null 2>&1
 [[ $? -eq 0 ]] && success "Symlink $x exists" || \
                   failure "Symlink $x does not exist"
 
 
 # Configuration files
-cfile=/etc/apache2/httpd.conf
+cfile=/etc/apache2/sites-available/default
 ls "$cfile" >/dev/null 2>&1
 [[ $? -eq 0 ]] && success "$cfile exists" || \
                   failure "$cfile does not exist"
 
-cfile=/usr/local/www/wsgi-scripts/isad.wsgi
-ls "$cfile" >/dev/null 2>&1
-[[ $? -eq 0 ]] && success "$cfile exists" || \
-                  failure "$cfile does not exist"
+#cfile=/usr/local/www/wsgi-scripts/isad.wsgi
+#ls "$cfile" >/dev/null 2>&1
+#[[ $? -eq 0 ]] && success "$cfile exists" || \
+#                  failure "$cfile does not exist"
 
 
 # Check database password files exist
@@ -179,10 +179,10 @@ pip freeze | grep "$pkg" >/dev/null
 [[ $? -eq 0 ]] && success "$pkg found" || \
                   failure "$pkg was not found"
 
-cd "$SE_PATH"
-python manage.py runserver >/dev/null 2>&1 & kill %1 && \
-                 success "Django app working" || \
-                 failure "Django app not working"
+#cd "$SE_PATH"
+#python manage.py runserver >/dev/null 2>&1 & kill %1 && \
+#                 success "Django app working" || \
+#                 failure "Django app not working"
 
 # Display summary
 TOTAL=$(expr $NSUCCESS + $NFAILURE)

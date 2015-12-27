@@ -39,20 +39,8 @@ mkdir -p /var/vlabs/isad/uploads/image_uploads
 chown -R www-data /var/vlabs
 
 
-log ' 3. Deploying code'
-log "Moving codes to $HOME_PATH/codes"
-mkdir -p "$HOME_PATH/codes"
-cp -r codes/* "$HOME_PATH/codes/"
-cp -r content "$HOME_PATH/"
-
-# Set ownership of files
-chown -R barun:www-data "$HOME_PATH/codes"
-# Apache needs write permission on vlabs/ to generate two files
-chmod g+w "$SE_PATH"
-
-
 # Copying Apache configuration files
-log ' 4. Copying Apache configuration file'
+log ' 3. Copying Apache configuration file'
 echo '' > /etc/apache2/httpd.conf
 
 # Remove the default configuration files
@@ -61,10 +49,3 @@ echo '' > /etc/apache2/httpd.conf
 cp conf/default "$APACHE_DEFAULT_FILE"
 
 apache2ctl restart
-
-
-# Create symlinks (force if already exists)
-log ' 5. Creating symlinks'
-ln -sf /var/vlabs/isad/ "$SE_PATH"/media/isad_erd
-ln -sf /var/vlabs/isad/uploads "$SE_PATH"/media/uploads
-ln -sf /var/vlabs/ "$SE_PATH"/media/vlabs

@@ -16,13 +16,19 @@ install:
 	echo '*** Executing make install' >> $(LOG_FILE)
 	$(MAKE) init
 	$(MAKE) install_packages
+	$(MAKE) deploy
 	$(MAKE) init_db
 
 init: repo bash
 	echo "Executing make init" >> $(LOG_FILE)
 	bash ../scripts/configure.sh
 
+deploy:
+	echo "Executing make deploy" >> $(LOG_FILE)
+	bash ../scripts/deploy.sh
+
 init_db:
+	echo "Executing make init_db" >> $(LOG_FILE)
 	bash ../scripts/init_database.sh
 
 repo:
