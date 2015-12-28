@@ -19,11 +19,7 @@ log 'Current directory is: ' $CURRENT_DIR
 log ' 1. Creating user barun'
 USER_ID=barun
 useradd -m -s /bin/bash "$USER_ID"
-#* Only used for testing -- should be disabled later
-echo $USER_ID:abcd | chpasswd
-#* Takes effect in the next login
-sudo adduser $USER_ID sudo
-#*
+passwd -l "$USER_ID"
 
 export HOME_PATH=/home/"$USER_ID"
 export SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
