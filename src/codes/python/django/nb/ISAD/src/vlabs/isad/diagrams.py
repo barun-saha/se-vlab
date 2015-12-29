@@ -313,7 +313,7 @@ def generate_cfg(request):
         try:
             #os.chdir(globals.C_PROGRAM_STORAGE_PATH)
             #print os.getcwd()
-            process = sp.Popen(args, shell=False, stdout=sp.PIPE, stderr=sp.PIPE)
+            process = sp.Popen(args, shell=False, stdout=sp.PIPE, stderr=sp.PIPE, cwd=globals.C_PROGRAM_STORAGE_PATH)
             result, error = process.communicate()            
             output['status'] = '%s\n%s' % (result, error,)
             output['status'] = re.sub(globals.C_PROGRAM_STORAGE_PATH, '', output['status'])
@@ -359,53 +359,57 @@ def generate_cfg(request):
         if is_error:
             return HttpResponse(json.dumps(output), content_type="application/json")
         
-        # 4. Generate .ps file from the <session_id>*.vcg file
-        ps_file_name = '%s.ps' % (request.session.session_key,)
-        ps_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, ps_file_name,)
+        # 4. Generate .png file from the <session_id>*.vcg file
+#        ps_file_name = '%s.ps' % (request.session.session_key,)
+#        ps_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, ps_file_name,)
 
-        # Remove the PS file -- xvcg can't overwrite
-        try:
-            os.remove(ps_file_path)
-        except OSError:
-            # Raised when file doesn't exists
-            pass
+#        # Remove the PS file -- xvcg can't overwrite
+#        try:
+#            os.remove(ps_file_path)
+#        except OSError:
+#            # Raised when file doesn't exists
+#            pass
             
-        args = ('xvcg', '-silent', '-color', '-scale', '99', '-psoutput', ps_file_path,  globals.C_PROGRAM_STORAGE_PATH + '/' + vcg_file_name,)
+        #args = ('xvcg', '-silent', '-color', '-scale', '99', '-psoutput', ps_file_path,  globals.C_PROGRAM_STORAGE_PATH + '/' + vcg_file_name,)
+        args = ('graph-easy', globals.C_PROGRAM_STORAGE_PATH + '/' + vcg_file_name, '--png',)
         #print ' '.join(args)
         try:
-            process = sp.Popen(args, shell=False)
+            process = sp.Popen(args, shell=False, cwd=globals.C_PROGRAM_STORAGE_PATH)
             process.communicate()
+            png_file_name = '%s.c.006t.png' % (request.session.session_key,)
+            png_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, png_file_name,)
+            output['cfg_url'] = '%s/%s' % (globals.CFG_ACCESS_PATH, png_file_name,)
         except OSError, ose:
-            output['error'] = ''.join(('xvcg failed due to OS error!', str(ose), '\nPlease report this back to us.',))
+            output['error'] = ''.join(('graph-easy failed due to OS error!', str(ose), '\n Please report this back to us.',))
             #print output['error']
             is_error = True
         except Exception, xcptn:
-            output['error'] = ''.join(('xvcg failed!', str(xcptn), '\nPlease report this back to us.',))
+            output['error'] = ''.join(('graph-easy failed!', str(xcptn), '\n Please report this back to us.',))
             #print output['error']
             is_error = True
 
         if is_error:
             return HttpResponse(json.dumps(output), content_type="application/json")
             
-        # 5. Convert PS to PNG, and send back the URL
-        png_file_name = '%s.png' % (request.session.session_key,)
-        png_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, png_file_name,)
+#        # 5. Convert PS to PNG, and send back the URL
+#        png_file_name = '%s.png' % (request.session.session_key,)
+#        png_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, png_file_name,)
 
-        args = ('convert', ps_file_path, png_file_path)
-        #print ' '.join(args)
-        try:
-            process = sp.Popen(args, shell=False)
-            process.communicate()
-            output['cfg_url'] = '%s/%s' % (globals.CFG_ACCESS_PATH, png_file_name,)
-            #print output['cfg_url']
-        except OSError, ose:            
-            output['error'] = ''.join(('Failed to create image file!', str(ose), '\nPlease report this back to us.',))
-            #print output['error']
-            is_error = True
-        except Exception, xcptn:
-            output['error'] = ''.join(('Failed to create image file!', str(xcptn), '\nPlease report this back to us.',))
-            #print output['error']
-            is_error = True
+#        args = ('convert', ps_file_path, png_file_path)
+#        #print ' '.join(args)
+#        try:
+#            process = sp.Popen(args, shell=False)
+#            process.communicate()
+#            output['cfg_url'] = '%s/%s' % (globals.CFG_ACCESS_PATH, png_file_name,)
+#            #print output['cfg_url']
+#        except OSError, ose:            
+#            output['error'] = ''.join(('Failed to create image file!', str(ose), '\nPlease report this back to us.',))
+#            #print output['error']
+#            is_error = True
+#        except Exception, xcptn:
+#            output['error'] = ''.join(('Failed to create image file!', str(xcptn), '\nPlease report this back to us.',))
+#            #print output['error']
+#            is_error = True
 
         #if is_error:
             #return HttpResponse(json.dumps(output))                                    
