@@ -12,7 +12,8 @@ $(document).ready(function() {
        if (eval(e_value) > 0) {
            $("#problem_statement").html(ajax_loading);
            $("#problem_statement").load(
-                "/load_exercise/" + e_value + "/",
+                //"/load_exercise/" + e_value + "/",
+                Urls.get_exercise_problem(e_value),
                 "",
                 function(responseText, textStatus, XMLHttpRequest) {
                     if(textStatus == 'error') {
@@ -22,7 +23,8 @@ $(document).ready(function() {
                     $('#btnSubmit').attr('disabled', false);
 
                     // Order is: exercise_id/object_id/problem_id/
-                    var target_url = "/load_workspace/" + e_value + "/" + $("#hObjId").val() + "/" + e_text + "/";
+                    //var target_url = "/load_workspace/" + e_value + "/" + $("#hObjId").val() + "/" + e_text + "/";
+                    var target_url = Urls.get_exercise_workspace(e_value, $("#hObjId").val(), e_text);
 
                     $(document.createElement('img'))
                     .attr({'src': ajax_loading_image, 'alt': 'Loading ...'})
@@ -91,13 +93,13 @@ $("#btnSubmit").click(function() {
             ""
         );
         */
-        var soln_url = "show_solution/" + e_value + "/";
+        var soln_url = Urls.show_solution(e_value);
         $('#view_solution').empty();
         $('#view_solution').append(
     $(document.createElement('input'))
             .attr({ 'type': 'button', 'value': 'View Solution', 'id': 'show_solution'})
             .click(function() {
-                if (confirm("Are you sure you dont want to give another try?"))
+                if (confirm("Are you sure you want to view the solution?"))
                     window.open(soln_url, "Solution","width=500,height=320,resizable=yes,toolbar=no,linkbar=no,scrollbars=yes,location=0,directories=no,status=no,menubar=no,copyhistory=no",false);
 
                 return false;
