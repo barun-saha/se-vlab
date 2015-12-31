@@ -21,27 +21,9 @@ USER_ID=barun
 useradd -m -s /bin/bash "$USER_ID"
 passwd -l "$USER_ID"
 
-export HOME_PATH=/home/"$USER_ID"
-export SE_PATH=$HOME_PATH/codes/python/django/nb/ISAD/src/vlabs
-APACHE_DEFAULT_FILE=/etc/apache2/sites-available/default
-APACHE_DEFAULT_SSL_FILE=/etc/apache2/sites-available/default-ssl
-
-
 # Directories where intermediate files would be created
 log ' 2. Creating directories'
 mkdir -p /var/vlabs/isad/uml/img
 mkdir -p /var/vlabs/isad/cfg
 mkdir -p /var/vlabs/isad/uploads/image_uploads
 chown -R www-data /var/vlabs
-
-
-# Copying Apache configuration files
-log ' 3. Copying Apache configuration file'
-echo '' > /etc/apache2/httpd.conf
-
-# Remove the default configuration files
-[ -f "$APACHE_DEFAULT_FILE" ] && rm "$APACHE_DEFAULT_FILE"
-[ -f "$APACHE_DEFAULT_SSL_FILE" ] && rm "$APACHE_DEFAULT_SSL_FILE"
-cp conf/default "$APACHE_DEFAULT_FILE"
-
-apache2ctl restart
