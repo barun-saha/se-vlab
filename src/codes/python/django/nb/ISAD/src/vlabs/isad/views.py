@@ -50,6 +50,7 @@ def theory(request, object_id=9):
         return index(request)
         
     t = get_object_or_404(Theory, pk=object_id)
+    t.content = t.content.replace('_STATIC_URL_', settings.STATIC_URL)
     context = RequestContext(request)
     # Required to differentiate between ISAD and ANT in post-comment.js
     context['SITE_BASE'] = '/cse08/isad/'
@@ -89,6 +90,7 @@ def procedure(request, object_id=9):
     # (Rev #58: #1)
     #t = get_object_or_404(Theory, pk=object_id)
     p = get_object_or_404(Procedure.objects.select_related(), theory=object_id)
+    p.content = p.content.replace('_STATIC_URL_', settings.STATIC_URL)
     return render_to_response(
         'isad/procedure.html',
         {
@@ -187,6 +189,8 @@ def case_study(request, object_id):
     # (Rev #58: #1)
     #theory = get_object_or_404(Theory, pk=object_id)
     case_studies = get_list_or_404(CaseStudy.objects.select_related(), theory=object_id)
+    for case in case_studies:
+        case.analysis = case.analysis.replace('_STATIC_URL_', settings.STATIC_URL)
     return render_to_response(
         'isad/case_study.html',
         {

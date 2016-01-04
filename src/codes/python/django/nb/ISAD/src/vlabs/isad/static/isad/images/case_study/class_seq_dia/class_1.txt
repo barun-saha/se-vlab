@@ -1,0 +1,58 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+
+class Member {
+ -id : ID
+ -name : String
+ +getIssueCount() : Integer
+ +getMaxIssueCount() : Integer
+ +canIssueNow() : Boolean
+ +getTransactionsHistory() : List
+ +getAvailableRoles() : List
+}
+
+class Book {
+ +<u>IsAvailable(bookID : ID) : Boolean</u>
+ +<u>SetStatusIssued(bookID : ID)</u>
+}
+
+class Transaction {
+ -id : ID
+ -timestamp : DateTime
+ +save() : ID
+}
+
+class Role << (S,orchid) Singleton >> {
+ -roles : List
+ +<u>GetRoles() : List</u>
+ +<u>GetRole(index : Integer) : RoleItem</u>
+}
+
+
+class Inventory << (S,orchid) Singleton >>
+
+LIS -- Member
+Member -- Role
+
+LIS "1" *--> "1" RegistrationManager
+LIS "1" *--> "1" IssueManager
+LIS "1" *--> "1" ReturnManager
+LIS "1" *--> "1" PurchaseManager
+
+IssueManager ..> Book
+IssueManager ..> BookTransaction 
+Inventory ..> Book
+PurchaseManager ..> PurchaseTransaction
+BookTransaction --|> Transaction
+PurchaseTransaction --|> Transaction
+
+Order "0..*" <.. "1" PurchaseManager
+Order "1" *--> "1..*" OrderLineItem
+PurchaseManager "1" --> "1..*" Distributor
+Distributor ..> Order
+
+
+@enduml
