@@ -5,7 +5,7 @@ function drawUmlDiagram(strUML) {
           type:     'POST',
           //url:      '/cse08/isad/isad/uml_dia/',
           url:      Urls.uml_dia(),
-          data:     { 'diagram': strUML },
+          data:     { 'diagram': strUML, 'csrfmiddlewaretoken': getCookie('csrftoken') },
           dataType: 'json',
           cache:    false,
           success:    function(mesg, txtStatus, XmlHttpRequest) {

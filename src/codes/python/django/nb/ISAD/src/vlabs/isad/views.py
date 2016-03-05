@@ -23,6 +23,8 @@ import diagrams
 
 import json
 
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 
 # (Rev #46: #1)
 allowed_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,]
@@ -354,21 +356,17 @@ def get_exercise_problem(request, exercise_id):
     of the Exercise table.
     '''
     ep = get_object_or_404(Exercise, id=exercise_id)
-    if settings.DEBUG:  # Ajax delay demo
-        time.sleep(1)
 
     return HttpResponse(ep.problem)
 
 
+@ensure_csrf_cookie
 def get_exercise_workspace(request, exercise_id, object_id, problem_id=1):
     '''
     Return the problem solving workspace for the selected exercise.
     object_id is required to select the workspace javascript file.
     '''
     ew = get_object_or_404(Exercise, id=exercise_id)
-    if settings.DEBUG:  # Ajax delay demo
-        import time
-        time.sleep(1)
     request.session['theory_id'] = object_id
     request.session.modified = True
 
