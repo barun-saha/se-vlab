@@ -107,11 +107,23 @@ USE_I18N = False
 USE_L10N = True
 USE_TZ = True
 
+__ENV_PROD__ = True
+#__ENV_PROD__ = False
+
+
+# Enable this if you are hosting the lab behind reverse proxy
+#REVERSE_PROXY_PREFIX = 'se'
+# Enable this if no reverse proxy is used
+REVERSE_PROXY_PREFIX = ''
+
+if len(REVERSE_PROXY_PREFIX) > 0:
+    REVERSE_PROXY_URL = '/' + REVERSE_PROXY_PREFIX
+else:
+    REVERSE_PROXY_URL = ''
+
+JS_REVERSE_SCRIPT_PREFIX = REVERSE_PROXY_URL + '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-STATIC_URL = '/isad_static/'
+STATIC_URL = REVERSE_PROXY_URL + '/isad_static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static_media/')
-
-__ENV_PROD__ = True
-#__ENV_PROD__ = False

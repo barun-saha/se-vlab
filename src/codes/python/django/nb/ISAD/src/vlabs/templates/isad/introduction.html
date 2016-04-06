@@ -5,6 +5,16 @@
     {{ title }}
 {% endblock %}
 
+{% block url_intro %}{{ reverse_proxy_url }}{% url 'introduction' object_id %}{% endblock %}
+{% block url_theory %}{{ reverse_proxy_url }}{% url 'theory' object_id %}{% endblock %}
+{% block url_sim %}{{ reverse_proxy_url }}{% url 'simulation' object_id %}{% endblock %}
+{% block url_case %}{{ reverse_proxy_url }}{% url 'case_study' object_id %}{% endblock %}
+{% block url_selfev %}{{ reverse_proxy_url }}{% url 'self_evaluation' object_id %}{% endblock %}
+{% block url_proc %}{{ reverse_proxy_url }}{% url 'procedure' object_id %}{% endblock %}
+{% block url_ex %}{{ reverse_proxy_url }}{% url 'exercise' object_id %}{% endblock %}
+{% block url_ref %}{{ reverse_proxy_url }}{% url 'references' object_id %}{% endblock %}
+
+
 {% block content %}
 <style type="text/css">
     div#title {
@@ -14,14 +24,14 @@
         color: #0033CC;
     }
     div#contents {
-        
+
     }
     p {
         padding: 5px;
-    }    
+    }
 </style>
 
-<div id="title">    
+<div id="title">
 </div>
 
 <div id="contents" class="font-normal">
@@ -31,7 +41,7 @@
 
     <p>&nbsp;</p>
 
-    <p style="text-align: right;"> 
+    <p style="text-align: right;">
         <a href="{% url 'theory' object_id %}">Continue <img class="inline" alt="Continue" src="{% static 'isad/images/new/blue_right_arrow_16.png' %}"></a>
     </p>
 </div>

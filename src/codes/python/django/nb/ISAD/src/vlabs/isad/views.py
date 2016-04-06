@@ -38,7 +38,7 @@ def index(request):
     t = Theory.objects.filter(id__in = allowed_list)
     return render_to_response(
         'isad/home.html',
-        {'theory': t},
+        {'theory': t, 'reverse_proxy_url': settings.REVERSE_PROXY_URL},
         context_instance=RequestContext(request)
     )
 
@@ -47,21 +47,22 @@ def theory(request, object_id=9):
     '''
     Theory for the selected experiment
     '''
-    # (Rev #46: #1)    
-    if object_id in block_list:        
+    # (Rev #46: #1)
+    if object_id in block_list:
         return index(request)
-        
+
     t = get_object_or_404(Theory, pk=object_id)
     t.content = t.content.replace('_STATIC_URL_', settings.STATIC_URL)
     context = RequestContext(request)
     # Required to differentiate between ISAD and ANT in post-comment.js
-    context['SITE_BASE'] = '/cse08/isad/'
+    #context['SITE_BASE'] = '/cse08/isad/'
 
     return render_to_response(
         'isad/theory.html',
         {
             'object_id':    object_id,
-            'theory':       t
+            'theory':       t,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=context
     )
@@ -71,24 +72,25 @@ def introduction(request, object_id=1):
     # (Rev #46: #1)
     if object_id in block_list:
         return index(request)
-        
-    t = get_object_or_404(Theory, pk=object_id)    
+
+    t = get_object_or_404(Theory, pk=object_id)
     return render_to_response(
         'isad/introduction.html',
         {
             'title':        t.title,
             'introduction':    t.extra,
             'object_id':    object_id,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
 
-    
+
 def procedure(request, object_id=9):
     # (Rev #46: #1)
     if object_id in block_list:
         return index(request)
-        
+
     # (Rev #58: #1)
     #t = get_object_or_404(Theory, pk=object_id)
     p = get_object_or_404(Procedure.objects.select_related(), theory=object_id)
@@ -99,6 +101,7 @@ def procedure(request, object_id=9):
             'title':        p.theory.title,
             'procedure':    p.content,
             'object_id':    object_id,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
@@ -108,7 +111,7 @@ def simulation(request, object_id):
     if object_id in block_list:
         return index(request)
 
-    # (Rev #58: #1)   
+    # (Rev #58: #1)
     #t = get_object_or_404(Theory, pk=object_id)
     s = get_object_or_404(Simulation.objects.select_related(), theory=object_id)
     return render_to_response(
@@ -117,6 +120,7 @@ def simulation(request, object_id):
             'title':        s.theory.title,
             'object_id':    object_id,
             'simulation':   s,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
@@ -125,7 +129,7 @@ def self_evaluation(request, object_id):
     # (Rev #46: #1)
     if object_id in block_list:
         return index(request)
-        
+
     # (Rev #58: #1)
     #t = get_object_or_404(Theory, pk=object_id)
     se = get_list_or_404(SelfEvaluation.objects.select_related(), theory=object_id)
@@ -140,6 +144,7 @@ def self_evaluation(request, object_id):
             'title':        se[0].theory.title,
             'object_id':    object_id,
             'sevaluation':  se,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
@@ -148,8 +153,8 @@ def exercise(request, object_id):
     # (Rev #46: #1)
     if object_id in block_list:
         return index(request)
-        
-        
+
+
     # (Rev #58: #1)
     #t = get_object_or_404(Theory, pk=object_id)
     e = get_list_or_404(Exercise.objects.select_related(), theory=object_id)
@@ -158,7 +163,8 @@ def exercise(request, object_id):
         {
             'title':        e[0].theory.title,
             'object_id':    object_id,
-            'exercise':     e            
+            'exercise':     e,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
@@ -167,7 +173,7 @@ def references(request, object_id):
     # (Rev #46: #1)
     if object_id in block_list:
         return index(request)
-        
+
     # (Rev #58: #1)
     #t = get_object_or_404(Theory, pk=object_id)
     r = get_list_or_404(Reference.objects.select_related(), theory=object_id)
@@ -176,7 +182,8 @@ def references(request, object_id):
         {
         'title':        r[0].theory.title,
         'object_id':    object_id,
-        'reference':    r
+        'reference':    r,
+        'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
@@ -187,7 +194,7 @@ def case_study(request, object_id):
     # (Rev #46: #1)
     if object_id in block_list:
         return index(request)
-        
+
     # (Rev #58: #1)
     #theory = get_object_or_404(Theory, pk=object_id)
     case_studies = get_list_or_404(CaseStudy.objects.select_related(), theory=object_id)
@@ -198,11 +205,12 @@ def case_study(request, object_id):
         {
             'title':        case_studies[0].theory.title,
             'object_id':    object_id,
-            'case_list':    case_studies
+            'case_list':    case_studies,
+            'reverse_proxy_url': settings.REVERSE_PROXY_URL
         },
         context_instance=RequestContext(request)
     )
-    
+
 
 def about_us(request):
     return render_to_response(
@@ -340,7 +348,7 @@ def experiments_list(request):
 
     #print output_list
     return HttpResponse( json.dumps(output_list) )
-        
+
 
 def html_simulator(request, object_id=2):
     template_file = 'isad/special/simulator_%s.html' % (object_id,)
@@ -375,7 +383,7 @@ def get_exercise_workspace(request, exercise_id, object_id, problem_id=1):
     elif ew.workspace.wtype == 'HelloMentor':
         # (Rev #12: #7, #8)
         #workspace = show_mentor(request, exercise_id, object_id, problem_id)
-        # Change #26: #3        
+        # Change #26: #3
         return HttpResponseRedirect('/cse08/post2mentor/answer-form/%s/%s/%s/' % (object_id, problem_id, exercise_id,))
     else:
         workspace = ew.workspace.code
@@ -459,7 +467,7 @@ def get_inline_workspace(object_id, problem_id):
                 ),
             ]
 
-    
+
     template = 'isad/workspace/inline_workspace_%d.html' % (object_id,)
     html = render_to_string(
         template,
@@ -487,10 +495,10 @@ def get_exercise_answer(request, object_id=9, exercise_id=1):
     try:
         oid = int(object_id)
     except ValueError:
-        oid = 9   
-    
+        oid = 9
+
     s = get_object_or_404(Solution, exercise=exercise_id)
-    
+
     isCorrect = False
     user_solution = ''
     correct_solution = ''
@@ -502,13 +510,13 @@ def get_exercise_answer(request, object_id=9, exercise_id=1):
         # Simply display the 'View Solution' button
         #verify[oid] = teacher.just_show_solution
         verify[oid] = lambda: (False, '',)
-    
+
     # Solution verification functions to be called as per specific experiment numbers
     verify[2] = teacher.check_answer_2_2
     #verify[3] = gc.compare_use_case
     verify[9] = gc.compare_graphs
 
-    # Now invoke the correct function to compare the solutions    
+    # Now invoke the correct function to compare the solutions
     if oid in require_input:
         isCorrect = verify[oid](correct_solution, user_solution)
     else:
@@ -543,11 +551,11 @@ def show_mentor(request, exercise_id, theory_id, problem_id):
         'form-0-title':         u'Hi Mentor!',
         'form-0-pub_date':      u'08 February 2011',
     }
-    captcha_response = None        
+    captcha_response = None
     if request.method == 'POST':                # The form has been already submitted
 #        import time
 #        time.sleep(2)
-        
+
         formSet = PostAnswerFormSet(request.POST, managementFormData)  # A form bound tot he POST data
 
         if formSet.is_valid():                  # All validation rules pass
@@ -555,7 +563,7 @@ def show_mentor(request, exercise_id, theory_id, problem_id):
             new_post = formSet.save(commit=False)
             new_post[0].exercise = Exercise.objects.get(theory=theory_id, problem_id=problem_id)
             new_post[0].save()
-          
+
             return HttpResponse(new_post[0].id)
         else:
             #print 'Not valid'
@@ -694,7 +702,7 @@ def get_er_diagram(request):
 # (Rev #37: #5)
 def multiple_workspaces(request):
     #print request
-    template = ''    
+    template = ''
     page_url = request.path
 
     if page_url.endswith(r'/uml/statechart/'):
@@ -714,7 +722,7 @@ def multiple_workspaces(request):
         ''' % (page_url, )
         #print msg
         return HttpResponse(msg)
-    
+
     #html = render_to_response(
     html = render_to_string(
         template,
@@ -725,7 +733,7 @@ def multiple_workspaces(request):
     #return html
     tabs = { 'tabs': html, }
     return HttpResponse( json.dumps(tabs), content_type="application/json" )
-    
+
 
 # (Rev #41: #2)
 def verify_recaptcha(request):

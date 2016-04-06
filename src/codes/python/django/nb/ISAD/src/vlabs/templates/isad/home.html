@@ -9,18 +9,18 @@
 
 <div id="lab-introduction" class="rounded-border-shadow home-page-section" style="background-color: white;">
     <p>
-        <img src="{% static 'isad/images/new/system_software_update_64.png' %}" 
+        <img src="{% static 'isad/images/new/system_software_update_64.png' %}"
 	style="float: left; vertical-align: top; padding-right: 15px; padding-bottom: 5px;" alt="SE VLabs">
-        Research analysis manifests clear trends of growing interest of the Computer Science students towards 
+        Research analysis manifests clear trends of growing interest of the Computer Science students towards
         e-learning. To keep this trend as well as the pace with the rapid advancement of software technologies, the
-        <strong>&quot;Software Engineering  Virtual Lab&quot;</strong> has been developed. 
+        <strong>&quot;Software Engineering  Virtual Lab&quot;</strong> has been developed.
         This lab attempts to provide basic concepts to the students on a wide range of topics including
         Requirements analysis, ER modeling, identification of domain classes, use-case diagrams and designing a
         test suite. Ample illustrations and simulations are used to reinforce one's understanding. Once the
         concepts are clear, a set of exercises given on the concerned topics would help the students to evaluate themselves
         and their progress of learning. The main focus is to enable the students to interact with the <em>&quot;virtual&quot;</em>
         teacher in an effective and efficient manner compared to how they would do in a real lab on the subject.
-    </p>    
+    </p>
 </div>
 
 
@@ -32,8 +32,8 @@
     </p>
     <ul>
         <li>To impart state-of-the-art knowledge on Software Engineering and UML in an interactive manner through the Web</li>
-        <li>Present case studies to demonstrate the practical applications of different concepts</li>        
-        <li>Provide a scope to the students where they can solve small, real life problems</li>        
+        <li>Present case studies to demonstrate the practical applications of different concepts</li>
+        <li>Provide a scope to the students where they can solve small, real life problems</li>
     </ul>
     <p>
         All the while it is intended to present Software Engineering as an interesting subject to the students where
@@ -48,7 +48,7 @@
     <ol id="exp_list" style="">
     {% for t in theory %}
     <li style="" class="experiment" id="exp-{{ forloop.counter }}">
-        <a id="exp{{ forloop.counter }}" href="{% url 'introduction' t.id %}" style="font-size: 1.1em;">{{ t.title }}</a>
+        <a id="exp{{ forloop.counter }}" href="{{ reverse_proxy_url }}{% url 'introduction' t.id %}" style="font-size: 1.1em;">{{ t.title }}</a>
         <!--span class="show-hide show-hide-exp-outline">[Show]</span-->
         <div class="experiment-outline">
             {{ t.tooltip }}
@@ -64,7 +64,7 @@
 <div id="lab-audience" class="rounded-border-shadow home-page-section">
     <p>
         This lab is suitable for undergraduate or postgraduate students having a course on Software Engineering.
-        An overview of Object-Oriented Programming would be helpful, although not manadatory. A little 
+        An overview of Object-Oriented Programming would be helpful, although not manadatory. A little
         familiarity with JavaScript is required to work on the experiment on &quot;Designing test suite&quot;.
     </p>
 </div>
@@ -75,12 +75,12 @@
 <div id="lab-courses" class="rounded-border-shadow home-page-section">
     <p>
         <span class="bold-block">Rajasthan Technical University</span>
-        The set of experiments specified here has an almost complete match with the 
-        list of experiments prescribed for the &quot;Software Engineering Lab&quot; as part of the B. Tech. (Computer Engineering) 
-        course offered by the <em>Rajasthan Technical University</em>. 
+        The set of experiments specified here has an almost complete match with the
+        list of experiments prescribed for the &quot;Software Engineering Lab&quot; as part of the B. Tech. (Computer Engineering)
+        course offered by the <em>Rajasthan Technical University</em>.
 
         <span class="bold-block" style="margin-top: 15px;">Other Universities</span>
-        Further, around 90% of the originally prescribed experiments would help to reinforce the learning on different 
+        Further, around 90% of the originally prescribed experiments would help to reinforce the learning on different
         courses offered by many other Indian universities, some of which are listed below.
     </p>
     <p>
@@ -97,7 +97,7 @@
             <li>&quot;Software Engineering&quot; course offered for B.Sc. (CS) at <em>Delhi University</em></li>
         </ul>
     </p>
-    
+
 </div>
 
 
@@ -107,7 +107,7 @@
     <p>
     You need a modern web browser with JavaScript enabled to access the complete set of features of <strong>Software
     Engineering Virtual Lab</strong>. In particular, this lab has been tested and found to work successfully with
-    
+
     <ul>
         <li>
             <img src="{% static 'isad/images/new/icons/browsers/firefox24x24.png' %}">Firefox 3.6, 5.0
@@ -121,10 +121,10 @@
         <li style="margin-top: 3px;">
             <img src="{% static 'isad/images/new/icons/browsers/internet_explorer24x24.png' %}">Internet Explorer 7
         </li>
-    </ul>   
+    </ul>
     </p>
     <p>
-     Any higher version of the above mentioned four web browsers would also work fine. Moreover, any web browser using 
+     Any higher version of the above mentioned four web browsers would also work fine. Moreover, any web browser using
      modern versions of Gecko, WebKit rendering engines should be able to display properly and access all the features.
     </p>
 </div>

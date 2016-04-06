@@ -3,6 +3,16 @@
 {% load staticfiles %}
 {% block title %}{{ title }}{% endblock %}
 
+{% block url_intro %}{{ reverse_proxy_url }}{% url 'introduction' object_id %}{% endblock %}
+{% block url_theory %}{{ reverse_proxy_url }}{% url 'theory' object_id %}{% endblock %}
+{% block url_sim %}{{ reverse_proxy_url }}{% url 'simulation' object_id %}{% endblock %}
+{% block url_case %}{{ reverse_proxy_url }}{% url 'case_study' object_id %}{% endblock %}
+{% block url_selfev %}{{ reverse_proxy_url }}{% url 'self_evaluation' object_id %}{% endblock %}
+{% block url_proc %}{{ reverse_proxy_url }}{% url 'procedure' object_id %}{% endblock %}
+{% block url_ex %}{{ reverse_proxy_url }}{% url 'exercise' object_id %}{% endblock %}
+{% block url_ref %}{{ reverse_proxy_url }}{% url 'references' object_id %}{% endblock %}
+
+
 {% block content %}
 
 <div id="contents" class="font-normal">
