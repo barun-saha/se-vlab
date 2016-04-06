@@ -24,7 +24,7 @@ log 'Proxy is: ' $PROXY
 
 ROOT_PASSWD_FILE=$HOME_PATH/mysql_root_passwd
 SE_USR_PASSWD_FILE=$HOME_PATH/se_mysql_usr_passwd
-DUMP_FILE=$SE_PATH/../../../../../../../content/cse08-se_db.sql
+DUMP_FILE=$HOME_PATH/content/cse08-se_db.sql
 DB=db_isad
 USR=u_isad
 
@@ -75,7 +75,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get remove --purge -y "^mysql.*"
 #sudo apt-get autoremove
 #sudo apt-get autoclean
 sudo rm -rf /var/lib/mysql
-sudo rm -rf /var/log/mysql 
+sudo rm -rf /var/log/mysql
 
 #ROOT_PASSWD=$(cat "$ROOT_PASSWD")
 echo mysql-server mysql-server/root_password password $ROOT_PASSWD | debconf-set-selections
@@ -86,7 +86,7 @@ while [[ $counter -le $MAX_ATTEMPTS ]]
 do
     sudo -E DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
     sudo -E apt-get install --fix-missing
-    
+
     if [[ $? -eq 0 ]]
     then
         log 'mysql-server installed!'
@@ -125,6 +125,7 @@ log "Database $DB created."
 
 # Now initialize the databse with contents
 log '11. Restoring database dump'
+cp -r content "$HOME_PATH/"
 $MYSQL --user=root --password=$ROOT_PASSWD "$DB" < "$DUMP_FILE"
 
 if [[ $? -ne 0 ]]

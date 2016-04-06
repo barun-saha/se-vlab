@@ -13,17 +13,19 @@ APT_CONF_FILE=/etc/apt/apt.conf
 
 install:
 	echo '' > $(LOG_FILE)
+	echo 'Preparing installation of the SE virtual Lab ...' >> $(LOG_FILE)
+	rm -rf $(HOME_PATH)/*
 	echo '*** Executing make install' >> $(LOG_FILE)
-	$(MAKE) init
-	$(MAKE) install_packages
+	#$(MAKE) init
+	#$(MAKE) install_packages
 	$(MAKE) deploy
-	$(MAKE) init_db
+	#$(MAKE) init_db
 
 init: repo bash
 	echo "Executing make init" >> $(LOG_FILE)
 	bash ../scripts/configure.sh
 
-deploy:
+deploy: init install_packages init_db
 	echo "Executing make deploy" >> $(LOG_FILE)
 	bash ../scripts/deploy.sh
 
@@ -36,9 +38,9 @@ repo:
 	echo $(TIMESTAMP) 'Host: ' $(SYSTEM) 'IP: ' $(IP_ADDRESS) >> $(LOG_FILE)
 	echo 'Current directory is: ' $(CURRENT_DIR) >> $(LOG_FILE)
 	echo 'Contents of current directory: ' $(LS_CURRENT_DIR) >> $(LOG_FILE)
-	
+
 	echo "*** Executing make repo" >> $(LOG_FILE)
-	# Explicitly setting repositories here since the default repos resulted 
+	# Explicitly setting repositories here since the default repos resulted
 	# in installation failure of some software
 	sudo echo '###### Ubuntu Main Repos' > $(APT_SRC_FILE)
 	sudo echo 'deb http://archive.ubuntu.com/ubuntu precise main'\
@@ -47,11 +49,11 @@ repo:
 		' restricted universe' >> $(APT_SRC_FILE)
 	sudo echo 'deb http://security.ubuntu.com/ubuntu precise-security main'\
 		' restricted universe' >> $(APT_SRC_FILE)
-	
+
 	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'Acquire::Languages "none";' >> /etc/apt/apt.conf.d/00aptitude
-	
+
 #	$(MAKE) reset_packages
 	echo "Updating Ubuntu repository" >> $(LOG_FILE)
 	sudo rm -rf /var/lib/apt/lists/*
@@ -80,7 +82,7 @@ install_ubuntu_packages:
 upgrade:
 	sudo -E apt-get update
 	sudo -E apt-get -y upgrade
-	
+
 ##reset_packages:
 ##	echo "*** Executing make: reset packages" >> $(LOG_FILE)
 ##	sudo -E apt-get -y remove python python-dev python-setuptools build-essential graphviz graphviz-dev libmysqlclient18 libmysqlclient-dev pkg-config debconf-utils libapache2-mod-wsgi gcc
