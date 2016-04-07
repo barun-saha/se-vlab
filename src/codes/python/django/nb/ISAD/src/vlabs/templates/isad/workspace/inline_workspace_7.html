@@ -28,6 +28,7 @@
 <!--script type='text/javascript' src='{% static 'isad/js/jquery.min.js'></script-->
 <script type='text/javascript' src="{% static 'isad/js/jquery-ui.min.js' %}"></script>
 <script type='text/javascript' src="{% static 'isad/lib/jquery.editable-1.3.3.min.js' %}"></script>
+<script src="{% static 'django_js_reverse/js/reverse.js' %}"></script>
 <script type="text/javascript" src="{% static 'isad/js/common.js' %}"></script>
 <script type="text/javascript" src="{% static 'isad/lib/liteTabs/litetabs.jquery.js' %}"></script>
 
@@ -36,8 +37,8 @@
         $('.drawing-area').liteTabs({ boxed: true });
         $('.drawing-area').css( {'width': '100%', 'height': 'auto'} );
 
-        multiple_workspaces('/cse08/isad/isad/uml/class-dia/', 'div#w-class');
-        multiple_workspaces('/cse08/isad/isad/uml/sequence-dia/', 'div#w-sequence');
+        multiple_workspaces(Urls.multiple_workspaces_class(), 'div#w-class');
+        multiple_workspaces(Urls.multiple_workspaces_sequence(), 'div#w-sequence');
 
         $('div#w-class').show();
         $('div#w-sequence').hide();

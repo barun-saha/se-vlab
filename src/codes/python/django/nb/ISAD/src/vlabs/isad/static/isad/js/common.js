@@ -1,5 +1,8 @@
 // URL prefix for accessing static files
-var STATIC_URL = '/isad_static/';
+var STATIC_URL;
+$.getJSON(Urls.get_static_url(), function(data) {
+    STATIC_URL = data ['url'];
+});
 
 function get_static(url) {
     var str = STATIC_URL;
@@ -63,7 +66,7 @@ $(document).ready(function() {
         .addClass('bottom-shadow-1px')
     })
     .mouseout(function() {
-        $(this)        
+        $(this)
         .removeClass('bottom-shadow-1px')
     })
     .click(function() {
@@ -76,7 +79,7 @@ $(document).ready(function() {
        };
        $('div#contents').attr('className', steps[$('div#contents').attr('className')]);
     });
-    
+
     // End changes
 
 
@@ -89,12 +92,12 @@ $(document).ready(function() {
         $(this)
         .removeClass('bottom-shadow-1px')
     })
-    .click(function(e) {                         
+    .click(function(e) {
         $('.experiment-list-popup')
         .fadeIn('slow')
         .css( {'top': ($('.experiments').outerHeight() + e.pageY) + 'px', 'right': '5px'} )
-    });                        
-    
+    });
+
     $('.experiment-list-popup')
     .click(function() {
         $(this).fadeOut('slow')
@@ -103,10 +106,10 @@ $(document).ready(function() {
         function() { },
         function() {
             $(this).fadeOut('slow')
-        }        
+        }
     )
 
-            
+
     //
     // Changes #37: #4
     // Focus textboxes
@@ -178,9 +181,9 @@ function highlight(container) {
 function multiple_workspaces(url, targetContainer) {
     var loader = $(document.createElement('img'));
     loader
-    .attr('src', ajax_loading_image)    
-    .appendTo(targetContainer);    
-    
+    .attr('src', ajax_loading_image)
+    .appendTo(targetContainer);
+
     $.ajax({
        type:    'GET',
        url:     url,

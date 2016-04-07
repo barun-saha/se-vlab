@@ -60,7 +60,8 @@ urlpatterns += patterns('isad.views',
     # (Rev #41: #3)
     url(r'recaptchajaX/$',                          'verify_recaptcha'),
     # (Rev #61: #4)
-    url(r'experiments-list/$',                          'experiments_list', name='experiments_list'),    
+    url(r'experiments-list/$',                          'experiments_list', name='experiments_list'),
+    url(r'get_static_url/$', 'get_static_url', name='get_static_url'),
 )
 #
 # UML diagrams

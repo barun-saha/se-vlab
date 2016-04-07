@@ -802,3 +802,7 @@ def xhr_test(request):
     else:
         message = "Hello!"
     return HttpResponse(message)
+
+
+def get_static_url(request):
+    return HttpResponse( json.dumps({'url': settings.STATIC_URL}), content_type="application/json" )

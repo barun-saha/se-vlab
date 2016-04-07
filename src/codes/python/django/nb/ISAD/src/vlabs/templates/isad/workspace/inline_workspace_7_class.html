@@ -2,7 +2,7 @@
 <link href="{% static 'isad/css/isad_workspace.css' %}" rel="stylesheet" type="text/css">
 
 <form>
-    <h3 class="table-title-blue">Table #1: Add a class</h3> 
+    <h3 class="table-title-blue">Table #1: Add a class</h3>
     <table class="techno exercises" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -15,11 +15,11 @@
                 <td>
                     <input type="text" name="textClass" id="textClass"/>
                 </td>
-                <td>                    
+                <td>
                     <button type="button" value="Add" id='btnAddClass'>
                         <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
-                    </button> 
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -59,7 +59,7 @@
                     <button type="button" value="Add" id='btnAddAttribute'>
                         <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
-                    </button> 
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -96,15 +96,15 @@
                         <option>Boolean</option>
                     </select>
                 </td>
-                <td>                    
+                <td>
                     <button type="button" value="Add" id='btnAddOperation'>
                         <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
-                    </button> 
+                    </button>
                 </td>
             </tr>
         </tbody>
-    </table>  
+    </table>
 
 
     <h3 class="table-title-blue">Table #4: Add generalization/specialization relationships</h3>
@@ -135,7 +135,7 @@
                     <button type="button" value="Add" id='btnAddInheritance'>
                         <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                         <span class="buttonText">Add</span>
-                    </button> 
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -145,7 +145,7 @@
     <h3 class="table-title-blue">Table #5: Add association relationships</h3>
 
     <div style="overflow: scroll; width: 100%;">
-        <table class="techno" cellpadding="0" cellspacing="0" id="addAssociation" 
+        <table class="techno" cellpadding="0" cellspacing="0" id="addAssociation"
                style="width: 100%; margin-right: 10px; margin-left: 0;">
             <thead>
                 <tr>
@@ -207,16 +207,16 @@
                     <td>
                         <select id='selectClass2ForAssociation'></select>
                     </td>
-                    <td>                    
+                    <td>
                         <button type="button" value="Add" id='btnAddAssociation'>
                             <img src="{% static 'isad/images/new/icons/add_16x16.png' %}" class="buttonAddImage" />
                             <span class="buttonText">Add</span>
-                        </button> 
+                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        
+
         <strong>Tip</strong>:<em>To display a direction, you should name the relationship as well.</em>
     </div>
 
@@ -232,7 +232,7 @@
             </tr>
         </thead>
         <tbody class="tbodyClassInformation">
-           
+
 
         </tbody>
     </table>
@@ -287,5 +287,6 @@
 
 <script type='text/javascript' src="{% static 'isad/js/jquery.min.js' %}"></script>
 <script type='text/javascript' src="{% static 'isad/js/jquery-ui.min.js' %}"></script>
-
+<script src="{% static 'django_js_reverse/js/reverse.js' %}"></script>
+<script type="text/javascript" src="{% static 'isad/js/common.js' %}"></script>
 <script type="text/javascript" src="{% static 'isad/js/exercises/class_dia.js' %}"></script>

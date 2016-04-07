@@ -86,22 +86,12 @@ padding: 0;
             <param name="loop" value="true">
 	    <param name="wmode" value="transparent">
 	</object>
-
-        <!--object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-            codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,16,0"
-            width="510" height="415" >
-            <param name="movie" value="{{ MEDIA_URL }}video/simulations/{{ object_id }}/{{ simulation.video_url }}">
-            <param name="quality" value="high">
-            <param name="play" value="true">
-            <param name="loop" value="true">
-            <embed src="/cse08/isad/v_media/video/simulations/{{ object_id }}/{{ simulation.video_url }}" width="0" height="0" play="true" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
-            type="application/x-shockwave-flash" >
-            </embed>
-        </object-->
         {% else %}
-        <script type="text/javascript">
-            myAjaxLoader("#simulation", "/cse08/isad/" + {{ simulation.theory.id }} + "/html_sim/");
-        </script>
+    <script src="{% static 'django_js_reverse/js/reverse.js' %}"></script>
+    <script type="text/javascript">
+        var url = Urls.html_simulator({{ simulation.theory.id }});
+        myAjaxLoader("#simulation", url);
+    </script>
         {% endif %}
 
     </div>
