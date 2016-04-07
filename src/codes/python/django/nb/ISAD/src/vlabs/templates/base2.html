@@ -44,10 +44,12 @@
 <!-- Header -->
 <div id="header">
     <ul id="menuTop">
-        <li><a href="{% url 'index' %}" target="_self" title="Visit the home page of Software Engineering Virtual Lab">Home</a></li>
-        <li><a href="{% url 'about_us' %}" target="_self" title="Know about the minds behind Software Engineering Virtual Lab">Credits</a></li>
-        <li><a href="https://docs.google.com/forms/d/1kRAlDEEqaEd_UTqDXvy8IWlbPRL4Ul20MbXEcL9PG4Q/viewform" target="_blank" title="Give feedback on the Software Engineering Virtual Lab">Feedback</a></li>
-        <li><a href="http://vlab.co.in/" title="Virtual Labs home page">Virtual Labs</a></li>
+        <li><a href="{{ reverse_proxy_url }}{% url 'index_page' %}" target="_self">Home</a></li>
+        <li><a href="{{ reverse_proxy_url }}{% url 'about_us' %}" target="_self">Credits</a></li>
+        <li><a href="https://docs.google.com/forms/d/1kRAlDEEqaEd_UTqDXvy8IWlbPRL4Ul20MbXEcL9PG4Q/viewform" target="_blank">
+            Feedback</a></li>
+        <li><a href="http://vlabs.iitkgp.ernet.in/ant/">Advanced Network Technologies Virtual Lab</a></li>
+        <li><a href="http://vlab.co.in/">Virtual Labs</a></li>
     </ul>
 </div>
 
