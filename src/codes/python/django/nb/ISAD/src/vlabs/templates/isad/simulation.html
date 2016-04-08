@@ -87,7 +87,9 @@ padding: 0;
 	    <param name="wmode" value="transparent">
 	</object>
         {% else %}
+    <script type="text/javascript" src="{% static 'isad/js/jquery.min.js' %}"></script>
     <script src="{% static 'django_js_reverse/js/reverse.js' %}"></script>
+    <script type="text/javascript" src="{% static 'isad/js/common.js' %}"></script>
     <script type="text/javascript">
         var url = Urls.html_simulator({{ simulation.theory.id }});
         myAjaxLoader("#simulation", url);
