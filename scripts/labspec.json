@@ -4,7 +4,7 @@
             "platform": {
                 "arch": "i386",
                 "build_steps": {
-                    "build": ["make -C ../src init"],
+                    "build": ["make -C ../src"],
                     "configure": [],
                     "post_build": [],
                     "pre_build": [],
@@ -25,7 +25,7 @@
                         "mobile_number": "",
                         "office_number": ""
                     },
-                    "department": "School of Information Technology",
+                    "department": "Department of Computer Science and Engineering",
                     "institute": "IIT Kharagpur",
                     "name": "Debasis Samanta",
                     "organization": "",
@@ -40,7 +40,7 @@
                         "mobile_number": "",
                         "office_number": ""
                     },
-                    "department": "School of Information Technology",
+                    "department": "Department of Computer Science and Engineering",
                     "institute": "IIT Kharagpur",
                     "name": "Sudip Misra",
                     "organization": "",
@@ -55,7 +55,7 @@
                         "mobile_number": "",
                         "office_number": ""
                     },
-                    "department": "School of Information Technology",
+                    "department": "Department of Computer Science and Engineering",
                     "institute": "IIT Kharagpur",
                     "name": "Barun Saha",
                     "organization": "",
@@ -78,13 +78,13 @@
             "platform": {
                 "arch": "i386",
                 "hosting": "dedicated",
-                "installer": ["make -C ../src install_packages"],
+                "installer": [],
                 "lab_actions": {
                     "backup": [],
                     "clean": [],
                     "init": [],
                     "pause": [],
-                    "publish": ["make -C ../src deploy"],
+                    "publish": [],
                     "restore": [],
                     "resume": [],
                     "shutdown": [],
