@@ -27,3 +27,10 @@ mkdir -p /var/vlabs/isad/uml/img
 mkdir -p /var/vlabs/isad/cfg
 mkdir -p /var/vlabs/isad/uploads/image_uploads
 chown -R www-data /var/vlabs
+
+
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale-gen en_US.UTF-8
+sudo dpkg-reconfigure locales
