@@ -33,7 +33,8 @@ MAX_LENGTH = 15
 
 # Locations where various passwords are stored
 HOME_PATH = '/home/barun'
-SE_USR_PASSWD_FILE = '/'.join([HOME_PATH, 'se_mysql_usr_passwd',])
+SE_DB_USR_PASSWD_FILE = '/'.join([HOME_PATH, 'se_mysql_usr_passwd',])
+REDIS_PASSWD_FILE = '/'.join([HOME_PATH, 'redis_passwd',])
 
 
 def generate_credentials(secret_key_file, output_file):
@@ -78,43 +79,55 @@ app_credentials = {
 	'db_user': 'u_isad',
 ''' % (secret_key_file,)
 
-	final_string = '''
+	intermediate_string = '''
 	'db_host': 'localhost',
 	'db_port': '3306',
+'''
+
+	final_string = '''
 	'secret_key': __get_secret_key(),
 }
 '''
 
-	password_string = ''
+	db_password_string = ''
+	redis_password_string = ''
 
 	# Generate credentials for each type
-	# In SE Virtual Lab, we only need database credentials
+	# In ANT Virtual Lab, we need credentials for database and rabbitmq
 
-	cred_name = '\t\'db_password\': '
+	db_cred_name = '\t\'db_password\': '
+	redis_cred_name = '\t\'redis_password\': '
 #	password_length = random.randint(MIN_LENGTH, MAX_LENGTH)
 #	password = "".join(
 #		[random.choice(ALPHABET) \
 #			for i in xrange(password_length + 1)])
-	
+
 	# Read the password from file
-	pfile = None
+	db_pfile = None
+	redis_pfile = None
 	try:
-		pfile = open(SE_USR_PASSWD_FILE, 'r')
+		db_pfile = open(SE_DB_USR_PASSWD_FILE, 'r')
+		redis_pfile = open(REDIS_PASSWD_FILE, 'r')
 	except IOError, ioe:
 		#print 'Could not read', SE_USR_PASSWD_FILE, ':', str(ioe)
 		sys.exit(1)
 
-	with pfile:
-		password = pfile.read().strip()
+	with db_pfile:
+		database_password = db_pfile.read().strip()
+	with redis_pfile:
+		redis_password = redis_pfile.read().strip()
 
-	password_string = ''.join(
-		[password_string, cred_name, '\'', password, '\',',]
+	db_password_string = ''.join(
+		[db_password_string, db_cred_name, '\'', database_password, '\',',]
+	)
+	redis_password_string = ''.join(
+		[redis_password_string, redis_cred_name, '\'', redis_password, '\',',]
 	)
 
 
 	# Generate the final contents
 	final_string = ''.join(
-		[header_string, import_string, body, password_string, final_string,]
+		[header_string, import_string, body, db_password_string, intermediate_string, redis_password_string, final_string,]
 	)
 
 	# Create the Python module

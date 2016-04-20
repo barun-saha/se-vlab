@@ -9,11 +9,12 @@ PYTHON=$(shell which python)
 IP_ADDRESS=$(shell ip addr show eth0 | grep 'inet ')
 APT_SRC_FILE=/etc/apt/sources.list
 APT_CONF_FILE=/etc/apt/apt.conf
+SUPERVISOR=/etc/init.d/supervisor
 
 
 install:
 	echo '' > $(LOG_FILE)
-	echo 'Preparing installation of the SE virtual Lab ...' >> $(LOG_FILE)
+	echo 'Preparing installation of the SE Virtual Lab ...' >> $(LOG_FILE)
 	rm -rf $(HOME_PATH)/*
 	echo '*** Executing make install' >> $(LOG_FILE)
 	#$(MAKE) init
@@ -25,7 +26,7 @@ init: repo bash
 	echo "Executing make init" >> $(LOG_FILE)
 	bash ../scripts/configure.sh
 
-deploy: init install_packages init_db
+deploy: init install_packages init_db install_redis
 	echo "Executing make deploy" >> $(LOG_FILE)
 	bash ../scripts/deploy.sh
 
@@ -53,6 +54,9 @@ repo:
 	sudo echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf.d/90forceyes
 	sudo echo 'Acquire::Languages "none";' >> /etc/apt/apt.conf.d/00aptitude
+
+	# (Stop and) remove supervisor if it already exists and is running
+	test -f  $(SUPERVISOR) && $(SUPERVISOR) stop || pkill supervisord
 
 #	$(MAKE) reset_packages
 	echo "Updating Ubuntu repository" >> $(LOG_FILE)
@@ -82,6 +86,11 @@ install_ubuntu_packages:
 upgrade:
 	sudo -E apt-get update
 	sudo -E apt-get -y upgrade
+
+install_redis:
+	echo '' >> $(LOG_FILE)
+	echo '*** Executing make: installing Redis and django-rq' >> $(LOG_FILE)
+	bash ../scripts/install_redis.sh
 
 ##reset_packages:
 ##	echo "*** Executing make: reset packages" >> $(LOG_FILE)

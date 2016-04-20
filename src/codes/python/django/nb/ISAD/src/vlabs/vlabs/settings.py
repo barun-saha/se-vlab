@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_js_reverse',
     'isad',
+    'django_rq',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -127,3 +128,15 @@ JS_REVERSE_SCRIPT_PREFIX = REVERSE_PROXY_URL + '/'
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATIC_URL = REVERSE_PROXY_URL + '/isad_static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static_media/')
+
+REDIS_QNAME = 'q_se'
+
+RQ_QUEUES = {
+    REDIS_QNAME: {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'PASSWORD': app_credentials['redis_password'],
+        'DEFAULT_TIMEOUT': 120,
+    }
+}

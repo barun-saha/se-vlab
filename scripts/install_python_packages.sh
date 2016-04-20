@@ -23,18 +23,30 @@
 
 log 'Installing necessary Python packages'
 
-# Upgrade pip
-sudo -E pip install -U setuptools
-sudo -E pip install -U pip
+MAX_ATTEMPTS=2
+COUNTER=1
+while [[ $COUNTER -le $MAX_ATTEMPTS ]]
+do
+    # Upgrade pip
+    sudo -E pip install -U setuptools
+    sudo -E pip install -U pip
 
-sudo -E pip install Django==1.8.4
-# Library loading issues with pygraphviz
-# https://github.com/pygraphviz/pygraphviz/issues/71
-sudo -E pip install pygraphviz --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/"
-sudo -E pip install MySQL-python
-sudo -E pip install django-maintenancemode
-sudo -E pip install django-ajaxcomments
-sudo -E pip install django-tinymce
-sudo -E pip install recaptcha-client
-sudo -E pip install PIL
-sudo -E pip install django-js-reverse
+    sudo -E pip install Django==1.8.4
+    # Library loading issues with pygraphviz
+    # https://github.com/pygraphviz/pygraphviz/issues/71
+    sudo -E pip install pygraphviz --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/"
+    sudo -E pip install MySQL-python
+    sudo -E pip install django-maintenancemode
+    sudo -E pip install django-ajaxcomments
+    sudo -E pip install django-tinymce
+    sudo -E pip install recaptcha-client
+    sudo -E pip install PIL
+    sudo -E pip install django-js-reverse
+
+    sudo -E pip install rq
+    sudo -E pip install django-rq
+
+    [[ $? -eq 0 ]] && break
+
+    COUNTER=$((COUNTER + 1))
+done
