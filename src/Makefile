@@ -56,7 +56,7 @@ repo:
 	sudo echo 'Acquire::Languages "none";' >> /etc/apt/apt.conf.d/00aptitude
 
 	# (Stop and) remove supervisor if it already exists and is running
-	test -f  $(SUPERVISOR) && $(SUPERVISOR) stop || pkill supervisord
+	test -f  $(SUPERVISOR) && $(SUPERVISOR) stop || true
 
 #	$(MAKE) reset_packages
 	echo "Updating Ubuntu repository" >> $(LOG_FILE)
