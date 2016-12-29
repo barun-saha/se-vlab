@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/9/references/" />
+<title>9_references</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">9_references</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/9/references/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//li[@id='list'])[4]</td>
+	<td>Just Enough Software Test Automation, Daniel J. Mosley, Bruce A. Posey, Prentice Hall, July 2002</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=&quot;C4 Software Technology Reference Guide&quot;, Software Engineering Institute (SEI)</td>
+	<td>&quot;C4 Software Technology Reference Guide&quot;, Software Engineering Institute (SEI)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=S. R. Chidamber and C. F. Kemerer, &quot;A Metrics Suite for Object Oriented Design,&quot; in IEEE Trans. Softw. Eng. 20, 6, 476-493. Jun 1994.</td>
+	<td>S. R. Chidamber and C. F. Kemerer, &quot;A Metrics Suite for Object Oriented Design,&quot; in IEEE Trans. Softw. Eng. 20, 6, 476-493. Jun 1994.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

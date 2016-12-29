@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/10/simulation/" />
+<title>10_simulation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10_simulation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/10/simulation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Exhaustive testing of a software is required to determine it is working as per expectations and requirements. Developers often do not have enough time (or at times interest) to test their codes thoroughly. To handle such scenarios, most projects usually have a dedicated testing team. However, unit testing, at least, is done by the developers.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem']/p[2]</td>
+	<td>Irrespective of who performs testing, or what is being tested, testing usually involve some generic steps. In this simulation we provide a broad overview of the testing process.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='contents']/div[2]/object@data</td>
+	<td>/se/isad_static/isad/video/simulations/10/testing_steps.swf</td>
+</tr>
+</tbody></table>
+</body>
+</html>

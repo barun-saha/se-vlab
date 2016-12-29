@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/5/theory/" />
+<title>5_references</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">5_references</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/5/references/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=list</td>
+	<td>UML and C++ A Practical Guide To Object-Oriented Development, Richard C. Lee, William M. Tepfenhart, Prentice-Hall of India, 2nd Edition, 2005</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=I. Y. Song, K. Yano, J. Trujillo, and S. Luján-Mora. &quot;A Taxonomic Class Modeling Methodology for Object-Oriented Analysis&quot;, In Information Modeling Methods and Methodologies, Advanced Topics in Databases Series, Ed. (J Krostige, T. Halpin, K. Siau), Idea Group Publishing, 2004, pp. 216-240.</td>
+	<td>I. Y. Song, K. Yano, J. Trujillo, and S. Luján-Mora. &quot;A Taxonomic Class Modeling Methodology for Object-Oriented Analysis&quot;, In Information Modeling Methods and Methodologies, Advanced Topics in Databases Series, Ed. (J Krostige, T. Halpin, K. Siau), Idea Group Publishing, 2004, pp. 216-240.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=Business Modeling – The Domain Model</td>
+	<td>Business Modeling – The Domain Model</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=Domain Analysis Using Textual Analysis Approach</td>
+	<td>Domain Analysis Using Textual Analysis Approach</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/5/theory/" />
+<title>5_procedure</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">5_procedure</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/5/procedure/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[16]</td>
+	<td>Table #10 shown you all the domain classes for the given problem statement.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[7]</td>
+	<td>You may add your own attribute from Table #5 to the attribute list of Table #4 if it is required.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[12]</td>
+	<td>Table #8 shows all the classes based on some common attributes which are taken from Table #7.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[16]</td>
+	<td>Table #10 shown you all the domain classes for the given problem statement.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

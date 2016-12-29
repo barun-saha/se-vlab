@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/7/self_evaluation/" />
+<title>7_self_evaluation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">7_self_evaluation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/7/self_evaluation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#option2_3 &gt; input[name=&quot;q_2&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>All of your answers are, unfortunately, wrong! Please revise the topics.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='choices_2']/p[3]@class</td>
+	<td>option wrong</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=q_2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>1 answers out of 9 questions are correct!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>xpath=//div[@id='choices_2']/p[1]@class</td>
+	<td>option correct</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_2</td>
+	<td>2. In class diagrams, a class is represented with a</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option2_2</td>
+	<td>Human stick figure</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_4</td>
+	<td>4. Inheritance among classes are represented by a</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option4_3</td>
+	<td>Line with a filled diamond from the extending to the extended class</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_5</td>
+	<td>5. Private members (or methods) in a class are indicated with a</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option5_4</td>
+	<td>Tilde (~) sign</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/1/self_evaluation/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/1/case_study/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/ul/li[2]</td>
+	<td>Search book: Any member of LIS can avail this facility to check whether any particular book is present in the institute's library. A book could be searched by its: Title Authors name Publisher's name</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/ul/li[4]</td>
+	<td>Issue book: Any member of LIS can issue a book against his account provided that: The book is available in the library i.e. could be found by searching for it in LIS No other member has currently issued the book Current user has not issued the maximum number of books that can If the above conditions are met, the book is issued to the member. <br /> Note that this FR would remain incomplete if the &quot;maximum number of books that can be issued to a member&quot; is not defined. We assume that this number has been set to four for students and research scholars, and to ten for professors. <br /> Once a book has been successfully issued, the user account is updated to reflect the same.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/center/table/tbody/tr[3]/td[2]</td>
+	<td>Search book</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/center/table/tbody/tr[4]/td[3]</td>
+	<td>High</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/ul[2]/li/ul/li[2]</td>
+	<td>At least 50 users should be able to access the system altogether at any given time</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/ul[2]/li[5]/ul/li</td>
+	<td>The LIS has to be developed as a web application, which should work with Firefox 5, Internet Explorer 8, Google Chrome 12, Opera 10</td>
+</tr>
+</tbody></table>
+</body>
+</html>

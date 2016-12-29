@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/9/" />
+<title>9</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">9</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/9/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>A visual representation of flow of control within a program may help the developer to perform static analysis of his code. One could break down his program into multiple basic blocks, and connect them with directed edges to draw a Control Flow Graph (CFG). A CFG of a program helps in identifying how complex a program is. It also helps to estimate the maximum number of test cases one might require to test the code.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/p[2]</td>
+	<td>In this experiment, we will learn about basic blocks and how to draw a CFG using them. We would look into paths and linearly independent paths in context of a CFG. Finally, we would learn about McCabe's cyclomatic complexity, and classify a given program based on that.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

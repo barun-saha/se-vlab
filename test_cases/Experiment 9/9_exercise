@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/9/exercise/" />
+<title>9_exercise</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">9_exercise</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/9/exercise/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForAllFields</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>6000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>8000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>frame_program</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /> sum = 0;<br /> </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /> sum = 0;<br /> for (i = 1; i &lt;= n; i++)<br /> </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /> sum = 0;<br /> for (i = 1; i &lt;= n; i++)<br /> sum += i;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /> sum = 0;<br /> for (i = 1; i &lt;= n; i++)<br /> sum += i;<br /> printf(&quot;Sum of first %d natural numbers is: %d\<br />&quot;, n, sum);</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /> sum = 0;<br /> for (i = 1; i &lt;= n; i++)<br /> sum += i;<br /> printf(&quot;Sum of first %d natural numbers is: %d\<br />&quot;, n, sum);<br /> return 0;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int i;<br />int sum;<br />int n = 10;<br /> sum = 0;<br /> for (i = 1; i &lt;= n; i++)<br /> sum += i;<br /> printf(&quot;Sum of first %d natural numbers is: %d\<br />&quot;, n, sum);<br /> return 0;<br /> }</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>4000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=textarea</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=compile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=2</td>
+</tr>
+<tr>
+	<td>waitForAllFields</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>6000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>frame_program</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br />for (i = 0; i &lt;= nr; i++) {<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br />for (i = 0; i &lt;= nr; i++) {<br />for (j = 0; j &lt;= nc; j++) {<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br />for (i = 0; i &lt;= nr; i++) {<br />for (j = 0; j &lt;= nc; j++) {<br />a[i][j] = 0;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br />for (i = 0; i &lt;= nr; i++) {<br />for (j = 0; j &lt;= nc; j++) {<br />a[i][j] = 0;<br />}<br />}<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br />for (i = 0; i &lt;= nr; i++) {<br />for (j = 0; j &lt;= nc; j++) {<br />a[i][j] = 0;<br />}<br />}<br />return 0;</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[5][10];<br />int i;<br />int j;<br />int nr;<br />int nc;<br />nr = 5;<br />nc = 10;<br />for (i = 0; i &lt;= nr; i++) {<br />for (j = 0; j &lt;= nc; j++) {<br />a[i][j] = 0;<br />}<br />}<br />return 0;<br />}</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=compile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=3</td>
+</tr>
+<tr>
+	<td>waitForAllFields</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>6000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>frame_program</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=textarea</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br />break;<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br />break;<br />}<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br />break;<br />}<br />if (! flag)<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br />break;<br />}<br />if (! flag)<br />printf(&quot;Key %d was not found!\n&quot;, key);<br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br />break;<br />}<br />if (! flag)<br />printf(&quot;Key %d was not found!\n&quot;, key);<br />return 0; <br /></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=textarea</td>
+	<td>#include &lt;stdio.h&gt;<br />int main(int argc, char **argv)<br />{<br />int a[] = {2, 4, 6, 8, 10, 12, 14, 16};<br />int key = atoi(argv[1]);<br />int n = 8;<br />int low = 0;<br />int high = n - 1;<br />int middle;<br />int flag = 0;<br />while (low &lt;= high) {<br />middle = (low + high) / 2;<br />if (key == a[middle]) {<br />printf(&quot;Found key %d at position %d\n&quot;, key, middle);<br />flag = 1;<br />}<br />else if (key &lt; a[middle]) {<br />high = middle - 1;<br />}<br />else {<br />low = middle + 1;<br />}<br />if (flag)<br />break;<br />}<br />if (! flag)<br />printf(&quot;Key %d was not found!\n&quot;, key);<br />return 0; <br />}</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=compile</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

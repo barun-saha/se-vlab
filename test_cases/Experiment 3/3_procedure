@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/3/procedure/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/3/procedure/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[5]</td>
+	<td>Relationships so defined will be displayed in the ‘Table #5’. Here, you have the option to remove a wrongly defined relationship.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[8]</td>
+	<td>Also, when your solution is not exactly right, you will get a 'View Solution' button to view the solution.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#note &gt; ol &gt; li</td>
+	<td>Give the name of actors and use cases in ‘Table #1’ and ‘Table #2’ respectively by using alphabets, numerics and white-space only.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

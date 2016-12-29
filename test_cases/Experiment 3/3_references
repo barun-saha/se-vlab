@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/3/references/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/3/references/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=list</td>
+	<td>Object-Oriented Modeling and Design with UML, Michael Blaha, James Rumbaugh, Prentice-Hall of India, 2nd Edition</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=&quot;Functional Requirements and Use Cases&quot;, Ruth Malan and Dana Bredemeyer, Bredemeyer Consulting</td>
+	<td>&quot;Functional Requirements and Use Cases&quot;, Ruth Malan and Dana Bredemeyer, Bredemeyer Consulting</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=&quot;A Use Case Template: draft for discussion&quot;, Derek Coleman, Hewlett-Packard Software Initiative</td>
+	<td>&quot;A Use Case Template: draft for discussion&quot;, Derek Coleman, Hewlett-Packard Software Initiative</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=X. J. Zheng, X. Liu, &amp; S. Liu. (2010). Use Case and Non-functional Scenario Template-Based Approach to Identify Aspects. Computer Engineering and Applications ICCEA 2010 Second International Conference on (Vol. 2, pp. 89-93)</td>
+	<td>X. J. Zheng, X. Liu, &amp; S. Liu. (2010). Use Case and Non-functional Scenario Template-Based Approach to Identify Aspects. Computer Engineering and Applications ICCEA 2010 Second International Conference on (Vol. 2, pp. 89-93)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=Requirements Trace-ability and Use Cases</td>
+	<td>Requirements Trace-ability and Use Cases</td>
+</tr>
+</tbody></table>
+</body>
+</html>

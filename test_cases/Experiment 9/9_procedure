@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/9/procedure/" />
+<title>9_procedure</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">9_procedure</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/9/procedure/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/p[2]</td>
+	<td>Following are the instructions specifically for this experiment:</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=img.diagram</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul/li[4]</td>
+	<td>If compilation is successful, the basic blocks and the CFG corresponding to the program would be shown near the bottom of the page</td>
+</tr>
+</tbody></table>
+</body>
+</html>
