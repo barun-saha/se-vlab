@@ -98,10 +98,10 @@ def class_diagram(request):
     is_error = False
     error_mesg = ''
     output = {}
-    
+
     if request.POST:
         # 1. Save the source code in <session>_class.java file
-        dia_string  = request.POST.get('diagram')        
+        dia_string  = request.POST.get('diagram')
 
         src_file_name   = '%s_class' % (request.session.session_key, )
         src_file_name_java  = '%s.java' % (src_file_name, )
@@ -133,7 +133,7 @@ def class_diagram(request):
 #        print process.returncode
         # (Change: #34: #1)
         output['output'] = error
-        
+
         # 3. Return path of <session>_class.jpg
         # Note: After executing umlgraph it is difficult to detect error -- no
         # error code is returned
@@ -283,7 +283,7 @@ def generate_cfg(request):
         #print program_file_path
 
         program_file = None
-        
+
         try:
             program_file = open(program_file_path, 'w')
             program_file.write(program)
@@ -291,35 +291,35 @@ def generate_cfg(request):
             #print 'Failed to create diagram'
             #print str(ioe)
             output['error'] = ': '.join(('Failed to create temp program file: \n', str(ioe), '\nPlease report this back to us.\n',))
-            is_error = True            
+            is_error = True
         except Exception, err:
             #print 'Failed to create temp diagram file for some unknown reason'
             #print str(ioe)
             output['error'] = ': '.join(('Failed to create temp program file for some unknown reason: \n', str(err), '\nPlease report this back to us.\n',))
-            is_error = True            
+            is_error = True
         finally:
             if program_file:
-                program_file.close()       
+                program_file.close()
 
         if is_error:
             return HttpResponse(json.dumps(output), content_type="application/json")
             is_error = False
-                        
+
         # 2. Compile the program
         gcc_args = '-c -fdump-tree-vcg -fdump-tree-cfg'
         args = ('gcc', '-c', '-fdump-tree-vcg', '-fdump-tree-cfg', program_file_path,)
         #print ' '.join(args)
-        #print os.getcwd()        
+        #print os.getcwd()
         try:
             #os.chdir(globals.C_PROGRAM_STORAGE_PATH)
             #print os.getcwd()
             process = sp.Popen(args, shell=False, stdout=sp.PIPE, stderr=sp.PIPE, cwd=globals.C_PROGRAM_STORAGE_PATH)
-            result, error = process.communicate()            
+            result, error = process.communicate()
             output['status'] = '%s\n%s' % (result, error,)
             output['status'] = re.sub(globals.C_PROGRAM_STORAGE_PATH, '', output['status'])
             #print output['status']
             #print 'Return code', process.returncode
-        except OSError, ose:             
+        except OSError, ose:
             output['error'] = ''.join(('Compilation failed: ', str(ose), '\nPlease report this back to us.\n',))
             #print output['error']
             is_error = True
@@ -331,8 +331,8 @@ def generate_cfg(request):
         if is_error:
             return HttpResponse(json.dumps(output), content_type="application/json")
 
-        #print 'This is disgusting'                                
-        
+        #print 'This is disgusting'
+
         # 3. Collect the output and contents of <session_id>*.cfg files, and
         #    send back to the client
         vcg_file_name = '%s.c.006t.vcg' % (request.session.session_key,)
@@ -348,17 +348,17 @@ def generate_cfg(request):
             output['error'] = ''.join(('Reading from cfg file failed due to OS error! ', str(ose), '\nPlease report this back to us.\n',))
             #print output['error']
             is_error = True
-        except Exception, xcptn:            
+        except Exception, xcptn:
             output['error'] = ''.join(('Reading from cfg file failed! ', str(xcptn), '\nPlease report this back to us.\n',))
-            #print output['error']  
-            is_error = True      
+            #print output['error']
+            is_error = True
         finally:
             if cfg_file:
-                cfg_file.close()    
+                cfg_file.close()
 
         if is_error:
             return HttpResponse(json.dumps(output), content_type="application/json")
-        
+
         # 4. Generate .png file from the <session_id>*.vcg file
 #        ps_file_name = '%s.ps' % (request.session.session_key,)
 #        ps_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, ps_file_name,)
@@ -369,7 +369,7 @@ def generate_cfg(request):
 #        except OSError:
 #            # Raised when file doesn't exists
 #            pass
-            
+
         #args = ('xvcg', '-silent', '-color', '-scale', '99', '-psoutput', ps_file_path,  globals.C_PROGRAM_STORAGE_PATH + '/' + vcg_file_name,)
         args = ('graph-easy', globals.C_PROGRAM_STORAGE_PATH + '/' + vcg_file_name, '--png',)
         #print ' '.join(args)
@@ -390,7 +390,7 @@ def generate_cfg(request):
 
         if is_error:
             return HttpResponse(json.dumps(output), content_type="application/json")
-            
+
 #        # 5. Convert PS to PNG, and send back the URL
 #        png_file_name = '%s.png' % (request.session.session_key,)
 #        png_file_path = '%s/%s' % (globals.C_PROGRAM_STORAGE_PATH, png_file_name,)
@@ -402,7 +402,7 @@ def generate_cfg(request):
 #            process.communicate()
 #            output['cfg_url'] = '%s/%s' % (globals.CFG_ACCESS_PATH, png_file_name,)
 #            #print output['cfg_url']
-#        except OSError, ose:            
+#        except OSError, ose:
 #            output['error'] = ''.join(('Failed to create image file!', str(ose), '\nPlease report this back to us.',))
 #            #print output['error']
 #            is_error = True
@@ -412,8 +412,8 @@ def generate_cfg(request):
 #            is_error = True
 
         #if is_error:
-            #return HttpResponse(json.dumps(output))                                    
-            
+            #return HttpResponse(json.dumps(output))
+
     return HttpResponse(json.dumps(output), content_type="application/json")
 
 
@@ -425,11 +425,11 @@ def graphviz_diagram(request):
         graph_string = request.POST.get('graphString')
         #print graph_string
 
-        # DFD specific setting -- replace _LIB_IMAGE_GRAPHVIZ_ with 
+        # DFD specific setting -- replace _LIB_IMAGE_GRAPHVIZ_ with
         # /isad/v_media/images/exercise/data_store_shape.png
-        graph_string = graph_string.replace('_LIB_IMAGE_GRAPHVIZ_', settings.MEDIA_ROOT + 'images/exercise/')
+        graph_string = graph_string.replace('_LIB_IMAGE_GRAPHVIZ_', settings.STATIC_ROOT + 'isad/images/exercise/')
 
-        
+
         if not graph_string:
             return HttpResponse('/isad/v_media/images/ajax/8_8_transparent.png')
 
@@ -441,16 +441,13 @@ def graphviz_diagram(request):
         graph.from_string(graph_string)
         graph.draw(file_name, prog='dot')
 
-#        f = open('/var/vlabs/isad/erd.log', 'a')
-#        import os
-#        f.write('Path:')
-#        f.write(os.getcwd())
-#        f.close()
+        with open('/var/vlabs/isad/graphviz.log', 'a') as log_file:
+            log_file.write(graph_string + '\n')
 
 	image_file_name = globals.UML_DIAGRAMS_ACCESS_PATH + '/' + fname + '.png'
 	output['diagram'] = image_file_name
     else:
 	output['diagram'] = image_file_name
 	image_file_name = '/isad/v_media/images/ajax/8_8_transparent.png'
-        
+
     return HttpResponse(json.dumps(output), content_type="application/json")
