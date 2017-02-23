@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/10/exercise/" />
+<title>10_exercise</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10_exercise</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/10/exercise/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>waitForAllFields</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem_statement']/p[4]</td>
+	<td>Your task essentially is to verify whether each of the above function is returning correct values for given inputs. For example, a rectangle with length 10 unit and breadth 5 unit will have an area of 50 sq. unit. This can be verified from the output of the function call</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem_statement']/p[5]</td>
+	<td>However, testing also attempts to point out possible bugs in the software. How would the above code behave for a call</td>
+</tr>
+</tbody></table>
+</body>
+</html>

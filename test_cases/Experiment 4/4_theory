@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/4/theory/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/4/theory/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/h2[2]</td>
+	<td>Entity Set and Relationship Set</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/p[4]</td>
+	<td>An entity set is a collection of all similar entities. For example, &quot;Student&quot; is an entity set that abstracts all students. Ram, John are specific entities belonging to this set. Similarly, a &quot;Relationship&quot; set is a set of similar relationships.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul/li[2]/strong</td>
+	<td>Candidate key:</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul/li[2]</td>
+	<td>Candidate key: It is a minimal subset of a super key. In other words, a super key might contain extraneous attributes, which do not help in identifying an object uniquely. When such attributes are removed, the key formed so is called a candidate key.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/h2[7]</td>
+	<td>Mapping Cardinalities</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/li[4]</td>
+	<td>Many to many: Any number of entities could be related to any number of entities in E2, including zero, and vice versa.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/table/tbody/tr[5]/td</td>
+	<td>Relationship set</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/table/tbody/tr[5]/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/table/tbody/tr[5]/td[3]</td>
+	<td>Name of the relationship is written inside the diamond</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#contents &gt; center</td>
+	<td>Figure - 01: Steps to implement a RDBMS</td>
+</tr>
+</tbody></table>
+</body>
+</html>

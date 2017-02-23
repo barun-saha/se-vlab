@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/2/case_study/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/2/case_study/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/p[4]</td>
+	<td>So, around 27 person-months are required to complete this project. With this calculated value for effort we can also approximate the development time required:</td>
+</tr>
+<tr>
+	<td>verifyTable</td>
+	<td>css=table.data.3.0</td>
+	<td>Required software reliability</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/table/tbody/tr[6]/td[5]</td>
+	<td>1.11</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/table/tbody/tr[15]/td</td>
+	<td>Programming language experience</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/table/tbody/tr[17]/td[5]</td>
+	<td>0.91</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/p[7]</td>
+	<td>Using this EAF value we refine our estimates from basic COCOMO as shown below</td>
+</tr>
+</tbody></table>
+</body>
+</html>

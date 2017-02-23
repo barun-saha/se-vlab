@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/9/case_study/" />
+<title>9_case_study</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">9_case_study</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/9/case_study/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.case-analysis &gt; center</td>
+	<td>Figure 1. CFG for &quot;ReissueBook&quot; method</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/ul/li[4]</td>
+	<td>{ true, true, false } : Output would be null</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/pre</td>
+	<td>public ID ReissueBook(ID userID, ID bookID) {<br /> Member user = Member.GetMember(userID);<br /> ID transactionID = null;<br /> if ( user.canIssueNow() &amp;&amp; Book.IsAvailable(bookID) ) { <br /> Integer count = user.getReissueCountFor(bookID); // # of times this books has been reissued after it's recent issue by the user<br /> if ( count &lt; REISSUE_LIMIT ) { <br /> user.incrementReissueCount(bookID);<br /> BookTransaction transaction = new BookTransaction(userID, bookID); <br /> transaction.save();<br /> transactionID = transaction.getID();<br /> }<br /> }<br /> return transactionID;<br />}</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/pre[2]</td>
+	<td>public Class IssueManager {<br /> public ID IssueBook(ID userID, ID bookID) {<br /> Member user = Member.GetMember(userID);<br /> ID transactionID = null;<br /> if ( user.canIssueNow() &amp;&amp; Book.IsAvailable(bookID) ) {<br /> Book.SetStatusIssued(bookID);<br /> user.incrementIssueCount(bookID);<br /> BookTransaction transaction = new BookTransaction(userID, bookID); <br /> transaction.save();<br /> transactionID = transaction.getID();<br /> }<br /> return transactionID;<br /> }<br /><br /> public ID ReissueBook(ID userID, ID bookID) {<br /> Member user = Member.GetMember(userID);<br /> ID transactionID = null;<br /> if ( user.canIssueNow() &amp;&amp; Book.IsAvailable(bookID) ) { <br /> Integer count = user.getReissueCountFor(bookID); // # of times this books has been reissued after it's recent issue by the user<br /> if ( count &lt; REISSUE_LIMIT ) { <br /> user.incrementReissueCount(bookID);<br /> BookTransaction transaction = new BookTransaction(userID, bookID); <br /> transaction.save();<br /> transactionID = transaction.getID();<br /> }<br /> }<br /> return transactionID;<br /> }<br />}</td>
+</tr>
+</tbody></table>
+</body>
+</html>

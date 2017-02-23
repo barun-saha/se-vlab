@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/10/case_study/" />
+<title>10_case_study</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10_case_study</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/10/case_study/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=caption</td>
+	<td>Table 1: A simplified mapping from requirements to test cases</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/center/table/tbody/tr[2]/td[2]</td>
+	<td>TC2, TC3, TC4</td>
+</tr>
+<tr>
+	<td>verifyTable</td>
+	<td>css=table.techno.2.1</td>
+	<td>TC2, TC3, TC4</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/div/div[2]/center[2]/table/tbody/tr/td[6]/ol/li[2]</td>
+	<td>Type in password this_is_password</td>
+</tr>
+<tr>
+	<td>verifyTable</td>
+	<td>//div[@id='contents']/div/div/div[2]/center[2]/table.6.5</td>
+	<td>Type in employee ID as 149405xx Type in password whatever Click on the 'Login' button</td>
+</tr>
+</tbody></table>
+</body>
+</html>

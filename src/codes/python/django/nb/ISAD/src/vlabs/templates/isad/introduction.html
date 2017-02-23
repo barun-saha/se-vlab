@@ -42,7 +42,7 @@
     <p>&nbsp;</p>
 
     <p style="text-align: right;">
-        <a href="{% url 'theory' object_id %}">Continue <img class="inline" alt="Continue" src="{% static 'isad/images/new/blue_right_arrow_16.png' %}"></a>
+        <a href="{{ reverse_proxy_url }}{% url 'theory' object_id %}">Continue <img class="inline" alt="Continue" src="{% static 'isad/images/new/blue_right_arrow_16.png' %}"></a>
     </p>
 </div>
 

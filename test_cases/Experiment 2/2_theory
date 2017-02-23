@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/2/theory/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/2/theory/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/ul/li[4]</td>
+	<td>Tdev denotes the estimated time required to develop the software (expressed in months)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=caption</td>
+	<td>Cost drivers for INtermediate COCOMO (Source: http://en.wikipedia.org/wiki/COCOMO)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/table[2]/tbody/tr[2]/td</td>
+	<td>Required software reliability</td>
+</tr>
+<tr>
+	<td>verifyTable</td>
+	<td>//div[@id='contents']/ul[2]/table[2].10.2</td>
+	<td>0.87</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/p[13]</td>
+	<td>COCOMO is a simple model, and should help one to understand the concept of project metrics estimation.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/p[9]</td>
+	<td>Both the basic and intermediate COCOMO models consider a software to be a single homogeneous entity -- an assumption, which is rarely true. In fact, many real life applications are made up of several smaller sub-systems. (One might not even develop all the sub-systems -- just use the available services). The complete COCOMO model takes these factors into account to provide a far more accurate estimate of project metrics.</td>
+</tr>
+<tr>
+	<td>verifyTable</td>
+	<td>css=table.data.2.0</td>
+	<td>Semi-detached</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/table/tbody/tr/td[2]</td>
+	<td>2.4</td>
+</tr>
+</tbody></table>
+</body>
+</html>

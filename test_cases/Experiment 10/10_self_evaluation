@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/10/self_evaluation/" />
+<title>10_self_evaluation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10_self_evaluation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/10/self_evaluation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_10</td>
+	<td>10. During the development phase, which of the following testing approach is not adopted</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option10_4</td>
+	<td>Acceptance testing</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_9</td>
+	<td>9. Testing of software with actual data and in the actual environment is called</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option9_1</td>
+	<td>Alpha testing</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=q_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>All of your answers are, unfortunately, wrong! Please revise the topics.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='choices_1']/p[1]@class</td>
+	<td>option wrong</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=img.ansImageVisible</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#option1_4 &gt; input[name=&quot;q_1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>1 answers out of 15 questions are correct!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=img.ansImageVisible</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='choices_1']/p[4]@class</td>
+	<td>option correct</td>
+</tr>
+</tbody></table>
+</body>
+</html>

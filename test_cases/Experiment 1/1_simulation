@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/1/theory/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/1/simulation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.simulation-discussions &gt; p</td>
+	<td>A few of the functional requirements have been shown here. There could be others like email notifications, error handling and so on. Similarly, one has to identify the non functional requirements also. For example, the system must remain accessible to thousands of users at a time.</td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>css=h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h3</td>
+	<td>We show here how to extract functional requirements when a problem statement is given. The case under study is a online voting system.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

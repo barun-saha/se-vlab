@@ -598,6 +598,8 @@ def answer_posted(request, theory_id, ref_id):
 
 def show_solution(request, object_id=9, exercise_id=1):
     s = get_object_or_404(Solution, exercise=exercise_id)
+    s.other = s.other.replace('_STATIC_URL_', settings.STATIC_URL)
+    context = RequestContext(request)
     return render_to_response(
         'isad/solution.html',
         {

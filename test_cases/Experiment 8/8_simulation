@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/8/simulation/" />
+<title>8_simulation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">8_simulation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/8/simulation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>A DFD provides an easy mechanism to identify the flow of data in any information system. The adjoining simulation illustrates the generic steps to draw a DFD, and some thumb rules to keep in mind while drawing it.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='contents']/div[2]/object@data</td>
+	<td>/se/isad_static/isad/video/simulations/8/dfd_steps.swf</td>
+</tr>
+</tbody></table>
+</body>
+</html>

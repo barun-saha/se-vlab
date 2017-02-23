@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/5/case_study/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/5/simulation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h3</td>
+	<td>From the following problem statement, identify the domain classes</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>An automated teller machine (ATM) lets customers to withdraw cash anytime from anywhere without requiring involvement of any banking clerk or representative. Customer must insert his ATM card into he machine and authenticate himself by typing in his personal identification number (PIN). He cannot avail any of the facilities if the PIN entered is wrong. Authenticated customers can also change their PIN. They can deposit cash to their account with the bank. Also they can transfer funds to any other account. The ATM also provides options to the user to pay electricity or phone bill. Everyday morning the stock of cash in the ATM machine is replenished by a representative from the bank. Also, if the machine stops working, then it is fixed by a maintenance guy.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='contents']/div[2]/object@data</td>
+	<td>/se/isad_static/isad/video/simulations/5/domain_class.swf</td>
+</tr>
+</tbody></table>
+</body>
+</html>

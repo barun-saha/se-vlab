@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/7/simulation/" />
+<title>7_simulation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">7_simulation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/7/simulation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>A web browser is a software that helps to access a resource (web page) available on the World Wide Web and identified by a URL. Whenever a user types in the URL of a web page in the browser's address bar and clicks the &quot;Go&quot; button, the browser sends a HTTP request to the concerned web server. If the requested resource is available and accessible, the web server sends back a HTTP response to the requesting web browser. In case of any error, a HTTP response is sent indicating the error.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem']/p[3]</td>
+	<td>Once a HTTP response has been obtained from the server, the rendering engine decides the layout of the contents and actually displays the requested page. This is done keeping in mind the different HTML elements that are present in the page, and corresponding CSS rules, if any.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem']/p[4]</td>
+	<td>The browser control provides facilities like navigating across pages (by following hyperlinks), reload a page, and handles other events related to the window display, for example, resizing the browser window.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='contents']/div[2]/object@data</td>
+	<td>/se/isad_static/isad/video/simulations/7/class_diagram.swf</td>
+</tr>
+</tbody></table>
+</body>
+</html>

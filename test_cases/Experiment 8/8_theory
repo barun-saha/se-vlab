@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/8/theory/" />
+<title>8_theory</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">8_theory</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/8/theory/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/ul/li[3]</td>
+	<td>Represent the flow with Data Flow Diagrams</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/h2[2]</td>
+	<td>Graphical notations for Data Flow Diagram</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/table/tbody/tr[2]/td[3]</td>
+	<td>Name of the process is written inside the circle</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/table/tbody/tr[3]/td[3]</td>
+	<td>A left-right open rectangle is denoted as data store; name of the data store is written inside the shape</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/table/tbody/tr[4]/td</td>
+	<td>Data flow</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul/li[2]/strong</td>
+	<td>External entity</td>
+</tr>
+</tbody></table>
+</body>
+</html>

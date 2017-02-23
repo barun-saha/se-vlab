@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/6/simulation/" />
+<title>6_simulation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">6_simulation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/6/simulation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Consider the development of a medium-scale software in, say, C++. In a software development life cycle typically four phased could be observed. It begins with planning and design, after which the development work starts. Once the required features have been implemented, the software is tested. If testing is successful, the software is released. If there is even a single failure, that is to be fixed, and tested again. However, certain bugs might become apparent only after someone uses the software in real scenario. As such, the software again enters into development phase, followed by testing, and then another release.</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='contents']/div[2]/object@data</td>
+	<td>/se/isad_static/isad/video/simulations/6/statechart_diagram.swf</td>
+</tr>
+</tbody></table>
+</body>
+</html>

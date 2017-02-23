@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/6/self_evaluation/" />
+<title>6_self_evaluation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">6_self_evaluation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/6/self_evaluation/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#option1_2 &gt; input[name=&quot;q_1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>All of your answers are, unfortunately, wrong! Please revise the topics.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='choices_1']/p[2]@class</td>
+	<td>option wrong</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=q_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>1 answers out of 5 questions are correct!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>xpath=//div[@id='choices_1']/p[1]@class</td>
+	<td>option correct</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_1</td>
+	<td>1. What does an entry action of a state indicate?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option1_3</td>
+	<td>An optional action performed when system moves into the given state</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=q_4</td>
+	<td>exact:4. What does forking of several activities from a synchronization point indicate?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=option4_3</td>
+	<td>One or more activities could be skipped</td>
+</tr>
+</tbody></table>
+</body>
+</html>

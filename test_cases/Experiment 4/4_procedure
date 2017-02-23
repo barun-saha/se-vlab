@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/4/procedure/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/4/procedure/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[2]</td>
+	<td>From Table #2, select one entity and add its possible attributes. If the attribute is a primary key or a member of composite primary key for the entity, select the check box under ’Primary key’ heading.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[6]/strong</td>
+	<td>‘Draw’</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#note &gt; ol &gt; li</td>
+	<td>Give the name of entities, attributes and relationships by using alphabets numerics and underscore only .</td>
+</tr>
+</tbody></table>
+</body>
+</html>

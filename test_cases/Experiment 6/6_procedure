@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/6/procedure/" />
+<title>6_procedure</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">6_procedure</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/6/procedure/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[4]</td>
+	<td>[Optional] A note could be attached to any state through table #3. Please select the state from the first drop down list in the table, type in the text of the note, select a position of the note (to be displayed in the UML diagram), and click on the 'Add' button.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[3]/li[3]/ul/li</td>
+	<td>The third column indicates the 'Synchronization Bar', and the drop down list under this column shows all synchronization points. A new point could be added by clicking on the green coloured add button beside this drop down list.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#note &gt; ul &gt; li</td>
+	<td>Names are used for different synchronization bars only to uniquely identify (and work with) them to generate the UML diagram. They are not required as per standard UML specifications.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

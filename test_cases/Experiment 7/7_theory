@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/7/theory/" />
+<title>7_theory</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">7_theory</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/7/theory/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.experiment-objectives &gt; ul &gt; li</td>
+	<td>Graphically represent a class, and associations among different classes</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/div/ul/li[2]</td>
+	<td>Identify the logical sequence of activities undergoing in a system, and represent them pictorially</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#contents &gt; h2</td>
+	<td>Structural and Behavioral aspects</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=ul &gt; center</td>
+	<td>Figure-01:</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[2]/p[9]</td>
+	<td>It is a strong from of aggregation which describes that whole is completely owns its part. Life cycle of the part depends on the whole.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ul[3]/li/strong</td>
+	<td>Synchronous messages:</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/2/exercise/" />
+<title>10.128.8</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10.128.8</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/2/exercise/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem_statement']/ul/li[4]</td>
+	<td>Report generation and display (2 KDSI)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='problem_statement']/ul[2]/li[4]</td>
+	<td>Application of software engineering methods (High)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=ol &gt; li</td>
+	<td>Identify type of a project as per COCOMO</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=kdsi</td>
+	<td>4.5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=eaf</td>
+	<td>0.7</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=cocomo_calculate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show_solution</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>Solution</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure you want to view the solution?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=Solution</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Other cost drivers have nominal values (= 1). So, EAF = 0.91 * 0.95 * 0.91 * 0.91 = 0.70</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img[alt=&quot;Close&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=2</td>
+</tr>
+<tr>
+	<td>waitForAllFields</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#workspace_from_javascript &gt; p</td>
+	<td>Note: In cases where you've to enter multiple values (for example, listing the operators from a code snippet), please separate them with a comma</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_int</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_main</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_char</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_star</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_parentheses</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_curly_braces</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_equals</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_semicolon</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_plus</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_printf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_comma</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=op_return</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_argc</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_argv</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_x</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_y</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_20</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_sum</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_printf_arg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=od_zero</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=halstead_compute</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show_solution</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>Solution</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure you want to view the solution?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=Solution</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='solution_text']/ul[2]/li[8]</td>
+	<td>&quot;Sum of %d and %d is: %d\n&quot;</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img[alt=&quot;Close&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=ddlExercises</td>
+	<td>label=3</td>
+</tr>
+<tr>
+	<td>waitForAllFields</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=total_op</td>
+	<td>30</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=total_od</td>
+	<td>13</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=unique_op</td>
+	<td>14</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=unique_od</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=calculate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show_solution</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>Solution</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure you want to view the solution?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=Solution</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img[alt=&quot;Close&quot;]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://vlabs.iitkgp.ernet.in/se/10/procedure/" />
+<title>10_procedure</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10_procedure</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/se/10/procedure/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[7]/ol/li[6]/ul/li</td>
+	<td>No Run: The test suite has not been executed yet or the test case has been set for Manual Testing)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[4]</td>
+	<td>After clicking on the &quot;Add&quot; button from the previous step, a dialog will display the new test suite. Every test suite is identified with a unique ID: an (auto-incrementing) integer prefixed with &quot;TS&quot;. The first test suite will have the ID &quot;TS0 &quot;, and so on.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contents']/ol[2]/li[7]/ol/li[4]</td>
+	<td>Actual Output: The value actually obtained after making the function call. This column would be populated automatically after the test suite is executed.</td>
+</tr>
+</tbody></table>
+</body>
+</html>
